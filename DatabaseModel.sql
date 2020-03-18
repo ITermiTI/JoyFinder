@@ -35,3 +35,15 @@ CREATE TABLE Members(
     FOREIGN KEY (UserID) REFERENCES Users (ID),
     FOREIGN KEY (EventID) REFERENCES Events (ID)
 );
+
+INSERT INTO Events (ID, Name, Type, Date, Time, City, Location, Street, StNumber, CreatorID)
+VALUES (1, 'Pileczka z ziomkami', 'Gra w pilke', '2020-08-09', '9:00', 'Pulawy', '51.413361, 21.985881', 'Batalionow Chlopskich', '5', '1');
+
+INSERT INTO Users (ID, Name, Surname, PhoneNumber, Email)
+VALUES (1, 'Stanislaw', 'Talerzyk', '534057309', 'stalerzyk12341@gmail.com');
+
+INSERT INTO Account (ID, Login, Password, UserID)
+VALUES (1, 'Mirekpenia9', 'mamaitata', 1);
+
+INSERT INTO Members (ID, EventID, UserID)
+VALUES (1, 1, 1);
