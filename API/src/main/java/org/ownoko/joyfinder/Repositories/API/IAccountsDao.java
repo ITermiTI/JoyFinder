@@ -8,4 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface IAccountsDao extends JpaRepository<AccountEntity, Integer> {
+    AccountEntity findAccountEntityByLogin(String login);
+
 }
