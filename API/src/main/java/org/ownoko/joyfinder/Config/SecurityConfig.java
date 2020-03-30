@@ -31,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .and().formLogin()
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/");
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/")
+                .and().csrf().disable();    //wyłączenie czegośtam do testów POST
     }
     @Bean
     public PasswordEncoder getPasswordEncoder() {

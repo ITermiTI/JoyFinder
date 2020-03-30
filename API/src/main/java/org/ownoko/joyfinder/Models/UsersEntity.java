@@ -15,8 +15,10 @@ public class UsersEntity {
     private String surname;
     private String phonenumber;
     private String email;
-
+    
     @Id
+    @SequenceGenerator(name="users_id_seq", sequenceName="users_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="users_id_seq")
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
