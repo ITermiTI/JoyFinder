@@ -24,6 +24,8 @@ public class EventsEntity {
     private UsersEntity usersByCreatorid;
 
     @Id
+    @SequenceGenerator(name="events_id_seq", sequenceName="events_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="events_id_seq")
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
