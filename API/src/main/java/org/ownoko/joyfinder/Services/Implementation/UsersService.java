@@ -2,6 +2,7 @@ package org.ownoko.joyfinder.Services.Implementation;
 
 import org.ownoko.joyfinder.Models.AccountDto;
 import org.ownoko.joyfinder.Models.AccountEntity;
+import org.ownoko.joyfinder.Models.UserDto;
 import org.ownoko.joyfinder.Models.UsersEntity;
 import org.ownoko.joyfinder.Repositories.API.IAccountsDao;
 import org.ownoko.joyfinder.Repositories.API.IUsersDao;
@@ -10,7 +11,9 @@ import org.ownoko.joyfinder.Services.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersService implements IUserService {
@@ -21,17 +24,16 @@ public class UsersService implements IUserService {
 
 
     @Override
-    public int registerNewUser(String login, String password, String email,
-                                String phoneNumber, String name, String surname) {
-        if(accountsDao.findAccountEntityByLogin(login) != null) return Const.loginAlreadyUsed;
-        if(usersDao.findByEmail(email) != null) return Const.emailAlreadyUsed;
+    public int registerNewUser(UserDto userDto) {
+        if(accountsDao.findAccountEntityByLogin(userDto.getLogin()) != null) return Const.loginAlreadyUsed;
+        if(usersDao.findByEmail(userDto.getEmail()) != null) return Const.emailAlreadyUsed;
         UsersEntity user = new UsersEntity();
-        user.setEmail(email);
-        user.setPhonenumber(phoneNumber);
-        user.setName(name);
-        user.setSurname(surname);
+        user.setEmail(userDto.getEmail());
+        user.setPhonenumber(userDto.getPhoneNumber());
+        user.setName(userDto.getName());
+        user.setSurname(userDto.getSurname());
         usersDao.save(user);
-        this.registerAccountWithLogin(login, password,user);
+        this.registerAccountWithLogin(userDto.getLogin(), userDto.getPassword(),user);
         return Const.registrationSuccess;
     }
 
@@ -82,55 +84,88 @@ public class UsersService implements IUserService {
     }
 
     @Override
-    public int updateUserDetails(String login, String password, String email,
-                                 String phoneNumber, String name, String surname, int userId) {
+    public int updateUserDetails(UserDto userDto) {
 
-        UsersEntity user = usersDao.getOne(userId);
+        UsersEntity user = usersDao.getOne(userDto.getUserId());
         if(user == null) return Const.userDoesNotExit;
 
-        if(email != null)
+        if(userDto.getEmail() != null)
         {
-            if(usersDao.findByEmail(email) != null) return Const.emailAlreadyUsed;
-            user.setEmail(email);
+            if(usersDao.findByEmail(userDto.getEmail()) != null) return Const.emailAlreadyUsed;
+            user.setEmail(userDto.getEmail());
         }
 
-        if(login != null || password != null)
+        if(userDto.getLogin() != null || userDto.getPassword() != null)
         {
             AccountEntity account = accountsDao.findAccountEntityByUsersByUserid(user);
-            if(this.updateAccountDetails(login, password, account) == Const.userDoesNotExit)
+            if(this.updateAccountDetails(userDto.getLogin(), userDto.getPassword(), account) == Const.userDoesNotExit)
                 return Const.loginAlreadyUsed;
         }
 
-        if(phoneNumber != null) user.setPhonenumber(phoneNumber);
-        if(name != null) user.setName(name);
-        if(surname != null) user.setSurname(surname);
+        if(userDto.getPhoneNumber() != null) user.setPhonenumber(userDto.getPhoneNumber());
+        if(userDto.getName() != null) user.setName(userDto.getName());
+        if(userDto.getSurname() != null) user.setSurname(userDto.getSurname());
         usersDao.save(user);
 
         return Const.userDetailsUpdateSuccess;
     }
 
     @Override
-    public UsersEntity getUserById(int id) {
-        return usersDao.getOne(id);
+    public UserDto getUserById(int id) {
+
+        UserDto userDto = new UserDto();
+        Optional<UsersEntity> user = usersDao.findById(id);
+        if(user.isEmpty()) return null;
+        userDto.setUserId(user.get().getId());
+        userDto.setName(user.get().getName());
+        userDto.setSurname(user.get().getSurname());
+        userDto.setPhoneNumber(user.get().getPhonenumber());
+        userDto.setEmail(user.get().getEmail());
+        return userDto;
     }
 
     @Override
-    public UsersEntity getUserByEmail(String email) {
-        return usersDao.findByEmail(email);
+    public UserDto getUserByEmail(String email) {
+
+        UserDto userDto = new UserDto();
+        Optional<UsersEntity> user = Optional.ofNullable(usersDao.findByEmail(email));
+        if(user.isEmpty()) return null;
+        userDto.setUserId(user.get().getId());
+        userDto.setName(user.get().getName());
+        userDto.setSurname(user.get().getSurname());
+        userDto.setPhoneNumber(user.get().getPhonenumber());
+        userDto.setEmail(user.get().getEmail());
+        return userDto;
     }
 
     @Override
-    public List<UsersEntity> getUsersByIds(List<Integer> ids) {
-        return usersDao.findAllById(ids);
+    public List<UserDto> getUsersByIds(List<Integer> ids) {
+        List<UsersEntity> users = usersDao.findAllById(ids);
+        List<UserDto> usersDto = new ArrayList<UserDto>();
+        UserDto user;
+        if(users.isEmpty()) return null;
+        for (UsersEntity userEntity: users
+             ) {
+            user = new UserDto();
+            user.setUserId(userEntity.getId());
+            user.setName(userEntity.getName());
+            user.setSurname(userEntity.getSurname());
+            user.setPhoneNumber(userEntity.getPhonenumber());
+            user.setEmail(userEntity.getEmail());
+            usersDto.add(user);
+        }
+
+        return usersDto;
     }
 
     @Override
     public AccountDto getAccountDto(int id) {
-        AccountEntity accountEntity = accountsDao.getOne(id);
+        Optional<AccountEntity> accountEntity = accountsDao.findById(id);
+        if(accountEntity.isEmpty()) return null;
         AccountDto account = new AccountDto();
-        account.setId(accountEntity.getId());
-        account.setLogin(accountEntity.getLogin());
-        account.setUserId(accountEntity.getUsersByUserid().getId());
+        account.setId(accountEntity.get().getId());
+        account.setLogin(accountEntity.get().getLogin());
+        account.setUserId(accountEntity.get().getUsersByUserid().getId());
         return account;
     }
 }

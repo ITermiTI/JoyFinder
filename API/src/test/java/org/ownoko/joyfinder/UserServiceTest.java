@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.ownoko.joyfinder.Models.AccountDto;
 import org.ownoko.joyfinder.Models.AccountEntity;
+import org.ownoko.joyfinder.Models.UserDto;
 import org.ownoko.joyfinder.Models.UsersEntity;
 import org.ownoko.joyfinder.Repositories.API.IAccountsDao;
 import org.ownoko.joyfinder.Repositories.API.IUsersDao;
@@ -35,6 +36,7 @@ public class UserServiceTest {
 
     UsersEntity user;
     AccountEntity account;
+    UserDto userDto;
 
     @Before
     public void setUp()
@@ -51,6 +53,16 @@ public class UserServiceTest {
         account.setPassword("123");
         account.setUsersByUserid(user);
 
+        userDto = new UserDto();
+        userDto.setEmail("widly@lublopata.ro");
+        userDto.setLogin("logindamian");
+        userDto.setPassword("123");
+        userDto.setName("Damian");
+        userDto.setSurname("Damian");
+        userDto.setPhoneNumber("123123123");
+        userDto.setAccountId(1);
+        userDto.setUserId(1);
+
 
     }
 
@@ -62,8 +74,7 @@ public class UserServiceTest {
         when(usersDao.save(any())).thenReturn(user);
         when(accountsDao.save(any(AccountEntity.class))).thenReturn(account);
 
-        int result = userService.registerNewUser("innylogin","123",
-                "innyemail@lublopata.ro","123123123","Damian","Damianowski");
+        int result = userService.registerNewUser(userDto);
 
         assertEquals(result, Const.registrationSuccess);
     }
@@ -74,8 +85,7 @@ public class UserServiceTest {
         when(accountsDao.findAccountEntityByLogin(any(String.class))).thenReturn(null);
         when(usersDao.findByEmail(any())).thenReturn(user);
 
-        int result = userService.registerNewUser("innylogin","123",
-                "widly@lublopata.ro","123123123","Damian","Damianowski");
+        int result = userService.registerNewUser(userDto);
 
         assertEquals(result, Const.emailAlreadyUsed);
     }
@@ -85,8 +95,7 @@ public class UserServiceTest {
     {
         when(accountsDao.findAccountEntityByLogin(any())).thenReturn(account);
 
-        int result = userService.registerNewUser("logindamian","123",
-                "innyemail@lublopata.ro","123123123","Damian","Damianowski");
+        int result = userService.registerNewUser(userDto);
 
         assertEquals(result, Const.loginAlreadyUsed);
     }
@@ -99,8 +108,7 @@ public class UserServiceTest {
         when(usersDao.getOne(any())).thenReturn(user);
         when(usersDao.save(any())).thenReturn(user);
 
-        int result = userService.updateUserDetails("innylogin",null,
-                null,null,null,null,1);
+        int result = userService.updateUserDetails(userDto);
 
         assertEquals(result, Const.userDetailsUpdateSuccess);
     }
@@ -111,8 +119,7 @@ public class UserServiceTest {
         when(usersDao.findByEmail(any())).thenReturn(user);
         when(usersDao.getOne(any())).thenReturn(user);
 
-        int result = userService.updateUserDetails("innylogin",null,
-                "widly@lublopata.ro",null,null,null,1);
+        int result = userService.updateUserDetails(userDto);
 
         assertEquals(result, Const.emailAlreadyUsed);
     }
@@ -122,8 +129,7 @@ public class UserServiceTest {
     {
         when(usersDao.getOne(any())).thenReturn(null);
 
-        int result = userService.updateUserDetails("innylogin",null,
-                null,null,null,null,1);
+        int result = userService.updateUserDetails(userDto);
 
         assertEquals(result, Const.userDoesNotExit);
     }
@@ -134,8 +140,7 @@ public class UserServiceTest {
         when(usersDao.findByEmail(any())).thenReturn(user);
         when(usersDao.getOne(any())).thenReturn(user);
 
-        int result = userService.updateUserDetails("logindamian",null,
-                "innyemail@lublopata.ro",null,null,null,1);
+        int result = userService.updateUserDetails(userDto);
 
         assertEquals(result, Const.emailAlreadyUsed);
     }
@@ -167,7 +172,7 @@ public class UserServiceTest {
     {
         when(usersDao.getOne(any())).thenReturn(user);
 
-        UsersEntity testUser = userService.getUserById(1);
+        UserDto testUser = userService.getUserById(1);
 
         assertEquals(user, testUser);
     }
@@ -177,7 +182,7 @@ public class UserServiceTest {
     {
         when(usersDao.findByEmail(any())).thenReturn(user);
 
-        UsersEntity testUser = userService.getUserByEmail("jakis");
+        UserDto testUser = userService.getUserByEmail("jakis");
 
         assertEquals(user, testUser);
     }
@@ -187,7 +192,7 @@ public class UserServiceTest {
     {
         when(usersDao.findAllById(any())).thenReturn(Arrays.asList(user));
 
-        List<UsersEntity> testUser = userService.getUsersByIds(Arrays.asList(1));
+        List<UserDto> testUser = userService.getUsersByIds(Arrays.asList(1));
 
         assertEquals(Arrays.asList(user), testUser);
     }
