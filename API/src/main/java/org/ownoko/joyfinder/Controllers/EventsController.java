@@ -1,28 +1,44 @@
 package org.ownoko.joyfinder.Controllers;
 
-
+import org.ownoko.joyfinder.Models.EventsDto;
 import org.ownoko.joyfinder.Models.EventsEntity;
-import org.ownoko.joyfinder.Repositories.API.IEventsDao;
+import org.ownoko.joyfinder.Services.Implementation.EventsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/events")
 public class EventsController {
 
     @Autowired
-    IEventsDao EventsDao;
+    EventsService eventsService;
+
+    @GetMapping("/byCity/{city}")
+    public ArrayList<EventsEntity> getByCity(@PathVariable String city){
+        return eventsService.getEventsByCity(city);
+    }
+
+    @GetMapping("/byId/{id}")
+    public Optional<EventsEntity> getById(@PathVariable int id){
+        return eventsService.getEventById(id);
+    }
+
+    @GetMapping("/byUserId/{id}")
+    public ArrayList<EventsEntity> getByUserId(@PathVariable int id){
+        return eventsService.getEventsByUserId(id);
+    }
 
     @GetMapping
-    public ArrayList<EventsEntity> getByCity(@RequestParam String city){
-        return EventsDao.findAllByCity(city);
+    public ArrayList<EventsEntity> getAllEvents(){
+        return eventsService.getAllEvents();
     }
 
     @PostMapping
-    public void addEvent(@RequestBody EventsEntity event){
-        EventsDao.save(event);
+    public int addEvent(@RequestBody EventsDto event){
+        return eventsService.addEvent(event);
     }
 
 }
