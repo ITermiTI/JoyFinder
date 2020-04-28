@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 public class MembersService implements IMembersService {
@@ -27,8 +26,8 @@ public class MembersService implements IMembersService {
     IUsersDao usersDao;
 
     @Override
-    public Optional<MembersEntity> getMembersById(int id){
-        return membersDao.findById(id);
+    public MembersEntity getMembersById(int id){
+        return membersDao.getOne(id);
     }
 
     @Override
