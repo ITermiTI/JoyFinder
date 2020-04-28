@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/members")
@@ -33,7 +32,7 @@ public class MembersController {
     }
 
     @GetMapping("/byId/{id}")
-    public Optional<MembersEntity> getMembersById(@PathVariable int id){
+    public MembersEntity getMembersById(@PathVariable int id){
         return membersService.getMembersById(id);
     }
 
