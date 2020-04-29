@@ -1,29 +1,29 @@
 package org.ownoko.joyfinder.Services.Implementation;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.ownoko.joyfinder.Models.AccountEntity;
 import org.ownoko.joyfinder.Models.EventsEntity;
+import org.ownoko.joyfinder.Models.MembersDto;
 import org.ownoko.joyfinder.Models.MembersEntity;
 import org.ownoko.joyfinder.Models.UsersEntity;
 import org.ownoko.joyfinder.Repositories.API.IEventsDao;
 import org.ownoko.joyfinder.Repositories.API.IMembersDao;
 import org.ownoko.joyfinder.Repositories.API.IUsersDao;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Optional;
+import java.lang.reflect.Member;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-class MembersServiceTest {
+public class MembersServiceTest {
 
     @Mock
     private IMembersDao membersDao;
@@ -67,7 +67,7 @@ class MembersServiceTest {
     }
 
     @Test
-    void testGetMembersById() {
+    public void getMembersById() {
         when(membersDao.getOne(any())).thenReturn(member);
 
         MembersEntity testMember = membersService.getMembersById(1);
@@ -76,22 +76,66 @@ class MembersServiceTest {
     }
 
     @Test
-    void getMembersByEventId() {
+    public void getMembersByEventId() {
+        when(eventsDao.getOne(any())).thenReturn(event);
+
+        ArrayList<MembersEntity> list = new ArrayList<>();
+        list.add(member);
+
+        when(membersDao.findAllByEventsByEventid(any())).thenReturn(list);
+
+        ArrayList<MembersEntity> testMember = membersService.getMembersByEventId(1);
+
+        assertEquals(list, testMember);
+
     }
 
     @Test
-    void getMembersByUserId() {
+    public void getMembersByUserId() {
+        when(usersDao.getOne(any())).thenReturn(user);
+
+        ArrayList<MembersEntity> list = new ArrayList<>();
+        list.add(member);
+
+        when(membersDao.findAllByUsersByUserid(any())).thenReturn(list);
+
+        ArrayList<MembersEntity> testMember = membersService.getMembersByUserId(1);
+
+        assertEquals(list, testMember);
+
     }
 
     @Test
-    void getAllMembers() {
+    public void getAllMembers() {
+        ArrayList<MembersEntity> list = new ArrayList<>();
+        list.add(member);
+
+        when(membersDao.findAll()).thenReturn(list);
+
+        ArrayList<MembersEntity> testMember = membersService.getAllMembers();
+
+        assertEquals(list, testMember);
+
     }
 
     @Test
-    void addMember() {
+    public void addMember() {
+        when(usersDao.getOne(any())).thenReturn(user);
+        when(eventsDao.getOne(any())).thenReturn(event);
+        when(membersDao.save(any())).thenReturn(member);
+
+        MembersDto newMember = new MembersDto();
+
+        newMember.setEventId(1);
+        newMember.setUserId(1);
+
+        int result = membersService.addMember(newMember);
+
+        assertEquals(1, result);
+
     }
 
-    @Test
-    void deleteMember() {
-    }
+//    @Test
+////    void deleteMember() {
+////    }
 }

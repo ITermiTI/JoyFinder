@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/events")
@@ -22,7 +21,7 @@ public class EventsController {
     }
 
     @GetMapping("/byId/{id}")
-    public Optional<EventsEntity> getById(@PathVariable int id){
+    public EventsEntity getById(@PathVariable int id){
         return eventsService.getEventById(id);
     }
 

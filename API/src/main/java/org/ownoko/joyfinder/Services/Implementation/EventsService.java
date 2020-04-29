@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 public class EventsService implements IEventsService {
@@ -29,8 +28,8 @@ public class EventsService implements IEventsService {
     }
 
     @Override
-    public Optional<EventsEntity> getEventById(int id){
-        return eventsDao.findById(id);
+    public EventsEntity getEventById(int id){
+        return eventsDao.getOne(id);
     }
 
     @Override
