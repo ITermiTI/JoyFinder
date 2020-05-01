@@ -11,4 +11,6 @@ public interface IEventsService {
     ArrayList<EventsEntity> getEventsByUserId(int id);
     ArrayList<EventsEntity> getAllEvents();
     int addEvent(EventsDto event);
+    int updateEvent(EventsDto event);
+    int deleteEvent(int id);
 }
