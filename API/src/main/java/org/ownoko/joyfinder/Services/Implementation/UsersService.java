@@ -74,9 +74,9 @@ public class UsersService implements IUserService {
 
         if(accountsDao.findAccountEntityByLogin(login) != null) return Const.loginAlreadyUsed;
 
-        if(login != null) account.setLogin(login);
+        if(!login.equals(account.getLogin())) account.setLogin(login);
 
-        if(password != null) account.setPassword(password);
+        if(!password.equals(account.getPassword())) account.setPassword(password);
 
         accountsDao.save(account);
 
@@ -86,26 +86,29 @@ public class UsersService implements IUserService {
     @Override
     public int updateUserDetails(UserDto userDto) {
 
-        UsersEntity user = usersDao.getOne(userDto.getUserId());
-        if(user == null) return Const.userDoesNotExit;
+        Optional<UsersEntity> user = usersDao.findById(userDto.getUserId());
+        if(user.isEmpty()) return Const.userDoesNotExit;
 
-        if(userDto.getEmail() != null)
+        if(userDto.getEmail() != null && !userDto.getEmail().equals(user.get().getEmail()))
         {
             if(usersDao.findByEmail(userDto.getEmail()) != null) return Const.emailAlreadyUsed;
-            user.setEmail(userDto.getEmail());
+            user.get().setEmail(userDto.getEmail());
         }
 
         if(userDto.getLogin() != null || userDto.getPassword() != null)
         {
-            AccountEntity account = accountsDao.findAccountEntityByUsersByUserid(user);
+            AccountEntity account = accountsDao.findAccountEntityByUsersByUserid(user.get());
             if(this.updateAccountDetails(userDto.getLogin(), userDto.getPassword(), account) == Const.userDoesNotExit)
                 return Const.loginAlreadyUsed;
         }
 
-        if(userDto.getPhoneNumber() != null) user.setPhonenumber(userDto.getPhoneNumber());
-        if(userDto.getName() != null) user.setName(userDto.getName());
-        if(userDto.getSurname() != null) user.setSurname(userDto.getSurname());
-        usersDao.save(user);
+        if(!userDto.getPhoneNumber().equals(user.get().getPhonenumber()))
+            user.get().setPhonenumber(userDto.getPhoneNumber());
+        if(!userDto.getName().equals(user.get().getName()))
+            user.get().setName(userDto.getName());
+        if(!userDto.getSurname().equals(user.get().getSurname()))
+            user.get().setSurname(userDto.getSurname());
+        usersDao.save(user.get());
 
         return Const.userDetailsUpdateSuccess;
     }
