@@ -1,0 +1,105 @@
+.main-background{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #2F303A;
+    overflow: hidden;
+}
+
+.main-image{
+    position: absolute;
+    width: 602px;
+    height: 849px;
+    left: 4.86%;
+    top: 12.77%;   
+    
+    background: url(../static/landing-page-image.png);
+}
+
+.background-cirle-blue{
+    position: absolute;
+    width: 285px;
+    height: 285px;
+    left: 33.26%;
+    top: 5.76%;
+    border-radius: 50%;
+
+    background: rgba(11, 138, 255, 0.1);
+}
+
+.background-cirle-green{
+    position: absolute;
+    display: flex;
+    width: 553px;
+    height: 553px;
+    left: 69.72%;
+    top: 60.74%;
+    border-radius: 50%;
+
+    background: rgba(37, 167, 65, 0.1);
+}
+
+.main-title-text{
+    position: absolute;
+    width: 564px;
+    height: 88px;
+    left: 54.23%;
+    top: 28.03%;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 84px;
+
+    color: #FFFFFF;
+}
+
+.main-description-text{
+    position: absolute;
+    width: 636px;
+    height: 46px;
+    left: 54.23%;
+    top: 42.38%;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #FFFFFF;
+}
+
+.main-button-sign-up{
+    position: absolute;
+    width: 220px;
+    height: 75px;
+    left: 54.23%;
+    top: 52.63%;
+    border: none;
+    border-radius: 10%;
+    
+    font-family: Roboto;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #FFFFFF;
+    background-color: #0B8AFF;
+}
+
+.main-button-sign-in{
+    position: absolute;
+    width: 439px;
+    height: 91px;
+    left: 85.90%;
+    top: 3.71%;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #FFFFFF;
+}
