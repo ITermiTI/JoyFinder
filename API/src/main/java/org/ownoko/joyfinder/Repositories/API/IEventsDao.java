@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -18,5 +19,7 @@ public interface IEventsDao extends JpaRepository<EventsEntity, Integer> {
     ArrayList<EventsEntity> findAllByCity(String city);
     ArrayList<EventsEntity> findAllByUsersByCreatorid(UsersEntity user);
     ArrayList<EventsEntity> findAll();
+    List<EventsEntity> findAllByType(String type);
+    List<EventsEntity> findAllByName(String name);
 
 }

@@ -9,11 +9,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 @Transactional
 public interface IMembersDao extends JpaRepository<MembersEntity, Integer> {
     ArrayList<MembersEntity> findAllByUsersByUserid(UsersEntity user);
+
     ArrayList<MembersEntity> findAllByEventsByEventid(EventsEntity event);
+
     ArrayList<MembersEntity> findAll();
 }
