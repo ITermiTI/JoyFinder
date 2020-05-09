@@ -4,6 +4,7 @@ import org.ownoko.joyfinder.Models.MembersDto;
 import org.ownoko.joyfinder.Models.MembersEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IMembersService {
     MembersEntity getMembersById(int id);
