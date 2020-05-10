@@ -1,0 +1,89 @@
+.login-box-style{
+    position: absolute;
+    width: 47.43%;
+    height: 52.24%;
+    left: 48.19%;
+    top: 21.48%; 
+
+    background: #1F1F23;
+}
+.login-form-label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+.login-text{
+    left: 9.81%;
+    top: 10.09%;
+    width: 12.01%;
+    height: 7.1%;
+    position: absolute;
+}
+
+.login-input{
+    position: absolute;
+    left: 9.81%;
+    top: 20.93%;
+    width: 80.38%;
+    height: 9.72%;
+
+    background: #1F1F23;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+}
+
+.password-text{        
+    position: absolute;
+    left: 9.81%;
+    right: 72.18%;
+    top: 34.39%;
+    bottom: 58.5%;
+}
+
+.password-input{
+    position: absolute;
+    left: 9.81%;
+    right: 9.81%;
+    top: 43.55%;
+    bottom: 46.73%;
+
+    background: #1F1F23;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+}
+
+.button-sign-in{
+    position: absolute;
+    left: 29.43%;
+    right: 29.58%;
+    top: 62.8%;
+    bottom: 15.7%;
+
+    background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
+    border-radius: 15px;
+}
+.no-account-text{
+    position: absolute;
+    left: 26.06%;
+    right: 23.87%;
+    top: 88.6%;
+    bottom: 7.29%;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+
+width: 683px;
+height: 535px;
