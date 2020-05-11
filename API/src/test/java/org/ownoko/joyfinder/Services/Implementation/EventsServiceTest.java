@@ -13,7 +13,10 @@ import org.ownoko.joyfinder.Repositories.API.IMembersDao;
 import org.ownoko.joyfinder.Repositories.API.IUsersDao;
 
 import java.lang.reflect.Member;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,6 +55,7 @@ public class EventsServiceTest {
         event.setType("Spotkanko");
         event.setName("Herbatka u Tadka");
         event.setCity("Wrocław");
+        event.setDate(Date.valueOf(LocalDate.now().minusDays(1)));
 
     }
 
@@ -117,5 +121,20 @@ public class EventsServiceTest {
         int result = eventsService.addEvent(newEvent);
 
         assertEquals(1, result);
+    }
+
+    @Test
+    public void testSortToday() {
+        EventsEntity eventOne = event;
+
+        EventsEntity eventTwo = new EventsEntity();
+        eventTwo.setDate(Date.valueOf(LocalDate.now().minusDays(0)));
+
+        List<EventsEntity> events = new ArrayList<>();
+        events.add(eventOne);
+        events.add(eventTwo);
+
+        List<EventsEntity> sorted = eventsService.sortByToday(events);
+        assertEquals(sorted.size(),1);
     }
 }

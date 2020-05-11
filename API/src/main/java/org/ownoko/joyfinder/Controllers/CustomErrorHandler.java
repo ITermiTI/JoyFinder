@@ -1,10 +1,12 @@
 package org.ownoko.joyfinder.Controllers;
 
 import org.ownoko.joyfinder.Services.Exceptions.EmailAlreadyUsedException;
+import org.ownoko.joyfinder.Services.Exceptions.EventNotFoundException;
 import org.ownoko.joyfinder.Services.Exceptions.LoginAlreadyUsedException;
 import org.ownoko.joyfinder.Services.Exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -23,12 +25,13 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
+    @ExceptionHandler({UserNotFoundException.class, EventNotFoundException.class})
     public ResponseEntity<ErrorResponse> notFoundHandle(Exception ex, WebRequest request)
     {
         ErrorResponse response = new ErrorResponse(LocalDateTime.now(),
                 HttpStatus.NOT_FOUND.value(),ex.getMessage());
         return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
     }
+
 
 }

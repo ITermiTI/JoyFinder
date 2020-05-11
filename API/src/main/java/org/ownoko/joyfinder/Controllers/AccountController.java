@@ -2,6 +2,7 @@ package org.ownoko.joyfinder.Controllers;
 
 
 import org.ownoko.joyfinder.Models.AccountDto;
+import org.ownoko.joyfinder.Models.UserDetailsImplementation;
 import org.ownoko.joyfinder.Models.UserDto;
 import org.ownoko.joyfinder.Services.API.IUserService;
 import org.ownoko.joyfinder.Services.Const;
@@ -10,8 +11,10 @@ import org.ownoko.joyfinder.Services.Exceptions.LoginAlreadyUsedException;
 import org.ownoko.joyfinder.Services.Exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -24,6 +27,16 @@ public class AccountController {
     @GetMapping("/user/{id}")
     public UserDto getUser(@PathVariable int id) throws UserNotFoundException {
         UserDto user = userService.getUserById(id);
+        if(user == null) throw new UserNotFoundException("There is no such user");
+        return user;
+    }
+
+    @GetMapping("/session")
+    public UserDto getCurrentUser(Authentication authentication) throws UserNotFoundException {
+        UserDetailsImplementation userDetailsImplementation =
+                (UserDetailsImplementation) authentication.getPrincipal();
+        UserDto user = userService.getUserById(userDetailsImplementation.
+                getUserAccountsEntity().getUsersByUserid().getId());
         if(user == null) throw new UserNotFoundException("There is no such user");
         return user;
     }

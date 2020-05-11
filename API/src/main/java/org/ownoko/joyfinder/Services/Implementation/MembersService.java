@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MembersService implements IMembersService {
@@ -46,6 +47,7 @@ public class MembersService implements IMembersService {
     public ArrayList<MembersEntity> getAllMembers(){
         return membersDao.findAll();
     }
+
 
     @Override
     public int addMember(MembersDto member){

@@ -3,15 +3,20 @@ package org.ownoko.joyfinder.Services.Implementation;
 
 import org.ownoko.joyfinder.Models.EventsDto;
 import org.ownoko.joyfinder.Models.EventsEntity;
+import org.ownoko.joyfinder.Models.MembersEntity;
 import org.ownoko.joyfinder.Models.UsersEntity;
 import org.ownoko.joyfinder.Repositories.API.IEventsDao;
+import org.ownoko.joyfinder.Repositories.API.IMembersDao;
 import org.ownoko.joyfinder.Repositories.API.IUsersDao;
 import org.ownoko.joyfinder.Services.API.IEventsService;
 import org.ownoko.joyfinder.Services.Const;
+import org.ownoko.joyfinder.Services.SortType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,6 +27,9 @@ public class EventsService implements IEventsService {
 
     @Autowired
     IUsersDao usersDao;
+
+    @Autowired
+    IMembersDao membersDao;
 
 
     @Override
@@ -36,13 +44,37 @@ public class EventsService implements IEventsService {
 
     @Override
     public ArrayList<EventsEntity> getEventsByUserId(int id){
-        UsersEntity temp = usersDao.getOne(id);
-        return eventsDao.findAllByUsersByCreatorid(temp);
+        Optional<UsersEntity> temp = usersDao.findById(id);
+        if(temp.isEmpty()) return null;
+        return eventsDao.findAllByUsersByCreatorid(temp.get());
     }
 
     @Override
     public ArrayList<EventsEntity> getAllEvents(){
         return eventsDao.findAll();
+    }
+
+    @Override
+    public List<EventsEntity> getEventsByType(String type) {
+        return eventsDao.findAllByType(type);
+    }
+
+    @Override
+    public List<EventsEntity> getEventsByName(String name) {
+        return eventsDao.findAllByName(name);
+    }
+
+    @Override
+    public List<EventsEntity> getUsersAttendance(int id) {
+        List<Integer> ids = new ArrayList<>();
+        Optional<UsersEntity> user = usersDao.findById(id);
+        if(user.isEmpty()) return null;
+        List<MembersEntity> userMembership = membersDao.findAllByUsersByUserid(user.get());
+        for (MembersEntity membership: userMembership
+        ) {
+            ids.add(membership.getId());
+        }
+        return eventsDao.findAllById(ids);
     }
 
     @Override
@@ -100,6 +132,125 @@ public class EventsService implements IEventsService {
         if(event.isEmpty()) return Const.eventDoesNotExist;
         eventsDao.deleteById(id);
         return Const.eventDeletionSuccess;
+    }
+
+    @Override
+    public List<EventsEntity> getSortedByUserAttendance(int id, String sortType) {
+        List<EventsEntity> sortedEvents;
+
+        List<EventsEntity> usersEvents = getUsersAttendance(id);
+        if(usersEvents == null) return null;
+        sortedEvents = chooseSort(sortType, usersEvents);
+
+        return sortedEvents;
+    }
+
+
+
+    @Override
+    public List<EventsEntity> getSortedByCity(String city, String sortType) {
+        List<EventsEntity> sortedEvents;
+
+        String checkedCity = city.replace("%20"," ");
+
+        List<EventsEntity> eventsInCity = getEventsByCity(checkedCity);
+        sortedEvents = chooseSort(sortType, eventsInCity);
+
+        return sortedEvents;
+    }
+
+    @Override
+    public List<EventsEntity> getSortedByEventType(String type, String sortType) {
+        List<EventsEntity> sortedEvents;
+
+        String checkedType = type.replace("%20"," ");
+        List<EventsEntity> eventsInType = getEventsByType(checkedType);
+        sortedEvents = chooseSort(sortType, eventsInType);
+
+        return sortedEvents;
+    }
+
+    @Override
+    public List<EventsEntity> getSortedByCreated(int id, String sortType) {
+        List<EventsEntity> sortedEvents;
+
+        List<EventsEntity> createdEvents = getEventsByUserId(id);
+        if(createdEvents == null) return null;
+        sortedEvents = chooseSort(sortType, createdEvents);
+
+        return sortedEvents;
+    }
+
+
+
+
+
+    @Override
+    public List<EventsEntity> sortByToday(List<EventsEntity> events) {
+        List<EventsEntity> sorted = new ArrayList<>();
+        for (EventsEntity event: events
+             ) {
+            if(event.getDate().toLocalDate().equals(LocalDate.now()))
+                sorted.add(event);
+        }
+        return sorted;
+    }
+
+    @Override
+    public List<EventsEntity> sortByThisWeek(List<EventsEntity> events) {
+        List<EventsEntity> sorted = new ArrayList<>();
+        for (EventsEntity event: events
+        ) {
+            if(event.getDate().toLocalDate().isBefore(LocalDate.now().plusDays(7)) &&
+            event.getDate().toLocalDate().isAfter(LocalDate.now().minusDays(1)))
+                sorted.add(event);
+        }
+        return sorted;
+    }
+
+    @Override
+    public List<EventsEntity> sortByThisMonth(List<EventsEntity> events) {
+        List<EventsEntity> sorted = new ArrayList<>();
+        for (EventsEntity event: events
+        ) {
+            if(event.getDate().toLocalDate().isBefore(LocalDate.now().plusDays(30)) &&
+                    event.getDate().toLocalDate().isAfter(LocalDate.now().minusDays(1)))
+            sorted.add(event);
+        }
+        return sorted;
+    }
+
+    @Override
+    public List<EventsEntity> sortByPast(List<EventsEntity> events) {
+        List<EventsEntity> sorted = new ArrayList<>();
+        for (EventsEntity event: events
+        ) {
+            if(event.getDate().toLocalDate().isBefore(LocalDate.now()))
+            sorted.add(event);
+        }
+        return sorted;
+    }
+
+    @Override
+    public List<EventsEntity> sortByThisYear(List<EventsEntity> events) {
+        List<EventsEntity> sorted = new ArrayList<>();
+        for (EventsEntity event: events
+        ) {
+            if(event.getDate().toLocalDate().isBefore(LocalDate.now().plusDays(365)) &&
+                    event.getDate().toLocalDate().isAfter(LocalDate.now().minusDays(1)))
+            sorted.add(event);
+        }
+        return sorted;
+    }
+
+    private List<EventsEntity> chooseSort(String sortType,  List<EventsEntity> events) {
+        List<EventsEntity> sortedEvents = null;
+        if(sortType.equals(SortType.Today.toString())) sortedEvents = sortByToday(events);
+        if(sortType.equals(SortType.ThisWeek.toString())) sortedEvents = sortByThisWeek(events);
+        if(sortType.equals(SortType.ThisMonth.toString())) sortedEvents = sortByThisMonth(events);
+        if(sortType.equals(SortType.Past.toString())) sortedEvents = sortByPast(events);
+        if(sortType.equals(SortType.ThisYear.toString())) sortedEvents = sortByThisYear(events);
+        return sortedEvents;
     }
 
 }
