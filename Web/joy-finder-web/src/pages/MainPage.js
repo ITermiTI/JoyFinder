@@ -10,6 +10,7 @@ class MainPage extends React.Component {
                 <div className="main-image"></div>
                 <div className="background-cirle-blue"></div>
                 <div className="background-cirle-green"></div>
+                <div className="background-circle-pink"></div>
                 <div className="main-title-text">Find the joy</div>
                 <div className="main-description-text">Take part in events and find new friends</div>
                 <button className="main-button-sign-up">Sign up!</button>

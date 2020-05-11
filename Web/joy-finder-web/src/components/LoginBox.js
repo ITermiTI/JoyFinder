@@ -1,6 +1,8 @@
 import React from 'react';
 import MainPageStyle from '../styles/LoginStyle.css'
 import { Link } from 'react-router-dom';
+import * as Constants from '../static/const';
+
 
 class LoginBox extends React.Component{
     constructor(props){
@@ -22,7 +24,6 @@ class LoginBox extends React.Component{
             }
         });
     }
-
     handleSubmit =  (e) => {
         e.preventDefault();
         console.log(this.state.values)
@@ -39,7 +40,9 @@ class LoginBox extends React.Component{
                  onChange={this.handleChange} required/>
                  <button className="button-sign-in" type="submit">Sign in</button>
             </form>
-            <div className="no-account-text">Don't have an account <Link to="/register">Create a new account!</Link></div>
+            <div className="no-account-text">Don't have an account <Link to="/register">
+                Create a new account!
+                </Link></div>
             
         </div>
         )

@@ -8,11 +8,15 @@ import {
 } from "react-router-dom";
 import App from './App';
 import Login from './pages/Login';
+import IndexStyle from './index.css';
+import MainPage from './pages/MainPage'
 
 const routing = (
   <Router>
-      <Route path="/" component={(App)}/>
-      <Route path="/login" component={Login}/>
+    <Switch>
+        <Route exact path="/" component={MainPage}/>
+        <Route exact path="/login" component={Login}/>
+      </Switch>
   </Router>
 )
 

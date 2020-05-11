@@ -47,9 +47,9 @@
 .password-input{
     position: absolute;
     left: 9.81%;
-    right: 9.81%;
+    width: 80.38%;
+    height: 9.72%;
     top: 43.55%;
-    bottom: 46.73%;
 
     background: #1F1F23;
     border: 5px solid #1D5E9F;
@@ -59,24 +59,30 @@
 .button-sign-in{
     position: absolute;
     left: 29.43%;
-    right: 29.58%;
     top: 62.8%;
-    bottom: 15.7%;
+    width: 41%;
+    height: 21.5%;
 
     background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
     border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 36px;
+    line-height: 42px;
+    color: #FFFFFF;
 }
 .no-account-text{
     position: absolute;
     left: 26.06%;
-    right: 23.87%;
     top: 88.6%;
-    bottom: 7.29%;
+    width: 50.37%;
 
     font-family: Lato;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
 
     text-align: center;
@@ -84,6 +90,86 @@
     color: #FFFFFF;
 }
 
+.login-page{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top:0px;
+    background: #2F303A;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
 
-width: 683px;
-height: 535px;
+.background-blue-circle{
+    position: absolute;
+    width: 285px;
+    height: 285px;
+    left: -2.92%;
+    top: -4.59%;
+    border-radius: 50%;
+
+    background: rgba(11, 138, 255, 0.1);
+}
+.background-green-circle{
+    position: absolute;
+    display: flex;
+    width: 553px;
+    height: 553px;
+    border-radius: 50%;
+
+    background: rgba(37, 167, 65, 0.1);
+}
+
+.green-one{
+    left: -6.94%;
+    top: 55.57%;
+}
+.green-two{
+    left: 5.28%;
+    top: 69.14%;
+}
+
+.waiting-text{
+    position: absolute;
+    width: 421px;
+    height: 47px;
+    left: 5.28%;
+    top: 37.01%;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: #FFFFFF;
+}
+
+.get-in-text{
+    position: absolute;
+    left: 5.28%;
+    top: 31.31%;
+    width: 305px;
+    height: 88px;
+
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 84px;
+
+    color: #FFFFFF;
+}
+
+.in-text{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 96px;
+    line-height: 112px;
+
+    color: #5E2758;
+}

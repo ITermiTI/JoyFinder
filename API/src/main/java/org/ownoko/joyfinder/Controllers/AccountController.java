@@ -2,6 +2,7 @@ package org.ownoko.joyfinder.Controllers;
 
 
 import org.ownoko.joyfinder.Models.AccountDto;
+import org.ownoko.joyfinder.Models.AccountEntity;
 import org.ownoko.joyfinder.Models.UserDto;
 import org.ownoko.joyfinder.Services.API.IUserService;
 import org.ownoko.joyfinder.Services.Const;
@@ -10,6 +11,10 @@ import org.ownoko.joyfinder.Services.Exceptions.LoginAlreadyUsedException;
 import org.ownoko.joyfinder.Services.Exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -72,6 +77,4 @@ public class AccountController {
         if(result == Const.userDoesNotExit)
             throw new UserNotFoundException("There is no such user");
     }
-
-
 }
