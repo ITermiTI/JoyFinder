@@ -2,6 +2,8 @@ import React from 'react';
 import MainPageStyle from '../styles/LoginStyle.css'
 import { Link } from 'react-router-dom';
 import * as Constants from '../static/const';
+import AuthorizationService, { logged_userid } from '../services/AuthorizationService';
+import Axios from 'axios';
 
 
 class LoginBox extends React.Component{
@@ -12,9 +14,10 @@ class LoginBox extends React.Component{
                 login: "",
                 password: ""
             },
-            isSubmitting: false,
             badCredentails: false
         }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange = (e) => {
@@ -26,7 +29,19 @@ class LoginBox extends React.Component{
     }
     handleSubmit =  (e) => {
         e.preventDefault();
-        console.log(this.state.values)
+        AuthorizationService.executeLogin(this.state.values.login,this.state.values.password).then((res) =>
+        {
+            AuthorizationService.registerSuccessfulLogin(this.state.values.login,this.state.values.password)
+            this.props.history.push(`/user/${logged_userid}`);            
+        })
+        .catch(() => {
+            this.setState({
+                badCredentails: true
+            })
+        });
+
+        
+
     }
     render() {
         return (

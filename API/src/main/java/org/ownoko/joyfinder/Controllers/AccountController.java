@@ -90,4 +90,11 @@ public class AccountController {
         if(result == Const.userDoesNotExit)
             throw new UserNotFoundException("There is no such user");
     }
+
+
+    @GetMapping("/authenticate")
+    @ResponseStatus(HttpStatus.OK)
+    public String checkAuth(){
+        return "Authenticate";
+    }
 }
