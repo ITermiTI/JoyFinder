@@ -18,12 +18,11 @@ class AuthorizationService{
         return 'Basic ' + window.btoa(username + ":" + password)
     }
 
-    registerSuccessfulLogin(login,password) {        
+    async registerSuccessfulLogin(login,password) {        
         sessionStorage.setItem(logged_username, login)        
         this.setupAxiosInterceptors(this.createBasicAuthToken(login,password))
-        axios.get(`http://localhost:8080/api/session`).then(
+        await axios.get(`http://localhost:8080/api/session`).then(
             (res) => {
-                console.log(res);
                 const userId = res.data.userId;
                 sessionStorage.setItem(logged_userid,userId);
             }
@@ -42,6 +41,7 @@ class AuthorizationService{
 
     logout() {
         sessionStorage.removeItem(logged_username);
+        sessionStorage.removeItem(logged_userid);
     }
 
     isUserLoggedIn() {
@@ -54,6 +54,12 @@ class AuthorizationService{
         let user = sessionStorage.getItem(logged_username)
         if (user === null) return ''
         return user
+    }
+
+    getLoggedInUserId() {
+        let id = sessionStorage.getItem(logged_userid);
+        if(id === null) return '';
+        return id;
     }
 }
 

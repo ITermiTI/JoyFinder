@@ -173,3 +173,39 @@
 
     color: #5E2758;
 }
+
+.invalid-credentials{
+    left: 20%;
+    top: 1.5%;
+    width: 50%;
+    height: 12.5%;
+    position: absolute;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    font-size: 28px;
+    line-height: 52px;
+
+    border-radius: 20%;
+    color: #FFFFFF;
+    background-color: rgb(87, 17, 0);
+}
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
