@@ -9,13 +9,15 @@ import {
 import App from './App';
 import Login from './pages/Login';
 import IndexStyle from './index.css';
-import MainPage from './pages/MainPage'
+import MainPage from './pages/MainPage';
+import Register from './pages/Register';
 
 const routing = (
   <Router>
     <Switch>
         <Route exact path="/" component={MainPage}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/register" component={Register}/>
       </Switch>
   </Router>
 )

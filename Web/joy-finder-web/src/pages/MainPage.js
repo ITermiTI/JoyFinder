@@ -13,7 +13,7 @@ class MainPage extends React.Component {
                 <div className="background-circle-pink"></div>
                 <div className="main-title-text">Find the joy</div>
                 <div className="main-description-text">Take part in events and find new friends</div>
-                <button className="main-button-sign-up">Sign up!</button>
+                <Link to="/register"><button className="main-button-sign-up">Sign up!</button></Link>
                 <Link to="/login"><div className="main-button-sign-in">Sign in</div></Link>
             </div>
         );
