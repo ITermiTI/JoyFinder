@@ -7,6 +7,7 @@ import * as Constants from '../static/const';
 import AuthorizationService, { logged_userid } from '../services/AuthorizationService';
 import Axios from 'axios';
 import Login from '../pages/Login';
+import { MdErrorOutline } from "react-icons/md";
 
 
 class LoginBox extends React.Component{
@@ -66,7 +67,10 @@ class LoginBox extends React.Component{
                     clearTimeout(this)
                 },10000),
                 <Fade show={this.state.showPopup}>
-                    <div className="invalid-credentials"> Invalid credentials </div>
+                    <div className="invalid-credentials-backgroung">
+                    <div className="invalid-credentials-icon"><MdErrorOutline size="5rems"/> </div>
+                    <div className="invalid-credentials-text">Invalid credentials!</div>
+                    </div>
                 </Fade>
             }
             <form onSubmit={this.handleSubmit}>
