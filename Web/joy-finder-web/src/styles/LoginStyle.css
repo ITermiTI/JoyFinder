@@ -35,6 +35,9 @@
     background: #1F1F23;
     border: 5px solid #1D5E9F;
     box-sizing: border-box;
+    font-size: 18px;
+
+    color: #FFFFFF;
 }
 
 .password-text{        
@@ -55,6 +58,9 @@
     background: #1F1F23;
     border: 5px solid #1D5E9F;
     box-sizing: border-box;
+    font-size: 20px;
+
+    color: #FFFFFF;
 }
 
 .button-sign-in{
