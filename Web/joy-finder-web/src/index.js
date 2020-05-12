@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import IndexStyle from './index.css';
 import MainPage from './pages/MainPage';
 import Register from './pages/Register';
+import YourEvents from './pages/YourEvents';
 
 const routing = (
   <Router>
@@ -18,6 +19,7 @@ const routing = (
         <Route exact path="/" component={MainPage}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Register}/>
+        <Route exact path="/yourevents" component={YourEvents}/>
       </Switch>
   </Router>
 )

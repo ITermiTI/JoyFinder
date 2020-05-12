@@ -1,11 +1,4 @@
-.main-background-r{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: #2F303A;
-    overflow: hidden;
-    font-family: Roboto;
-}
+
 .background-cirle-blue-r{
     position: absolute;
     width: 285px;

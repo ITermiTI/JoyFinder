@@ -11,19 +11,19 @@ class RegisterBox extends React.Component{
             <div className="backgroung-box-style-r">
                 <form onSubmit={this.handleSubmit}>
                     <div className="text">Login:</div>
-                    <div className="box"></div>
+                    <input className="box" type="login"/>
                     <div className="text">Email:</div>
-                    <div className="box"></div>
+                    <input className="box" type="email"/>
                     <div className="text">Passsword:</div>
-                    <div className="box"></div>
+                    <input className="box" type="password"/>
                     <div className="text">First name:</div>
-                    <div className="box"></div>
+                    <input className="box" type="text"/>
                     <div className="text">Last name:</div>
-                    <div className="box"></div>
+                    <input className="box" type="text"/>
                     <div className="text">Phone number:</div>
-                    <div className="box"></div> 
+                    <input className="box"/>
                 
-                    <button className="button" type="submit">Sign up</button>
+                    <Link to="/yourevents"><button className="button" type="submit">Sign up</button></Link>
                 </form>
                 
         </div >
