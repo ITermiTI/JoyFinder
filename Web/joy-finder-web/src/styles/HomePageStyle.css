@@ -21,7 +21,7 @@
 .home-screen-left-bar{
     position: absolute;
     width: 75px;
-    height: 1024px;
+    height: 100%;
     left: 0%;
     top: 0%;   
 
@@ -92,7 +92,7 @@
 }
 .home-screen-top-bar{
     position: absolute;
-    width: 1440px;
+    width: 100%;
     height: 75px;
     left: 0%;
     top: 0%;
