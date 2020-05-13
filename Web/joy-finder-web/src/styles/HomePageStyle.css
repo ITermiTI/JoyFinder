@@ -1,0 +1,193 @@
+.home-screen-background-circle-blue{
+    position: absolute;
+    width: 285px;
+    height: 285px;
+    left: -2.22%;
+    top: 67.18%;
+    border-radius: 50%;
+
+    background: rgba(11, 138, 255, 0.1);
+}
+.home-screen-background-circle-green{
+    position: absolute;
+    width: 658px;
+    height: 658px;
+    left: 70.2%;
+    top: -6.25%;
+    border-radius: 50%;
+    
+    background: rgba(37, 167, 65, 0.1);
+}
+.home-screen-left-bar{
+    position: absolute;
+    width: 75px;
+    height: 100%;
+    left: 0%;
+    top: 0%;   
+
+    background: #1F1F23;
+    box-shadow: 3px 0px 2px rgba(0, 0, 0, 0.07);
+
+}
+.your-events-icon{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 1.18%;
+    top: 13.2%;
+    
+    background: #1F1F23;
+    border: none;
+
+    color: #8CE8A0;
+}
+.your-events-icon-marker{
+    position: absolute;
+    width: 4px;
+    height: 27px;
+    left: 0px;
+    top: 14.74%;
+
+    background: #8CE8A0;
+}
+.others-events-icon{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 1.18%;
+    top: 24.2%;
+    background: #1F1F23;
+    border: none;
+
+    color: #9E9E9E;
+}
+.others-events-icon-marker{
+    position: absolute;
+    width: 4px;
+    height: 27px;
+    left: 0%;
+    top: 25.74%;
+
+    background: #8CE8A0;
+}
+.add-event-icon{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 1.18%;
+    top: 36%;
+    background: #1F1F23;
+    border: none;
+
+    color: #9E9E9E;
+}
+.add-event-icon-marker{
+    position: absolute;
+    width: 4px;
+    height: 27px;
+    left: 0%;
+    top: 37.54%;
+
+    background: #8CE8A0;
+}
+.home-screen-top-bar{
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    left: 0%;
+    top: 0%;
+
+    background: #1F1F23;
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.07);
+}
+.search-icon{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 8.05%;
+    top: 2.0%;
+    background: #1F1F23;
+    border: none;
+
+    color: #9E9E9E;
+
+}
+.search-input{
+    position: absolute;
+    width: 191px;
+    height: 38px;
+    left: 12.36%;
+    top: 2.24%;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #9E9E9E;
+    background-color: #1F1F23;
+    border: none;
+
+}
+.search-method-icon{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 30.41%;
+    top: 1.17%;
+    background: #1F1F23;
+    border: none;
+
+    color: #9E9E9E;
+}
+.sign-out-icon{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 95.48%;
+    top: 1.17%;
+    background: #1F1F23;
+    border: none;
+
+    color: #8CE8A0;
+}
+.account-button{
+    position: absolute;
+    width: 224px;
+    height: 38px;
+    left: 79.23%;
+    top: 2.1%;
+    background: #1F1F23;
+    border: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #9E9E9E;
+}
+.home-page-title-text{
+    position: absolute;
+    left: 3.73%;
+    right: 69.64%;
+    top: 8.54%;
+    bottom: 87.57%;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    background-color: #2F303A;
+
+    color: #9E9E9E;
+}
+.component-background{
+    background-color: transparent;
+    position: absolute;
+    width: 1367px;
+    height: 953px;
+    left: 5.06%;
+    top: 6.93%;
+
+
+}

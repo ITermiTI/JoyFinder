@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as Const from '../static/const';
 
 export const logged_username = 'loggedUser';
 export const logged_userid = 'loggedID';
@@ -9,7 +10,7 @@ class AuthorizationService{
         /*return axios.post(`http://localhost:8080/login`,
         
         )*/
-        return axios.get(`http://localhost:8080/api/authenticate`,
+        return axios.get(`${Const.API_URL}/api/authenticate`,
             { headers: { authorization: this.createBasicAuthToken(login, password) }      
             } )
     }
@@ -21,7 +22,7 @@ class AuthorizationService{
     async registerSuccessfulLogin(login,password) {        
         sessionStorage.setItem(logged_username, login)        
         this.setupAxiosInterceptors(this.createBasicAuthToken(login,password))
-        await axios.get(`http://localhost:8080/api/session`).then(
+        await axios.get(`${Const.API_URL}/api/session`).then(
             (res) => {
                 const userId = res.data.userId;
                 sessionStorage.setItem(logged_userid,userId);

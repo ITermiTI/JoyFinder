@@ -39,7 +39,9 @@ class LoginBox extends React.Component{
         {
             AuthorizationService.registerSuccessfulLogin(this.state.values.login,this.state.values.password)                 
             this.setState({
-                loginSuccessful: true
+                loginSuccessful: true,
+                badCredentails: false,
+                showPopup: false
             })
         })
         .catch(() => {
@@ -54,7 +56,7 @@ class LoginBox extends React.Component{
     }
     render() {
         if (this.state.loginSuccessful === true) {
-            return <Redirect to='/user' />
+            return <Redirect to='/homepage' />
           }
         return (
         <div className="login-box-style">
