@@ -23,7 +23,7 @@ class RegisterBox extends React.Component{
                     <div className="text">Phone number:</div>
                     <input className="box"/>
                 
-                    <Link to="/yourevents"><button className="button" type="submit">Sign up</button></Link>
+                    <Link to="/homepage"><button className="button" type="submit">Sign up</button></Link>
                 </form>
                 
         </div >

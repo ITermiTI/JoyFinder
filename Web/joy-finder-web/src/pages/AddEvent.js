@@ -1,14 +1,14 @@
 import React from 'react'
 
-class YourEvents extends React.Component{
+class AddEvent extends React.Component{
     render(){
         return (
             <div className="component-background">
-                <div className="home-page-title-text">Your Events!</div>
+                <div className="home-page-title-text">Create your own event!</div>
             </div>   
             
         );
     }
 }
 
-export default YourEvents;
+export default AddEvent;

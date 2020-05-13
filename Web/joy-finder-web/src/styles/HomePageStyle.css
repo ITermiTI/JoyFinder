@@ -61,6 +61,15 @@
 
     color: #9E9E9E;
 }
+.others-events-icon-marker{
+    position: absolute;
+    width: 4px;
+    height: 27px;
+    left: 0%;
+    top: 25.74%;
+
+    background: #8CE8A0;
+}
 .add-event-icon{
     position: absolute;
     width: 50px;
@@ -71,6 +80,15 @@
     border: none;
 
     color: #9E9E9E;
+}
+.add-event-icon-marker{
+    position: absolute;
+    width: 4px;
+    height: 27px;
+    left: 0%;
+    top: 37.54%;
+
+    background: #8CE8A0;
 }
 .home-screen-top-bar{
     position: absolute;
@@ -150,14 +168,26 @@
 }
 .home-page-title-text{
     position: absolute;
-    width: 200px;
-    height: 29px;
-    left: 9.02%;
-    top: 15.13%;
+    left: 3.73%;
+    right: 69.64%;
+    top: 8.54%;
+    bottom: 87.57%;
+
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
     line-height: 29px;
+    background-color: #2F303A;
 
     color: #9E9E9E;
+}
+.component-background{
+    background-color: transparent;
+    position: absolute;
+    width: 1367px;
+    height: 953px;
+    left: 5.06%;
+    top: 6.93%;
+
+
 }
