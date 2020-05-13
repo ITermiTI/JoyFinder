@@ -1,8 +1,8 @@
 
 .background-cirle-blue-r{
     position: absolute;
-    width: 285px;
-    height: 285px;
+    width: 19.79%;
+    height: 34.83%;
     left: -2.56%;
     top: -6.05%;
     border-radius: 50%;
@@ -11,8 +11,8 @@
 }
 .background-cirle-green-r{
     position: absolute;
-    width: 553px;
-    height: 553px;
+    width: 38.47%;
+    height: 70%;
     left: -8.05%;
     top: 59.76%;
     border-radius: 50%;
@@ -42,8 +42,8 @@
 }
 .background-cirle-violet-r{
     position: absolute;
-    width: 285px;
-    height: 285px;
+    width: 27.43%;
+    height: 46.57%;
     left: 82.98%;
     top: 79.78%;
     background: rgba(143, 48, 134, 0.1);
@@ -103,8 +103,8 @@
 }
 .account-text{
     position: absolute;
-    left: 69.05%;
-    top: 85.76%;
+    left: 27.05%;
+    top: 90.76%;
     color: #FFFFFF;
 
     font-style: normal;

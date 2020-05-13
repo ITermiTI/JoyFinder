@@ -3,6 +3,7 @@ import HomePageStyle from '../styles/HomePageStyle.css'
 import { MdSearch } from "react-icons/md";
 import { MdArrowDropDown } from "react-icons/md";
 import { MdPowerSettingsNew } from "react-icons/md";
+import SearchPage from "../pages/SearchPage";
 
 class HomePageTopBar extends React.Component{
     constructor(){
@@ -27,7 +28,7 @@ class HomePageTopBar extends React.Component{
     }
     _renderSubComp(){
         switch(this.state.render){
-       //     case 'yourevents': return <YourEvents/>
+              case 'searchevent': return <SearchPage/>
        //     case 'othersevents' : return <OthersEvents/>
        //     case 'addevent': return <AddEvent/>
         }
