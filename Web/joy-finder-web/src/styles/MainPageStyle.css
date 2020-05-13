@@ -4,16 +4,19 @@
     height: 100%;
     background: #2F303A;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .main-image{
     position: absolute;
-    width: 602px;
-    height: 849px;
+    width: 41.81%;
+    height: 82.91%;
     left: 4.86%;
-    top: 12.77%;   
+    top: 15.77%;   
     
-    background: url(../static/landing-page-image.png);
+    background: url(../static/landing-page-image.png) no-repeat center;
+    background-size: contain;
 }
 
 .background-cirle-blue{
@@ -79,13 +82,13 @@
     top: 52.63%;
     border: none;
     border-radius: 10%;
+    background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
     
     font-family: Roboto;
     font-size: 36px;
     line-height: 42px;
 
     color: #FFFFFF;
-    background-color: #0B8AFF;
 }
 
 .main-button-sign-in{
@@ -102,4 +105,14 @@
     line-height: 42px;
 
     color: #FFFFFF;
+}
+
+.background-circle-pink{
+    position: absolute;
+    width: 395px;
+    height: 395px;
+    left: 0%;
+    top: 62.3%;
+    border-radius: 50%;
+    background: rgba(143, 48, 134, 0.1);
 }

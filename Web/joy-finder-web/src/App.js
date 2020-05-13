@@ -1,10 +1,27 @@
 import React from 'react';
-import MainPage from './pages/MainPage';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Login from './pages/Login';
+import IndexStyle from './index.css';
+import MainPage from './pages/MainPage'
+import MainScreen from './pages/MainScreen'
+
 
 function App() {
   return (
     <div>
-      <MainPage/>
+      <Router>
+        <Switch>
+            <Route exact path="/" component={MainPage}/>
+            <Route exact path="/login" component={Login}/>
+            <Route path="/user" component={MainScreen}/>
+          </Switch>
+      </Router>
+
     </div>
   );
 }
