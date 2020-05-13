@@ -111,8 +111,8 @@
 
 .background-blue-circle{
     position: absolute;
-    width: 285px;
-    height: 285px;
+    width: 19.79%;
+    height: 34.83%;
     left: -2.92%;
     top: -4.59%;
     border-radius: 50%;
@@ -122,8 +122,8 @@
 .background-green-circle{
     position: absolute;
     display: flex;
-    width: 553px;
-    height: 553px;
+    width: 38.47%;
+    height: 59%;
     border-radius: 50%;
 
     background: rgba(37, 167, 65, 0.1);

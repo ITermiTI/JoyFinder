@@ -25,9 +25,9 @@ class RegisterBox extends React.Component{
                 
                     <Link to="/homepage"><button className="button" type="submit">Sign up</button></Link>
                 </form>
-                
+                <div className="account-text">Do you have an account? <Link to="/login">Sign in!</Link></div>
         </div >
-        <div className="account-text">Do you have an account? <Link to="/login">Sign in!</Link></div>
+        
     </div>
         
         )

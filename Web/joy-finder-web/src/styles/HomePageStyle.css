@@ -1,7 +1,7 @@
 .home-screen-background-circle-blue{
     position: absolute;
-    width: 285px;
-    height: 285px;
+    width: 19.79%;
+    height: 34.83%;
     left: -2.22%;
     top: 67.18%;
     border-radius: 50%;
@@ -10,8 +10,8 @@
 }
 .home-screen-background-circle-green{
     position: absolute;
-    width: 658px;
-    height: 658px;
+    width: 38.47%;
+    height: 70%;
     left: 70.2%;
     top: -6.25%;
     border-radius: 50%;
@@ -20,7 +20,11 @@
 }
 .home-screen-left-bar{
     position: absolute;
+<<<<<<< Updated upstream
     width: 75px;
+=======
+    width: 5.32%;
+>>>>>>> Stashed changes
     height: 100%;
     left: 0%;
     top: 0%;   
@@ -31,8 +35,8 @@
 }
 .your-events-icon{
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 3.47%;
+    height: 4.88%;
     left: 1.18%;
     top: 13.2%;
     
@@ -43,17 +47,17 @@
 }
 .your-events-icon-marker{
     position: absolute;
-    width: 4px;
-    height: 27px;
+    width: 0.25%;
+    height: 2.8%;
     left: 0px;
-    top: 14.74%;
+    top: 14.4%;
 
     background: #8CE8A0;
 }
 .others-events-icon{
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 3.47%;
+    height: 4.88%;
     left: 1.18%;
     top: 24.2%;
     background: #1F1F23;
@@ -63,17 +67,17 @@
 }
 .others-events-icon-marker{
     position: absolute;
-    width: 4px;
-    height: 27px;
+    width: 0.25%;
+    height: 2.8%;
     left: 0%;
-    top: 25.74%;
+    top: 25.3%;
 
     background: #8CE8A0;
 }
 .add-event-icon{
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 3.47%;
+    height: 4.88%;
     left: 1.18%;
     top: 36%;
     background: #1F1F23;
@@ -83,8 +87,8 @@
 }
 .add-event-icon-marker{
     position: absolute;
-    width: 4px;
-    height: 27px;
+    width: 0.25%;
+    height: 2.8%;
     left: 0%;
     top: 37.54%;
 
@@ -93,7 +97,11 @@
 .home-screen-top-bar{
     position: absolute;
     width: 100%;
+<<<<<<< Updated upstream
     height: 75px;
+=======
+    height: 9.32%;
+>>>>>>> Stashed changes
     left: 0%;
     top: 0%;
 
@@ -102,8 +110,8 @@
 }
 .search-icon{
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 3.47%;
+    height: 4.88%;
     left: 8.05%;
     top: 2.0%;
     background: #1F1F23;
@@ -114,10 +122,10 @@
 }
 .search-input{
     position: absolute;
-    width: 191px;
-    height: 38px;
+    width: 13.26%;
+    height: 7%;
     left: 12.36%;
-    top: 2.24%;
+    top: 1%;
 
     font-style: normal;
     font-weight: normal;
@@ -131,10 +139,10 @@
 }
 .search-method-icon{
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 3.47%;
+    height: 5.88%;
     left: 30.41%;
-    top: 1.17%;
+    top: 1.47%;
     background: #1F1F23;
     border: none;
 
@@ -142,10 +150,10 @@
 }
 .sign-out-icon{
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 3.77%;
+    height: 4.88%;
     left: 95.48%;
-    top: 1.17%;
+    top: 1.9%;
     background: #1F1F23;
     border: none;
 
@@ -153,10 +161,10 @@
 }
 .account-button{
     position: absolute;
-    width: 224px;
-    height: 38px;
-    left: 79.23%;
-    top: 2.1%;
+    width: 20.56%;
+    height: 5.71%;
+    left: 75.23%;
+    top: 1.5%;
     background: #1F1F23;
     border: none;
     font-style: normal;
