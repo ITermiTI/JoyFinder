@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 .login-box-style{
     position: absolute;
     width: 47.43%;
@@ -34,6 +35,9 @@
     background: #1F1F23;
     border: 5px solid #1D5E9F;
     box-sizing: border-box;
+    font-size: 18px;
+
+    color: #FFFFFF;
 }
 
 .password-text{        
@@ -54,6 +58,9 @@
     background: #1F1F23;
     border: 5px solid #1D5E9F;
     box-sizing: border-box;
+    font-size: 20px;
+
+    color: #FFFFFF;
 }
 
 .button-sign-in{
@@ -173,3 +180,54 @@
 
     color: #5E2758;
 }
+.invalid-credentials-backgroung{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 20.48%; 
+
+    background: #1F1F23;
+}
+
+.invalid-credentials-text{
+    left: 43%;
+    top: 80%;
+    width: 50%;
+    height: 12.5%;
+    position: absolute;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    font-size: 20px;
+    line-height: 52px;
+
+    color: #CA3232;
+}
+.invalid-credentials-icon{
+
+    left: 33%;
+    top: 81%;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    color: #CA3232;
+
+}
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
