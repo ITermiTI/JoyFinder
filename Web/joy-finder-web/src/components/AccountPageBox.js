@@ -6,9 +6,11 @@ import * as Const from '../static/const';
 
 class AccountPageBox extends React.Component{
 
-    state={
-        user: 'error'
-
+    constructor(){
+        super();
+        this.state = {
+            user: '',
+    }
     }
 
     componentDidMount() {
@@ -20,6 +22,7 @@ class AccountPageBox extends React.Component{
           })
       }
 
+
     render(){
         return(
             <div>
@@ -30,6 +33,14 @@ class AccountPageBox extends React.Component{
                 <div className='login'>{sessionStorage.loggedUser}</div>
                 <div className='email'>{this.state.user.email}</div>
                 <div className='phone'>{this.state.user.phoneNumber}</div>
+
+                <div className='names' type='text'>{this.state.user.name+" "+this.state.user.surname}</div>
+
+                <div className='profile-image'></div>
+
+                <button className="edit-details-button">Edit details</button>
+                <button className="change-password-button">Change password</button>
+
             </div>
         )
     };

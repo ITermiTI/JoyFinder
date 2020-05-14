@@ -2,6 +2,14 @@ import React from 'react'
 import AccountPageBox from '../components/AccountPageBox.js'
 
 class AccountPage extends React.Component{
+
+    constructor(){
+        super();
+        this.state = {
+            render: 'view',
+    }
+    }
+
     render(){
         return (
             <div className="component-background">
