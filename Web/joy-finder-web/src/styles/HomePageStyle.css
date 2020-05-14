@@ -20,11 +20,7 @@
 }
 .home-screen-left-bar{
     position: absolute;
-<<<<<<< Updated upstream
-    width: 75px;
-=======
     width: 5.32%;
->>>>>>> Stashed changes
     height: 100%;
     left: 0%;
     top: 0%;   
@@ -97,11 +93,7 @@
 .home-screen-top-bar{
     position: absolute;
     width: 100%;
-<<<<<<< Updated upstream
-    height: 75px;
-=======
     height: 9.32%;
->>>>>>> Stashed changes
     left: 0%;
     top: 0%;
 
