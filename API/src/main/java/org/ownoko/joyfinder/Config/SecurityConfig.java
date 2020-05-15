@@ -81,7 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://joy-finder-frontend.herokuapp.com"));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS","PUT","DELETE"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
