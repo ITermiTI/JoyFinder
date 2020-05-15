@@ -79,7 +79,7 @@ public class UsersService implements IUserService {
 
         if(!login.equals(account.getLogin())) account.setLogin(login);
 
-        if(!password.equals(account.getPassword())) account.setPassword(passwordEncoder.encode(password));
+        if(!passwordEncoder.encode(password).equals(account.getPassword())) account.setPassword(passwordEncoder.encode(password));
 
         accountsDao.save(account);
 

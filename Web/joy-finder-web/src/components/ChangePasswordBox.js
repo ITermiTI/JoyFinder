@@ -5,25 +5,16 @@ import * as Const from '../static/const';
 
 class ChangePasswordBox extends React.Component{
 
-    state={
-        user: 'error'
-
-    }
-
-    componentDidMount() {
-        axios.get(`${Const.API_URL}api/user/1`  
-            )
-          .then(res => {
-            const user = res.data;
-            this.setState( {user} );
-          })
+    handleChange = (e) => {
+        const {value, name} = e.target;
+        this.props.updateState(name,value);
       }
 
     render(){
         return(
             <div>
                 <input className="old-password-box" type="password" placeholder="Old password"/>
-                <input className="new-password-box" type="password" placeholde="New password"/>
+                <input className="new-password-box" name="password" type="password" placeholde="New password" onChange={this.handleChange}/>
 
             </div>
         )

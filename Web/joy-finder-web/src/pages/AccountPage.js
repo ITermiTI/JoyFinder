@@ -29,6 +29,13 @@ class AccountPage extends React.Component{
     }
 
     handleChangePassword(){
+        axios.put(`${Const.API_URL}api/user/${sessionStorage.loggedID}`, {
+            password: this.state.password
+        }).then(
+            res => {
+                console.log(res.data)
+            })
+
         this.setState({render: 'view'});
     }
 
@@ -78,7 +85,7 @@ class AccountPage extends React.Component{
             <div className="component-background">
             <div className="home-page-title-text">Change your password</div>
             <button className="submit-button" onClick={this.handleClick.bind(this, 'view')}>Submit</button>
-                <ChangePasswordBox/>
+                <ChangePasswordBox data={this.state} updateState={this.updateState}/>
             </div>
         );
     }
