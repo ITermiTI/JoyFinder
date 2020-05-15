@@ -92,6 +92,15 @@ height: 7%;
 left: 14%;
 top: 70%;
 
+background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
+border-radius: 15px;
+border: none;
+align-self: center;
+
+font-family: Roboto;
+font-size: 30px;
+line-height: 42px;
+color: #FFFFFF;
 }
 
 .title-icon{

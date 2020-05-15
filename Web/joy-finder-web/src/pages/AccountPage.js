@@ -14,7 +14,8 @@ class AccountPage extends React.Component{
             email: '',
             name: '',
             surname: '',
-            phoneNumber: ''
+            phoneNumber: '',
+            password: ''
         }
         this.updateState = this.updateState
     }
@@ -32,8 +33,7 @@ class AccountPage extends React.Component{
     }
 
     handleEditDetails(){
-
-        axios.put(`${Const.API_URL}api/user/1`, {
+        axios.put(`${Const.API_URL}api/user/${sessionStorage.loggedID}`, {
             name: this.state.name,
             surname: this.state.surname,
             email: this.state.email,
@@ -46,13 +46,25 @@ class AccountPage extends React.Component{
         this.setState({render: 'view'});
     }
 
+    componentDidMount() {
+        axios.get(`${Const.API_URL}api/user/${sessionStorage.loggedID}`  
+            )
+          .then(res => {
+            let user = res.data;
+            this.setState({name: user.name})
+            this.setState({surname: user.surname})
+            this.setState({email: user.email})
+            this.setState({phoneNumber: user.phoneNumber})
+          })
+      }
+
     render(){
         if(this.state.render=='view') return (
             <div className="component-background">
                 <div className="home-page-title-text">Your Account!</div>
                 <button className="edit-details-button" onClick={this.handleClick.bind(this, 'edit')}>Edit details</button>
                 <button className="change-password-button" onClick={this.handleClick.bind(this, 'change')}>Change password</button>
-                <AccountPageBox/>
+                <AccountPageBox data={this.state}/>
             </div>   
         );
         if(this.state.render=='edit') return(

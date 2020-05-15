@@ -1,5 +1,7 @@
 package org.ownoko.joyfinder.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 import java.sql.Time;
 
@@ -7,7 +9,9 @@ public class EventsDto {
     private int id;
     private String name;
     private String type;
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date date;
+    @JsonFormat(pattern="HH:MM")
     private Time time;
     private String city;
     private String location;

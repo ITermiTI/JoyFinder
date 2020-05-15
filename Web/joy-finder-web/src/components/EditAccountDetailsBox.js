@@ -6,17 +6,17 @@ import * as Const from '../static/const';
 
 class EditAccountDetailsBox extends React.Component{
 
-    componentDidMount() {
-        axios.get(`${Const.API_URL}api/user/1`  
-            )
-          .then(res => {
-            const user = res.data;
-            this.props.updateState('name', user.name)
-            this.props.updateState('surname', user.surname)
-            this.props.updateState('email', user.email)
-            this.props.updateState('phoneNumber', user.phoneNumber)
-          })
-      }
+    // componentDidMount() {
+    //     axios.get(`${Const.API_URL}api/user/${sessionStorage.loggedID}`  
+    //         )
+    //       .then(res => {
+    //         const user = res.data;
+    //         this.props.updateState('name', user.name)
+    //         this.props.updateState('surname', user.surname)
+    //         this.props.updateState('email', user.email)
+    //         this.props.updateState('phoneNumber', user.phoneNumber)
+    //       })
+    //   }
 
       handleChange = (e) => {
         const {value, name} = e.target;
