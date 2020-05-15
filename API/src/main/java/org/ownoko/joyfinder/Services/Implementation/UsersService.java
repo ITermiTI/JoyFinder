@@ -9,6 +9,7 @@ import org.ownoko.joyfinder.Repositories.API.IUsersDao;
 import org.ownoko.joyfinder.Services.API.IUserService;
 import org.ownoko.joyfinder.Services.Const;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class UsersService implements IUserService {
     IAccountsDao accountsDao;
     @Autowired
     IUsersDao usersDao;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -42,7 +45,7 @@ public class UsersService implements IUserService {
 
         AccountEntity account = new AccountEntity();
         account.setLogin(login);
-        account.setPassword(password);
+        account.setPassword(passwordEncoder.encode(password));
         account.setUsersByUserid(user);
         accountsDao.save(account);
         return;

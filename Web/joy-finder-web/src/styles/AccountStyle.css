@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+.account-icon{
+position: absolute;
+width: 40px;
+height: 40px;
+left: 14%;
+top: 30%;
+
+color: #9E9E9E;
+}
+
+.email-icon{
+position: absolute;
+width: 40px;
+height: 40px;
+left: 14%;
+top: 38%;
+
+color: #9E9E9E;
+}
+
+.phone-icon{
+position: absolute;
+width: 40px;
+height: 40px;
+left: 14%;
+top: 46%;
+
+color: #9E9E9E;
+}
+
+.login{
+    position: absolute;
+    width: 549px;
+    height: 35px;
+    left: 18%;
+    top: 30%;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    
+    color: #9E9E9E;
+    
+}
+
+.email{
+    position: absolute;
+    width: 549px;
+    height: 35px;
+    left: 18%;
+    top: 38%;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    
+    color: #9E9E9E;
+}
+
+.phone{
+position: absolute;
+width: 549px;
+height: 35px;
+left: 18%;
+top: 46%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 35px;
+display: flex;
+align-items: center;
+
+color: #9E9E9E;
+
+}
+
+.details-button{
+
+}
