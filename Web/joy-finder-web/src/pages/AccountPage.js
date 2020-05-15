@@ -30,6 +30,10 @@ class AccountPage extends React.Component{
 
     handleChangePassword(){
         axios.put(`${Const.API_URL}api/user/${sessionStorage.loggedID}`, {
+            login: sessionStorage.loggedUser,
+            phoneNumber: this.state.phoneNumber,
+            name: this.state.name,
+            surname: this.state.surname,
             password: this.state.password
         }).then(
             res => {
@@ -84,7 +88,7 @@ class AccountPage extends React.Component{
         if(this.state.render=='change') return(
             <div className="component-background">
             <div className="home-page-title-text">Change your password</div>
-            <button className="submit-button" onClick={this.handleClick.bind(this, 'view')}>Submit</button>
+            <button className="submit-button" onClick={this.handleChangePassword.bind(this)}>Submit</button>
                 <ChangePasswordBox data={this.state} updateState={this.updateState}/>
             </div>
         );

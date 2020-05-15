@@ -14,7 +14,7 @@ class ChangePasswordBox extends React.Component{
         return(
             <div>
                 <input className="old-password-box" type="password" placeholder="Old password"/>
-                <input className="new-password-box" name="password" type="password" placeholde="New password" onChange={this.handleChange}/>
+                <input className="new-password-box" name="password" type="password" placeholder="New password" onChange={this.handleChange}/>
 
             </div>
         )
