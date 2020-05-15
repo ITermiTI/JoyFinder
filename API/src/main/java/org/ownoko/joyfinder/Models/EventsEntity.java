@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ public class EventsEntity {
     private String name;
     private String type;
     private Date date;
-    private Time time;
+    private LocalTime time;
     private String city;
     private String location;
     private String street;
@@ -67,11 +68,11 @@ public class EventsEntity {
 
     @Basic
     @Column(name = "time", nullable = false)
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 

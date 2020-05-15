@@ -23,18 +23,28 @@ class AddEvent extends React.Component{
     }
 
     handleClick(){
+        let help;
+
         axios.post(`${Const.API_URL}api/events`, {
-            title: this.state.title,
+            name: this.state.title,
             date: this.state.date,
             time: this.state.time,
             city: this.state.city,
-            creatorId: sessionStorage.loggedID,
-            type: this.state.type
+            creatorid: parseInt(sessionStorage.loggedID, 10),
+            type: this.state.type,
+            location: 0
 
         }).then(
             res => {
-                console.log(res.data)
+                axios.post(`${Const.API_URL}api/members`, {
+                    userId: parseInt(sessionStorage.loggedID, 10),
+                    eventId: parseInt(res.data, 10)
+                }).then(
+                    this.props.updateState('render', 'yourevents')
+                )
             })
+
+
     }
 
     render(){
