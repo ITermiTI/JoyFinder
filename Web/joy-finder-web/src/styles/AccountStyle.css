@@ -173,3 +173,22 @@ color: #9E9E9E;
     color: #FFFFFF;
     
 }
+
+.submit-button{
+    position: absolute;
+    width: 26%;
+    height: 7%;
+    left: 25%;
+    top: 60%;
+
+    background: linear-gradient(180deg, rgba(94, 39, 88, 0.51) 99.99%, rgba(94, 39, 88, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 30px;
+    line-height: 42px;
+    color: #FFFFFF;
+    
+}
