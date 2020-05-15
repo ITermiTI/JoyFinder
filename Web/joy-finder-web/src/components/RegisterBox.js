@@ -69,7 +69,7 @@ class RegisterBox extends React.Component{
 
     render() {
         if (this.state.registerSuccessful === true) {
-            return <Redirect to='/homepage' />
+            return <Redirect to='/login'/>
           }
         return (
         <div>    
