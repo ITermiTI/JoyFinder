@@ -1,0 +1,144 @@
+.title-box{
+    position: absolute;
+    width: 38%;
+    height: 5%;
+    left: 17%;
+    top: 23%;
+
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+
+}
+
+.date-box{
+    position: absolute;
+    width: 38%;
+    height: 5%;
+    left: 17%;
+    top: 31%;
+
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+
+}
+.time-box{
+    position: absolute;
+    width: 38%;
+    height: 5%;
+    left: 17%;
+    top: 39%;
+
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+
+}
+.location-box{
+    position: absolute;
+    width: 38%;
+    height: 5%;
+    left: 17%;
+    top: 47%;
+
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+
+}
+.type-box{
+    position: absolute;
+    width: 38%;
+    height: 5%;
+    left: 17%;
+    top: 55%;
+
+    font-size: 30px;
+    
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+
+}
+
+.button{
+position: absolute;
+width: 15%;
+height: 7%;
+left: 14%;
+top: 70%;
+
+}
+
+.title-icon{
+position: absolute;
+width: 40px;
+    height: 40px;
+    left: 13%;
+    top: 23%;
+    color: #9E9E9E;
+}
+
+.date-icon{
+    position: absolute;
+    width: 40px;
+        height: 40px;
+        left: 13%;
+        top: 31%;
+        color: #9E9E9E;
+    }
+
+.time-icon{
+position: absolute;
+width: 40px;
+height: 40px;
+left: 13%;
+top: 39%;
+color: #9E9E9E;
+}
+
+.location-icon{
+position: absolute;
+width: 40px;
+height: 40px;
+left: 13%;
+top: 47%;
+color: #9E9E9E;
+}
+
+.type-icon{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 13%;
+    top: 55%;
+    color: #9E9E9E;
+    }
+
+
+
+
