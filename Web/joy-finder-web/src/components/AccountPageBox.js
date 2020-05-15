@@ -37,8 +37,7 @@ class AccountPageBox extends React.Component{
                 <div className='names' type='text'>{this.state.user.name+" "+this.state.user.surname}</div>
 
                 <div className='profile-image'></div>
-
-                <button className="edit-details-button">Edit details</button>
+      
                 <button className="change-password-button">Change password</button>
 
             </div>
