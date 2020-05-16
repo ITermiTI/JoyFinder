@@ -166,6 +166,21 @@
 
     color: #9E9E9E;
 }
+.map-button{
+    position: absolute;
+    width: 20.56%;
+    height: 5.71%;
+    left: 55.23%;
+    top: 1.5%;
+    background: #1F1F23;
+    border: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #9E9E9E;
+}
 .home-page-title-text{
     position: absolute;
     left: 3.73%;

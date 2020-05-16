@@ -3,6 +3,7 @@ import AddEventBox from '../components/AddEventBox.js'
 import AddEventStyle from '../styles/AddEventStyle.css'
 import axios from 'axios'
 import * as Const from '../static/const';
+import SortEventService from '../services/SortEventsService';
 
 class AddEvent extends React.Component{
 
