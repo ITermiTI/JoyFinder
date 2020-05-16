@@ -16,7 +16,9 @@ class AddEventBox extends React.Component{
                     <input className="title-box" name="title" type="text" placeholder="Title" value={this.props.data.title} onChange={this.handleChange}/>
                     <input className="date-box" name="date" type="date" placeholder="Date" value={this.props.data.date} onChange={this.handleChange}/>
                     <input className="time-box" name="time" type="time" placeholder="Time" value={this.props.data.time} onChange={this.handleChange}/>
-                    <input className="location-box" name="city" type="text" placeholder="Location" value={this.props.data.city} onChange={this.handleChange}/>
+                    <input className="location-box" name="city" type="text" placeholder="City" value={this.props.data.city} onChange={this.handleChange}/>
+                    <input className="st-box" name="st" type="text" placeholder="Street" value={this.props.data.st} onChange={this.handleChange}/>
+                    <input className="stnum-box" name="stNum" type="number" placeholder="St number" value={this.props.data.stNum} onChange={this.handleChange}/>
                     <input className="type-box" name="type" type="text" placeholder="Type of event" value={this.props.data.type} onChange={this.handleChange}/>
                 </form>
 

@@ -13,6 +13,8 @@ class AddEvent extends React.Component{
             date: '',
             time: '',
             city: '',
+            st: '',
+            stNum: '',
             type: ''
         }
         this.updateState = this.updateState
@@ -23,13 +25,14 @@ class AddEvent extends React.Component{
     }
 
     handleClick(){
-        let help;
 
         axios.post(`${Const.API_URL}api/events`, {
             name: this.state.title,
             date: this.state.date,
             time: this.state.time,
             city: this.state.city,
+            street: this.state.st,
+            stnumber: parseInt(this.state.stNum, 10),
             creatorid: parseInt(sessionStorage.loggedID, 10),
             type: this.state.type,
             location: 0
