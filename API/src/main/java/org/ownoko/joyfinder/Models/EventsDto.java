@@ -1,14 +1,19 @@
 package org.ownoko.joyfinder.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalTime;
 
 public class EventsDto {
     private int id;
     private String name;
     private String type;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
-    private Time time;
+    @JsonFormat(pattern="HH:MM")
+    private LocalTime time;
     private String city;
     private String location;
     private String street;
@@ -47,11 +52,11 @@ public class EventsDto {
         this.date = date;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 

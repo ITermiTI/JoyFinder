@@ -4,17 +4,22 @@ import { MdTitle, MdToday, MdQueryBuilder, MdLocationOn, MdAccessibility } from 
 
 class AddEventBox extends React.Component{
 
+    handleChange = (e) => {
+        const {value, name} = e.target;
+        this.props.updateState(name,value);
+      }
+
     render(){
         return(
             <div>
                 <form>
-                    <input className="title-box" type="text" placeholder="Title"/>
-                    <input className="date-box" type="date" placeholder="Date"/>
-                    <input className="time-box" type="time" placeholder="Time"/>
-                    <input className="location-box" type="text" placeholder="Location"/>
-                    <input className="type-box" type="text" placeholder="Type of event"/>
-
-                    <button className="button" type="submit">Add</button>
+                    <input className="title-box" name="title" type="text" placeholder="Title" value={this.props.data.title} onChange={this.handleChange}/>
+                    <input className="date-box" name="date" type="date" placeholder="Date" value={this.props.data.date} onChange={this.handleChange}/>
+                    <input className="time-box" name="time" type="time" placeholder="Time" value={this.props.data.time} onChange={this.handleChange}/>
+                    <input className="location-box" name="city" type="text" placeholder="City" value={this.props.data.city} onChange={this.handleChange}/>
+                    <input className="st-box" name="st" type="text" placeholder="Street" value={this.props.data.st} onChange={this.handleChange}/>
+                    <input className="stnum-box" name="stNum" type="number" placeholder="St number" value={this.props.data.stNum} onChange={this.handleChange}/>
+                    <input className="type-box" name="type" type="text" placeholder="Type of event" value={this.props.data.type} onChange={this.handleChange}/>
                 </form>
 
                 <div className='title-icon'><MdTitle size='10rems'/></div>

@@ -22,9 +22,14 @@ class Navigation extends React.Component{
             color3: '',
             color4: '',
             color5: '',
+    }
+    this.updateState = this.updateState
+    }
 
+    updateState = (name, value) => {
+        this.setState({[name]: value})
     }
-    }
+
     handleClick(compName){
         if(compName=="yourevents"){
             this.setState({render:compName, color1:"#8CE8A0", color2:"#9E9E9E", color3:"#9E9E9E", color4:"#9E9E9E", color5:"#9E9E9E"});
@@ -52,7 +57,7 @@ class Navigation extends React.Component{
         switch(this.state.render){
             case 'yourevents': return <YourEvents/>
             case 'othersevents' : return <OthersEvents/>
-            case 'addevent': return <AddEvent/>
+            case 'addevent': return <AddEvent data={this.state} updateState={this.updateState}/>
             case 'searchevent': return <SearchPage/>
             case 'account': return <AccountPage/>
         }

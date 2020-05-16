@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+.account-icon-edit{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 13%;
+    top: 24%;
+    
+    color: #9E9E9E;
+    }
+    
+.email-icon-edit{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 13%;
+    top: 32%;
+    
+    color: #9E9E9E;
+}
+    
+.phone-icon-edit{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 13%;
+    top: 55%;
+    
+    color: #9E9E9E;
+}
+
+.login-box{
+    position: absolute;
+    left: 16.94%;
+    top: 23.24%;
+    
+    width: 38%;
+    height: 5%;
+    
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 35px;
+}
+
+.email-box{
+    position: absolute;
+    left: 16.88%;
+    top: 31.05%;
+    
+    width: 38%;
+    height: 5%;
+    
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+
+}
+
+.name-box{
+    position: absolute;
+    left: 16.88%;
+    top: 38.87%;
+    
+    width: 38%;
+    height: 5%;
+    
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+}
+
+.surname-box{
+    position: absolute;
+    left: 16.88%;
+    top: 46.68%;
+    
+    width: 38%;
+    height: 5%;
+
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+}
+
+.phone-box{
+    position: absolute;
+    left: 16.88%;
+    top: 54.49%;
+    
+    width: 38%;
+    height: 5%;
+    
+    font-size: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;
+    
+    background: transparent;
+    border: 5px solid #1D5E9F;
+    box-sizing: border-box;
+}

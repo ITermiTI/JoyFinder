@@ -75,11 +75,11 @@ public class UsersService implements IUserService {
     @Override
     public int updateAccountDetails(String login, String password, AccountEntity account) {
 
-        if(accountsDao.findAccountEntityByLogin(login) != null) return Const.loginAlreadyUsed;
-
         if(!login.equals(account.getLogin())) account.setLogin(login);
 
         if(!password.equals(account.getPassword())) account.setPassword(passwordEncoder.encode(password));
+
+        if(accountsDao.findAccountEntityByLogin(login) != null) return Const.loginAlreadyUsed;
 
         accountsDao.save(account);
 

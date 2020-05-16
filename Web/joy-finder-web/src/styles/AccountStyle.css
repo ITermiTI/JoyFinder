@@ -5,7 +5,7 @@ position: absolute;
 width: 40px;
 height: 40px;
 left: 14%;
-top: 30%;
+top: 21%;
 
 color: #9E9E9E;
 }
@@ -15,7 +15,7 @@ position: absolute;
 width: 40px;
 height: 40px;
 left: 14%;
-top: 38%;
+top: 27%;
 
 color: #9E9E9E;
 }
@@ -25,7 +25,7 @@ position: absolute;
 width: 40px;
 height: 40px;
 left: 14%;
-top: 46%;
+top: 33%;
 
 color: #9E9E9E;
 }
@@ -35,7 +35,7 @@ color: #9E9E9E;
     width: 549px;
     height: 35px;
     left: 18%;
-    top: 30%;
+    top: 21%;
     
     font-family: Roboto;
     font-style: normal;
@@ -54,7 +54,7 @@ color: #9E9E9E;
     width: 549px;
     height: 35px;
     left: 18%;
-    top: 38%;
+    top: 27%;
     
     font-family: Roboto;
     font-style: normal;
@@ -72,7 +72,7 @@ position: absolute;
 width: 549px;
 height: 35px;
 left: 18%;
-top: 46%;
+top: 33%;
 
 font-family: Roboto;
 font-style: normal;
@@ -86,6 +86,109 @@ color: #9E9E9E;
 
 }
 
-.details-button{
+.edit-details-button{
+    position: absolute;
+    width: 17%;
+    height: 7%;
+    left: 14%;
+    top: 70%;
 
+    background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 30px;
+    line-height: 42px;
+    color: #FFFFFF;
+    
+}
+
+.change-password-button{
+    position: absolute;
+    width: 26%;
+    height: 7%;
+    left: 32%;
+    top: 70%;
+
+    background: linear-gradient(180deg, rgba(94, 39, 88, 0.51) 99.99%, rgba(94, 39, 88, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 30px;
+    line-height: 42px;
+    color: #FFFFFF;
+    
+}
+
+.names{
+    position: absolute;
+width: 265px;
+height: 35px;
+left: 75%;
+top: 64%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 35px;
+display: flex;
+align-items: center;
+
+color: #9E9E9E;
+}
+
+.profile-image{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 73%;
+    top: 27%;   
+    
+    background: url(../static/profile.png) no-repeat center;
+    border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+.save-details-button{
+    position: absolute;
+    width: 17%;
+    height: 7%;
+    left: 14%;
+    top: 70%;
+
+    background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 30px;
+    line-height: 42px;
+    color: #FFFFFF;
+    
+}
+
+.submit-button{
+    position: absolute;
+    width: 26%;
+    height: 7%;
+    left: 25%;
+    top: 60%;
+
+    background: linear-gradient(180deg, rgba(94, 39, 88, 0.51) 99.99%, rgba(94, 39, 88, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 30px;
+    line-height: 42px;
+    color: #FFFFFF;
+    
 }

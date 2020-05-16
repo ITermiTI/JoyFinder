@@ -6,20 +6,6 @@ import * as Const from '../static/const';
 
 class AccountPageBox extends React.Component{
 
-    state={
-        user: 'error'
-
-    }
-
-    componentDidMount() {
-        axios.get(`${Const.API_URL}api/user/1`  
-            )
-          .then(res => {
-            const user = res.data;
-            this.setState( {user} );
-          })
-      }
-
     render(){
         return(
             <div>
@@ -28,8 +14,13 @@ class AccountPageBox extends React.Component{
                 <div className='phone-icon'><MdLocalPhone size='10rems'/></div>
 
                 <div className='login'>{sessionStorage.loggedUser}</div>
-                <div className='email'>{this.state.user.email}</div>
-                <div className='phone'>{this.state.user.phoneNumber}</div>
+                <div className='email'>{this.props.data.email}</div>
+                <div className='phone'>{this.props.data.phoneNumber}</div>
+
+                <div className='names' type='text'>{this.props.data.name+" "+this.props.data.surname}</div>
+
+                <div className='profile-image'></div>
+
             </div>
         )
     };
