@@ -199,10 +199,53 @@
 .component-background{
     background-color: transparent;
     position: absolute;
-    width: 1367px;
+    width: 94.68%;
     height: 953px;
-    left: 5.06%;
-    top: 6.93%;
+    left: 5.32%;
+    top: 9.3%;
 
 
+}
+.component-background-events{
+    background-color: transparent;
+    position: absolute;
+    width: 92.54%;
+    height: 55.00%;
+    left: 3.73%;
+    top: 16.93%;
+}
+.root{
+    width: 'auto'; 
+    height: 'auto'; 
+    display: 'flex';
+    flex-wrap: 'wrap'; 
+    overFlow: 'hidden';
+}
+.gridList{
+    width: 1000;
+    height: 450;
+}
+.textTitle{
+     
+      color: '#8CE8A0';
+      font-size: 25;
+      
+  }
+.textDate{
+    color: '#9E9E9E';
+    font-size: 18;
+    
+  }
+.image{
+    width: 25;
+    height: 15;
+  }
+.img{
+    display: 'block';
+    max-width: '50%';
+    max-height: '50%';
+  }
+.event-id{
+    color: white;
+    font-size: 50;
 }
