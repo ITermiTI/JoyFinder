@@ -1,0 +1,160 @@
+.event-name-e{
+    position: absolute;
+    left: 13.64%;
+    top: 13.7%;
+    width: auto;
+    height: auto;
+    
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 56px;
+
+    color: #8CE8A0
+}
+.event-date-e{
+    position: absolute;
+    left: 17.17%;
+    top: 27.15%;
+    width: auto;
+    height: auto;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: #9E9E9E;
+
+}
+.event-time-e{
+    position: absolute;
+    left: 17.17%;
+    top: 33.66%;
+    width: auto;
+    height: auto;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+
+color: #9E9E9E;
+}
+.event-location-e{
+    
+    position: absolute;
+    left: 17.17%;
+    top: 40.16%;
+    width: auto;
+    height: auto;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: #9E9E9E;
+
+}
+.event-type-e{
+    position: absolute;
+    left: 17.17%;
+    top: 46.67%;
+    width: auto;
+    height: auto;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: #9E9E9E;
+
+}
+.event-creator-e{
+    
+    position: absolute;
+    left: 17.17%;
+    top: 53.17%;
+    width: auto;
+    height: auto;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+
+    color: #9E9E9E;
+
+}
+.date-icon-e{
+    
+    position: absolute;
+    left: 13.64%;
+    right: 84.01%;
+    top: 27.15%;
+    bottom: 69.59%;
+    color: #9E9E9E;
+}
+.time-icon-e{
+    position: absolute;
+    left: 13.64%;
+    right: 84.01%;
+    top: 33.66%;
+    bottom: 63.09%;
+    color: #9E9E9E;
+}
+.location-icon-e{
+    
+    position: absolute;
+    left: 13.64%;
+    right: 83.77%;
+    top: 40.16%;
+    bottom: 56.26%;
+    color: #9E9E9E;
+}
+.type-icon-e{
+    position: absolute;
+    left: 13.64%;
+    right: 83.77%;
+    top: 46.67%;
+    bottom: 49.76%;
+    color: #9E9E9E;
+}
+.creator-icon-e{
+    
+    position: absolute;
+    left: 13.64%;
+    right: 84.01%;
+    top: 53.17%;
+    bottom: 43.58%;
+    color: #9E9E9E;
+
+}
+.cancel-button-e{
+    position: absolute;
+    left: 14.17%;
+    top: 61.14%;
+    width: auto;
+    height: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    background: #B53E3E;
+    border-radius: 15px;
+
+}
