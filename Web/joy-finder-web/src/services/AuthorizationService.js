@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as Const from '../static/const';
+import SortEventService from './SortEventsService'
 
 export const logged_username = 'loggedUser';
 export const logged_userid = 'loggedID';
@@ -23,9 +24,9 @@ class AuthorizationService{
         sessionStorage.setItem(logged_username, login)        
         this.setupAxiosInterceptors(this.createBasicAuthToken(login,password))
         await axios.get(`${Const.API_URL}api/session`).then(
-            (res) => {
+            async (res) => {
                 const userId = res.data.userId;
-                sessionStorage.setItem(logged_userid,userId);
+                sessionStorage.setItem(logged_userid,userId);                
             }
         ).catch((error) => console.log(error))
     }

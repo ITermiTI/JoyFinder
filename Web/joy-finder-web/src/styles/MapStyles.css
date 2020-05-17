@@ -1,0 +1,65 @@
+.text-city{
+    left: 37.78%;
+    top: 15.13%;
+    width: 5%;
+    height: 7%;
+
+    position: absolute;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+.city-input{
+    left: 46.36%;
+    top: 15.13%;
+    position: absolute;
+    width: 13.26%;
+    height: 7%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #9E9E9E;
+    background-color: #1F1F23;
+    border: none;
+}
+
+.button-submit{
+    position: absolute;
+    left: 60.21%;
+    top: 15.13%;
+    width: 13.26%;
+    height: 7%;
+
+    background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 36px;
+    line-height: 42px;
+    color: #FFFFFF;
+}
+
+.no-found{
+    left: 37.78%;
+    top: 85.13%;
+    width: 25%;
+    height: 7%;
+
+    position: absolute;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}

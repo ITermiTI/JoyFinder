@@ -11,6 +11,8 @@ import OthersEvents from '../pages/OthersEvents';
 import AddEvent from '../pages/AddEvent';
 import SearchPage from "../pages/SearchPage";
 import AccountPage from '../pages/AccountPage';
+import SortEventService from '../services/SortEventsService'
+import CityMapWrap from './InCityMap';
 
 class Navigation extends React.Component{
     constructor(){
@@ -49,7 +51,9 @@ class Navigation extends React.Component{
         else if(compName=="account"){
             this.setState({render:compName, color5:"#9E9E9E", color1:"#9E9E9E", color2:"#9E9E9E", color3:"#9E9E9E", color4:"#9E9E9E"});
         }
-
+        else if(compName=="map"){
+            this.setState({render:compName, color5:"#9E9E9E", color1:"#9E9E9E", color2:"#9E9E9E", color3:"#9E9E9E", color4:"#9E9E9E"});
+        }
 
 
     }
@@ -60,6 +64,7 @@ class Navigation extends React.Component{
             case 'addevent': return <AddEvent data={this.state} updateState={this.updateState}/>
             case 'searchevent': return <SearchPage/>
             case 'account': return <AccountPage/>
+            case 'map': return <CityMapWrap/>
         }
     }
     _renderMarkerComp(){
@@ -84,7 +89,7 @@ class Navigation extends React.Component{
                 <button className="search-method-icon" onClick={this.handleClick.bind(this, 'searchby')}><MdArrowDropDown size='10rems' color={this.state.color5}/></button>
                 <button className="sign-out-icon"><MdPowerSettingsNew size='10rems'/></button>
                 <button className="account-button" onClick={this.handleClick.bind(this, 'account')}>Stanislaw Talerzyk </button>
-                
+                <button className="map-button" onClick={this.handleClick.bind(this,'map')}><MdArrowDropDown size='10rems' color={this.state.color5}/></button>
                 {this._renderSubComp()}
                 {this._renderMarkerComp()}
                 
