@@ -50,63 +50,12 @@
     box-sizing: border-box;
 
 }
-.location-box{
-    position: absolute;
-    width: 38%;
-    height: 5%;
-    left: 17%;
-    top: 37%;
-
-    font-size: 30px;
-
-    padding-left: 10px;
-    padding-top: 5px;
-    
-    background: transparent;
-    border: 5px solid #1D5E9F;
-    box-sizing: border-box;
-
-}
-.st-box{
-    position: absolute;
-    width: 38%;
-    height: 5%;
-    left: 17%;
-    top: 45%;
-
-    font-size: 30px;
-
-    padding-left: 10px;
-    padding-top: 5px;
-    
-    background: transparent;
-    border: 5px solid #1D5E9F;
-    box-sizing: border-box;
-
-}
-.stnum-box{
-    position: absolute;
-    width: 38%;
-    height: 5%;
-    left: 17%;
-    top: 53%;
-
-    font-size: 30px;
-
-    padding-left: 10px;
-    padding-top: 5px;
-    
-    background: transparent;
-    border: 5px solid #1D5E9F;
-    box-sizing: border-box;
-
-}
 .type-box{
     position: absolute;
     width: 38%;
     height: 5%;
     left: 17%;
-    top: 61%;
+    top: 37%;
 
     font-size: 30px;
     
@@ -124,7 +73,7 @@ position: absolute;
 width: 15%;
 height: 7%;
 left: 14%;
-top: 70%;
+top: 45%;
 
 background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
 border-radius: 15px;
@@ -168,8 +117,8 @@ color: #9E9E9E;
 position: absolute;
 width: 40px;
 height: 40px;
-left: 13%;
-top: 37%;
+left: 57%;
+top: 13%;
 color: #9E9E9E;
 }
 
@@ -178,10 +127,129 @@ color: #9E9E9E;
     width: 40px;
     height: 40px;
     left: 13%;
-    top: 61%;
+    top: 37%;
     color: #9E9E9E;
     }
 
 
+
+    .location-box{
+        position: absolute;
+        width: 38%;
+        height: 5%;
+        left: 60%;
+        top: 13%;
+    
+        font-size: 30px;
+    
+        padding-left: 10px;
+        padding-top: 5px;
+        
+        background: transparent;
+        border: 5px solid #1D5E9F;
+        box-sizing: border-box;
+    
+    }
+    .st-box{
+        position: absolute;
+        width: 38%;
+    height: 5%;
+        left: 60%;
+        top: 21%;
+    
+        font-size: 30px;
+    
+        padding-left: 10px;
+        padding-top: 5px;
+        
+        background: transparent;
+        border: 5px solid #1D5E9F;
+        box-sizing: border-box;
+    
+    }
+    .stnum-box{
+        position: absolute;
+        width: 38%;
+    height: 5%;
+        left: 60%;
+        top: 28%;
+    
+        font-size: 30px;
+    
+        padding-left: 10px;
+        padding-top: 5px;
+        
+        background: transparent;
+        border: 5px solid #1D5E9F;
+        box-sizing: border-box;
+    
+    }
+
+    .search-button{
+        position: absolute;
+    width: 15%;
+    height: 7%;
+    left: 60%;
+    top: 45%;
+
+    background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 30px;
+    line-height: 42px;
+    color: #FFFFFF;
+    }
+    .longtitude-box{
+        position: absolute;
+        width: 17%;
+        height: 5%;
+        left: 60%;
+        top: 35%;
+    
+        font-size: 30px;
+    
+        padding-left: 10px;
+        padding-top: 5px;
+        
+        background: transparent;
+        border: 5px solid #1D5E9F;
+        box-sizing: border-box;
+    }
+
+    .lengthitude-box{
+        position: absolute;
+        width: 17%;
+        height: 5%;
+        left: 81%;
+        top: 35%;
+    
+        font-size: 30px;
+    
+        padding-left: 10px;
+        padding-top: 5px;
+        
+        background: transparent;
+        border: 5px solid #1D5E9F;
+        box-sizing: border-box;
+    }
+
+    .address-not-found{
+        left: 37.78%;
+        top: 85.13%;
+        width: 45%;
+        height: 7%;
+
+        position: absolute;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 40px;
+        line-height: 28px;
+
+        color: #FFFFFF;
+    }
 
 

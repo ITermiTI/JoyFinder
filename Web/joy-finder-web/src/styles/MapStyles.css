@@ -8,7 +8,7 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 32px;
     line-height: 28px;
 
     color: #FFFFFF;
@@ -45,5 +45,21 @@
     font-family: Roboto;
     font-size: 36px;
     line-height: 42px;
+    color: #FFFFFF;
+}
+
+.no-found{
+    left: 37.78%;
+    top: 85.13%;
+    width: 25%;
+    height: 7%;
+
+    position: absolute;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 28px;
+
     color: #FFFFFF;
 }
