@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional
@@ -17,6 +18,8 @@ public interface IMembersDao extends JpaRepository<MembersEntity, Integer> {
     ArrayList<MembersEntity> findAllByUsersByUserid(UsersEntity user);
 
     ArrayList<MembersEntity> findAllByEventsByEventid(EventsEntity event);
+
+    void deleteAllByEventsByEventid(Optional<EventsEntity> event);
 
     ArrayList<MembersEntity> findAll();
 }
