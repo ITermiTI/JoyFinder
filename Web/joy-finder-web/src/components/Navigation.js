@@ -13,6 +13,8 @@ import SearchPage from "../pages/SearchPage";
 import AccountPage from '../pages/AccountPage';
 import SortEventService from '../services/SortEventsService'
 import CityMapWrap from './InCityMap';
+import axios from 'axios'
+import * as Const from '../static/const';
 
 class Navigation extends React.Component{
     constructor(){
@@ -24,6 +26,8 @@ class Navigation extends React.Component{
             color3: '',
             color4: '',
             color5: '',
+            name: '',
+            surname: ''
     }
     this.updateState = this.updateState
     }
@@ -31,6 +35,16 @@ class Navigation extends React.Component{
     updateState = (name, value) => {
         this.setState({[name]: value})
     }
+
+    componentDidMount() {
+        axios.get(`${Const.API_URL}api/user/${sessionStorage.loggedID}`  
+            )
+          .then(res => {
+            let user = res.data;
+            this.setState({name: user.name})
+            this.setState({surname: user.surname})
+          })
+      }
 
     handleClick(compName){
         if(compName=="yourevents"){
@@ -63,7 +77,7 @@ class Navigation extends React.Component{
             case 'othersevents' : return <OthersEvents/>
             case 'addevent': return <AddEvent data={this.state} updateState={this.updateState}/>
             case 'searchevent': return <SearchPage/>
-            case 'account': return <AccountPage/>
+            case 'account': return <AccountPage date={this.state} updateState={this.updateState}/>
             case 'map': return <CityMapWrap/>
         }
     }
@@ -88,7 +102,7 @@ class Navigation extends React.Component{
                 <input className="search-input" type="search" placeholder="Search"/>
                 <button className="search-method-icon" onClick={this.handleClick.bind(this, 'searchby')}><MdArrowDropDown size='10rems' color={this.state.color5}/></button>
                 <button className="sign-out-icon"><MdPowerSettingsNew size='10rems'/></button>
-                <button className="account-button" onClick={this.handleClick.bind(this, 'account')}>Stanislaw Talerzyk </button>
+                <button className="account-button" onClick={this.handleClick.bind(this, 'account')}>{this.state.name + " "+ this.state.surname}</button>
                 <button className="map-button" onClick={this.handleClick.bind(this,'map')}><MdArrowDropDown size='10rems' color={this.state.color5}/></button>
                 {this._renderSubComp()}
                 {this._renderMarkerComp()}

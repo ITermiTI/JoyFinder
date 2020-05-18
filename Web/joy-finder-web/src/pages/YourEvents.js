@@ -6,18 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import EventGridList from '../components/EventGridList';
 class YourEvents extends React.Component{
    
-
-      FormRow(){
-          
-      }
-
-
     render(){
         return (
             <div className="component-background">
                 <div className="home-page-title-text">Your Events!</div>
                 <div>
-                    <div className="component-background-events">
+                    
                         {/* <div >
                             <Grid container spacing={20} alignContent='center'>
                                 <Grid container item xs={3} spacing={5}>
@@ -31,7 +25,7 @@ class YourEvents extends React.Component{
                             </Grid>
                         </div> */}
                         <EventGridList/>
-                    </div>    
+                      
                     {/* {this.state.events.map(event => <ListItem key={event.id} name={event.name} time={event.time} date={event.date}/>)}    */}
                     
                     

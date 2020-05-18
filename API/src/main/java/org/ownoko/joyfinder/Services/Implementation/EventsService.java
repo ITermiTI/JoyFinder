@@ -130,6 +130,7 @@ public class EventsService implements IEventsService {
     public int deleteEvent(int id) {
         Optional<EventsEntity> event = eventsDao.findById(id);
         if(event.isEmpty()) return Const.eventDoesNotExist;
+        membersDao.deleteAllByEventsByEventid(event);
         eventsDao.deleteById(id);
         return Const.eventDeletionSuccess;
     }

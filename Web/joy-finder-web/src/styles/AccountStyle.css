@@ -159,7 +159,7 @@ color: #9E9E9E;
     position: absolute;
     width: 17%;
     height: 7%;
-    left: 14%;
+    left: 18%;
     top: 70%;
 
     background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
@@ -182,6 +182,44 @@ color: #9E9E9E;
     top: 60%;
 
     background: linear-gradient(180deg, rgba(94, 39, 88, 0.51) 99.99%, rgba(94, 39, 88, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 30px;
+    line-height: 42px;
+    color: #FFFFFF;
+    
+}
+
+.cancel-edit-button{
+    position: absolute;
+    width: 17%;
+    height: 7%;
+    left: 36%;
+    top: 70%;
+
+    background: linear-gradient(180deg, rgba(181, 62, 62, 0.51) 99.99%, rgba(181, 62, 62, 0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-size: 30px;
+    line-height: 42px;
+    color: #FFFFFF;
+    
+}
+
+.cancel-change-button{
+    position: absolute;
+    width: 26%;
+    height: 7%;
+    left: 25%;
+    top: 70%;
+
+    background: linear-gradient(180deg, rgba(181, 62, 62, 0.51) 99.99%, rgba(181, 62, 62, 0) 100%);
     border-radius: 15px;
     border: none;
     align-self: center;
