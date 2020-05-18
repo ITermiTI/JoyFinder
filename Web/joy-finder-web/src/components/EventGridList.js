@@ -9,6 +9,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import EventDetails from './EventDetails';
 import ButtonsStyle from '../styles/ButtonsStyle.css'
+import EventDetailsStyle from '../styles/EventDetailsStyle.css'
 
 import ButtonBase from '@material-ui/core/ButtonBase';
 
@@ -45,12 +46,17 @@ class EventGridList extends React.Component{
            render:compName
     });
     console.log(this.state.id)
+    console.log(this.state.render)
     }
 
      _renderSubComp(){
          if(this.state.id != null){
              return <EventDetails id={this.state.id}/>
          }
+     }
+
+     handleClickBack(compName){
+        this.setState({render: compName});
      }
 
      handleButtonClick = (e) => {
@@ -111,6 +117,7 @@ class EventGridList extends React.Component{
     render(){
         if(this.state.render=='list') return (
             <div>
+            <div className="home-page-title-text">Your Events!</div>
             <div className="component-background-events">
                 <div className="root" style={{width: 'auto', height: 'auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', overFlow: 'hidden'}}>
                     <GridList cellHeight={200} cols={4}  style={{width: 1000, height: 450}}>
@@ -136,8 +143,10 @@ class EventGridList extends React.Component{
         );
         if(this.state.render=='details') return(
             <div>
-                {this._renderSubComp()}
-            </div> 
+                <button className='back-button-e' onClick={this.handleClickBack.bind(this, 'list')}>Back</button>
+                <EventDetails id={this.state.id}/>
+            </div>
+            
         );
     }
     
