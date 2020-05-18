@@ -21,12 +21,12 @@ class EventGridList extends React.Component{
             events: [],
             id: null,
             render: 'list',
-            pastClicked: false,
-            weekClicked: true,
-            weekClicked: false
-           
+            pastBG: 'transparent',
+            weekBG: 'linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%)',
+            futureBG: 'transparent'
         };
     }
+
        componentDidMount() {
          axios.get(`${Const.API_URL}api/events/`  
              )
@@ -38,18 +38,45 @@ class EventGridList extends React.Component{
             })
           })
       }
-      handleClick(id, compName){
+
+    handleClick(id, compName){
        this.setState({
            id:id,
            render:compName
     });
     console.log(this.state.id)
     }
+
      _renderSubComp(){
          if(this.state.id != null){
              return <EventDetails id={this.state.id}/>
          }
      }
+
+     handleButtonClick = (e) => {
+         if(e.target.name == "past"){
+            this.setState({
+                pastBG: 'linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%)',
+                weekBG: 'transparent',
+                futureBG: 'transparent'
+            })
+         }
+         if(e.target.name == "week"){
+            this.setState({
+                pastBG: 'transparent',
+                weekBG: 'linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%)',
+                futureBG: 'transparent'
+            })
+         }
+         if(e.target.name == "future"){
+            this.setState({
+                pastBG: 'transparent',
+                weekBG: 'transparent',
+                futureBG: 'linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%)'
+            })
+         }
+     }
+
     render(){
         if(this.state.render=='list') return (
             <div>
@@ -71,9 +98,9 @@ class EventGridList extends React.Component{
                     
                 </div> 
             </div>  
-            <button className="past-button" >Past</button>
-            <button className="week-button">Week</button>
-            <button className="future-button">Future</button>
+            <button className="past-button" name="past" onClick={this.handleButtonClick.bind(this)} style={{background: this.state.pastBG}} >Past</button>
+            <button className="week-button" name="week" onClick={this.handleButtonClick.bind(this)} style={{background: this.state.weekBG}}>Week</button>
+            <button className="future-button" name="future" onClick={this.handleButtonClick.bind(this)} style={{background: this.state.futureBG}}>Future</button>
             </div>
         );
         if(this.state.render=='details') return(
