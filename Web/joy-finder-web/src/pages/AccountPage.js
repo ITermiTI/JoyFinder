@@ -54,6 +54,9 @@ class AccountPage extends React.Component{
                 console.log(res.data)
             })
 
+        this.props.updateState('name', this.state.name)
+        this.props.updateState('surname', this.state.surname)
+
         this.setState({render: 'view'});
     }
 
