@@ -28,7 +28,7 @@ class EventGridList extends React.Component{
     }
 
        componentDidMount() {
-         axios.get(`${Const.API_URL}api/events/`  
+         axios.get(`${Const.API_URL}api/events/sorted/created/ThisWeek/${sessionStorage.loggedID}`  
              )
            .then(res => {
               const events = res.data
@@ -60,6 +60,16 @@ class EventGridList extends React.Component{
                 weekBG: 'transparent',
                 futureBG: 'transparent'
             })
+
+            axios.get(`${Const.API_URL}api/events/sorted/created/Past/${sessionStorage.loggedID}`  
+            )
+          .then(res => {
+             const events = res.data
+             console.log(res.data)
+             this.setState({
+               events: events
+           })
+         })
          }
          if(e.target.name == "week"){
             this.setState({
@@ -67,6 +77,16 @@ class EventGridList extends React.Component{
                 weekBG: 'linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%)',
                 futureBG: 'transparent'
             })
+
+            axios.get(`${Const.API_URL}api/events/sorted/created/ThisWeek/${sessionStorage.loggedID}`  
+            )
+          .then(res => {
+             const events = res.data
+             console.log(res.data)
+             this.setState({
+               events: events
+           })
+         })
          }
          if(e.target.name == "future"){
             this.setState({
@@ -74,6 +94,17 @@ class EventGridList extends React.Component{
                 weekBG: 'transparent',
                 futureBG: 'linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%)'
             })
+
+            axios.get(`${Const.API_URL}api/events/sorted/created/ThisYear/${sessionStorage.loggedID}`  
+            )
+          .then(res => {
+             const events = res.data
+             console.log(res.data)
+             this.setState({
+               events: events
+           })
+         })
+
          }
      }
 
