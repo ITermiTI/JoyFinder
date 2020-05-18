@@ -82,6 +82,7 @@ class AccountPage extends React.Component{
             <div className="component-background">
             <div className="home-page-title-text">Edit your account</div>
             <button className="save-details-button" onClick={this.handleEditDetails.bind(this)}>Save</button>
+            <button className="cancel-edit-button" onClick={this.handleClick.bind(this, 'view')}>Cancel</button>
                 <EditAccountDetailsBox data={this.state} updateState={this.updateState}/>
             </div>
         );
@@ -89,6 +90,7 @@ class AccountPage extends React.Component{
             <div className="component-background">
             <div className="home-page-title-text">Change your password</div>
             <button className="submit-button" onClick={this.handleChangePassword.bind(this)}>Submit</button>
+            <button className="cancel-change-button" onClick={this.handleClick.bind(this, 'view')}>Cancel</button>
                 <ChangePasswordBox data={this.state} updateState={this.updateState}/>
             </div>
         );
