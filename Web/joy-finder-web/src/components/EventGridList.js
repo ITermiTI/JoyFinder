@@ -10,6 +10,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import EventDetails from './EventDetails';
 import ButtonsStyle from '../styles/ButtonsStyle.css'
 import EventDetailsStyle from '../styles/EventDetailsStyle.css'
+import EditEventDetails from './EditEventDetails'
 
 import ButtonBase from '@material-ui/core/ButtonBase';
 
@@ -58,6 +59,7 @@ class EventGridList extends React.Component{
      handleClickBack(compName){
         this.setState({render: compName});
      }
+     
 
      handleButtonClick = (e) => {
          if(e.target.name == "past"){
@@ -144,7 +146,15 @@ class EventGridList extends React.Component{
         if(this.state.render=='details') return(
             <div>
                 <button className='back-button-e' onClick={this.handleClickBack.bind(this, 'list')}>Back</button>
+                <button className='edit-details-button-e' onClick={this.handleClickBack.bind(this, 'editDetails')}>Edit</button>
                 <EventDetails id={this.state.id}/>
+            </div>
+            
+        );
+        if(this.state.render=='editDetails') return(
+            <div>
+                <button className='back-button-e' onClick={this.handleClickBack.bind(this, 'details')}>Back</button>
+                <EditEventDetails id={this.state.id}/>
             </div>
             
         );
