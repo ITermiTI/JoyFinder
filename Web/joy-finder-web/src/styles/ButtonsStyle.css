@@ -1,0 +1,59 @@
+.past-button{
+position: absolute;
+width: 86px;
+height: 29px;
+left: 39%;
+top: 8.5%;
+
+background: linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%);
+border-radius: 15px;
+border: none;
+align-self: center;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+line-height: 29px;
+color: #FFFFFF;
+}
+
+.week-button{
+    position: absolute;
+    width: 86px;
+    height: 29px;
+    left: 47%;
+    top: 8.5%;
+    
+    background: linear-gradient(180deg, rgba(140, 232, 160, 1.0) 99.99%, rgba(140, 232, 160, 1.0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    color: #FFFFFF;
+    }
+
+.future-button{
+    position: absolute;
+    width: 86px;
+    height: 29px;
+    left: 55%;
+    top: 8.5%;
+
+    background: linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%);
+    border-radius: 15px;
+    border: none;
+    align-self: center;
+        
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    color: #FFFFFF;
+}
