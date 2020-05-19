@@ -1,9 +1,9 @@
 .title-box{
     position: absolute;
-    width: 38%;
+    width: 30%;
     height: 5%;
-    left: 17%;
-    top: 13%;
+    left: 7%;
+    top: 12.5%;
 
     font-size: 30px;
 
@@ -18,10 +18,10 @@
 
 .date-box{
     position: absolute;
-    width: 38%;
+    width: 30%;
     height: 5%;
-    left: 17%;
-    top: 21%;
+    left: 7%;
+    top: 20.5%;
 
     font-size: 30px;
 
@@ -35,10 +35,10 @@
 }
 .time-box{
     position: absolute;
-    width: 38%;
+    width: 30%;
     height: 5%;
-    left: 17%;
-    top: 29%;
+    left: 7%;
+    top: 28.5%;
 
     font-size: 30px;
 
@@ -52,10 +52,10 @@
 }
 .type-box{
     position: absolute;
-    width: 38%;
+    width: 30%;
     height: 5%;
-    left: 17%;
-    top: 37%;
+    left: 7%;
+    top: 36.5%;
 
     font-size: 30px;
     
@@ -70,12 +70,12 @@
 
 .button{
 position: absolute;
-width: 15%;
+width: 14%;
 height: 7%;
-left: 14%;
-top: 45%;
+left: 23%;
+top: 68.5%;
 
-background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
+background: #3B7648;
 border-radius: 15px;
 border: none;
 align-self: center;
@@ -90,7 +90,7 @@ color: #FFFFFF;
 position: absolute;
 width: 40px;
     height: 40px;
-    left: 13%;
+    left: 3.5%;
     top: 13%;
     color: #9E9E9E;
 }
@@ -99,7 +99,7 @@ width: 40px;
     position: absolute;
     width: 40px;
         height: 40px;
-        left: 13%;
+        left: 3.5%;
         top: 21%;
         color: #9E9E9E;
     }
@@ -108,7 +108,7 @@ width: 40px;
 position: absolute;
 width: 40px;
 height: 40px;
-left: 13%;
+left: 3.5%;
 top: 29%;
 color: #9E9E9E;
 }
@@ -117,8 +117,8 @@ color: #9E9E9E;
 position: absolute;
 width: 40px;
 height: 40px;
-left: 57%;
-top: 13%;
+left: 3.5%;
+top: 45%;
 color: #9E9E9E;
 }
 
@@ -126,7 +126,7 @@ color: #9E9E9E;
     position: absolute;
     width: 40px;
     height: 40px;
-    left: 13%;
+    left: 3.5%;
     top: 37%;
     color: #9E9E9E;
     }
@@ -135,10 +135,10 @@ color: #9E9E9E;
 
     .location-box{
         position: absolute;
-        width: 38%;
+        width: 30%;
         height: 5%;
-        left: 60%;
-        top: 13%;
+        left: 7%;
+        top: 44.5%;
     
         font-size: 30px;
     
@@ -152,10 +152,10 @@ color: #9E9E9E;
     }
     .st-box{
         position: absolute;
-        width: 38%;
-    height: 5%;
-        left: 60%;
-        top: 21%;
+        width: 30%;
+        height: 5%;
+        left: 7%;
+        top: 52.5%;
     
         font-size: 30px;
     
@@ -169,10 +169,10 @@ color: #9E9E9E;
     }
     .stnum-box{
         position: absolute;
-        width: 38%;
-    height: 5%;
-        left: 60%;
-        top: 28%;
+        width: 30%;
+        height: 5%;
+        left: 7%;
+        top: 60.5%;
     
         font-size: 30px;
     
@@ -187,10 +187,10 @@ color: #9E9E9E;
 
     .search-button{
         position: absolute;
-    width: 15%;
+    width: 14%;
     height: 7%;
-    left: 60%;
-    top: 45%;
+    left: 7%;
+    top: 68.5%;
 
     background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
     border-radius: 15px;
@@ -204,10 +204,10 @@ color: #9E9E9E;
     }
     .longtitude-box{
         position: absolute;
-        width: 17%;
+        width: 21%;
         height: 5%;
-        left: 60%;
-        top: 35%;
+        left: 47%;
+        top: 69.5%;
     
         font-size: 30px;
     
@@ -221,10 +221,10 @@ color: #9E9E9E;
 
     .lengthitude-box{
         position: absolute;
-        width: 17%;
+        width: 21%;
         height: 5%;
-        left: 81%;
-        top: 35%;
+        left: 71%;
+        top: 69.5%;
     
         font-size: 30px;
     
@@ -252,4 +252,15 @@ color: #9E9E9E;
         color: #FFFFFF;
     }
 
-
+    .map-add{
+        background-color: transparent;
+        position: absolute;
+        width: 45.0%;
+        height: 52.50%;
+        left: 47.0%;
+        top: 12.0%;
+        
+        border: 5px solid #1D5E9F;
+        box-sizing: border-box;
+    
+    }

@@ -120,7 +120,8 @@ class AddEvent extends React.Component{
                 <div className="home-page-title-text">Create your own event!</div>
                 <button className="button" type="submit" onClick={this.handleClick.bind(this)}>Add</button>
                 <AddEventBox data={this.state} updateState={this.updateState}/>
-                <SearchLocationBox className="search-loc-box" data={this.state} updateState={this.updateState}/>
+                <SearchLocationBox className="map-add" data={this.state} updateState={this.updateState}/>
+                <div className="map-add">
                 {
                     this.state.showMap && <MapWrapAdd
                     zoom={17}
@@ -131,16 +132,16 @@ class AddEvent extends React.Component{
                     onInfoClose={this.onInfoClose}
                     update={this.state.update}
                     coordinates={[this.state.location.lat, this.state.location.lng]}
-                    googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places
-                    }`}
-                    loadingElement={<div style={{ top: `55.87%`,left: `11.11%`, width: `82.5%`,height:`53.52%`  }} />}
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places}`}
+                    loadingElement={<div style={{ top: `0%`,left: `0%`, width: `100%`,height:`100%`  }} />}
                     containerElement={<div style={{  width: `100%`,height:`100%` }} />}
-                    mapElement={<div style={{ top: `55.87%`,left: `11.11%`, width: `82.5%`,height:`53.52%`  }} />}
+                    mapElement={<div style={{ top: `0%`,left: `0%`, width: `100%`,height:`100%`  }} />}
                     />
                 }
                 {
                     this.state.showNotFound && <div className="address-not-found">Sorry! Address not found</div>
                 }
+                </div>
             </div>   
             
         );
