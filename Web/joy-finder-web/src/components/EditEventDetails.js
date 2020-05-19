@@ -95,7 +95,7 @@ componentDidMount() {
       street: street,
       stnumber: parseInt(stnumber),
       location: location,
-      creatorId: parseInt(creatorid)
+      creatorid: parseInt(creatorid)
 
 
   });
