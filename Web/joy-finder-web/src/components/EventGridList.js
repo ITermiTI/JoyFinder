@@ -74,7 +74,7 @@ class EventGridList extends React.Component{
         );
         if(this.state.render=='editDetails') return(
             <div>
-                <button className='back-button-e' onClick={this.handleClickBack.bind(this, 'details')}>Back</button>
+                <button className='back-button-edit' onClick={this.handleClickBack.bind(this, 'details')}>Back</button>
                 <EditEventDetails id={this.state.id}/>
             </div>
             
