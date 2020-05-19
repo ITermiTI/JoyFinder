@@ -30,8 +30,10 @@ class EditEventDetails extends React.Component{
               stnumber: '',
               city: '',
               type: '',
-              creatorid: '',
               login: '',
+              location: '',
+              usersByCreatorid:'',
+              creatorid: '',
             
               
     }
@@ -42,6 +44,7 @@ componentDidMount() {
         )
       .then(res => {
         let event = res.data;
+        this.setState({id: event.id})
         this.setState({name: event.name})
         this.setState({date: event.date})
         this.setState({time: event.time})
@@ -50,9 +53,13 @@ componentDidMount() {
         this.setState({city: event.city})
         this.setState({type: event.type})
         this.setState({location: event.location})
+        this.setState({creatorid: event.usersByCreatorid.id})
+        this.setState({usersByCreatorid: event.usersByCreatorid})
+        console.log(event)
         
         
       })
+      
       
   }
   // handleChange(){
@@ -76,17 +83,38 @@ componentDidMount() {
         
     });
 }
-  async edit(name, date, time, type){
-    await axios.put(`${Const.API_URL}api/events/updateEvent/${this.props.id}`,{
+  async edit(name, date, time, type, location, city, stnumber, street, creatorid, id){
+    console.log(creatorid)
+    await axios.put(`${Const.API_URL}api/events/updateEvent`,{
+      id: id,
       name: name,
       date: date,
       time: time,
       type: type,
+      city: city,
+      street: street,
+      stnumber: stnumber,
+      location: location,
+      creatorId: creatorid
+
+
   });
   }
   handleSubmit =  (e) => {
     e.preventDefault();
-    this.edit(this.state.name, this.state.date, this.state.time, this.state.type).then((res)=>
+    console.log(this.state.id)
+    console.log(this.state.name)
+    console.log(this.state.date)
+    console.log(this.state.type)
+    console.log(this.state.time)
+    console.log(this.state.location)
+    console.log(this.state.city)
+    console.log(this.state.stnumber)
+    console.log(this.state.street)
+    console.log(this.state.usersByCreatorid.id)
+    console.log(this.state.creatorid)
+
+    this.edit(this.state.name, this.state.date, this.state.time, this.state.type, this.state.location, this.state.city, this.state.stnumber, this.state.street, this.state.usersByCreatorid.id, this.state.id).then((res)=>
     {
         this.setState({
         })
