@@ -64,7 +64,8 @@ class Navigation extends React.Component{
             var nextOption;
             switch(this.state.searchOption){
                 case 'city': nextOption='type';break;
-                case 'type': nextOption='city';break;
+                case 'type': nextOption='all';break;
+                case 'all': nextOption='city';break;
             }
             console.log(this.state.searchOption)
             this.setState({

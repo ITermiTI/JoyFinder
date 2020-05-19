@@ -12,6 +12,7 @@ class SearchPage extends React.Component{
             showNotFound: false
         }
 
+        this.updateState = this.updateState
     }
 
 
@@ -22,7 +23,7 @@ class SearchPage extends React.Component{
                   this.setState({showNotFound: true, events: null})
                 }
                 else{
-                  this.setState({events: res, showNotFound: false});
+                  this.setState({events: res.data, showNotFound: false});
                 }
             });break;
             case 'type': SortEventsService.searchByType(this.props.data.searchString,'ThisWeek').then( (res) =>{
@@ -30,18 +31,29 @@ class SearchPage extends React.Component{
                   this.setState({showNotFound: true, events: null})
                 }
                 else{
-                  this.setState({events: res, showNotFound: false});
+                  this.setState({events: res.data, showNotFound: false});
                 }
             });break;
+            case 'all': SortEventsService.searchAll().then((res) => {
+                if(res === null) {
+                    this.setState({showNotFound: true, events: null})
+                  }
+                  else{
+                    this.setState({events: res.data, showNotFound: false});
+                  }
+            })
         }
+    }
+    updateState = (name, value) => {
+        this.setState({[name]: value})
     }
     render(){
         return (
             <div className="component-background">
-                <div className="home-page-title-text">Your Events!</div>
+                <div className="home-page-title-text">Found events!</div>
                 <div>
                         <EventGridList data={this.state}/>
-                        <Buttons date={this.state} updateState={this.updateState} type="searched"/>
+                        <Buttons date={this.state} updateState={this.updateState} type="searched" searchOption={this.props.data.searchOption} searchString={this.props.data.searchString}/>
                 </div>
             </div>   
             

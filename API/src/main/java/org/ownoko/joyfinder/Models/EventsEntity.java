@@ -1,5 +1,6 @@
 package org.ownoko.joyfinder.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -16,7 +17,9 @@ public class EventsEntity {
     private int id;
     private String name;
     private String type;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
+    @JsonFormat(pattern="HH:mm")
     private LocalTime time;
     private String city;
     private String location;

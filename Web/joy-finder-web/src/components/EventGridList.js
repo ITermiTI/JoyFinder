@@ -49,7 +49,7 @@ class EventGridList extends React.Component{
             <div className="component-background-events">
                 <div className="root" style={{width: 'auto', height: 'auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', overFlow: 'hidden'}}>
                     <GridList cellHeight={200} cols={4}  style={{width: 1000, height: 450}}>
-                    {this.props.data.events.map(tile => (
+                    {this.props.data.events && this.props.data.events.map(tile => (
                         <GridListTile key={tile.id}>
                             <ButtonBase onClick={this.handleClick.bind(this, tile.id, 'details')}>
                                 <img style={{display: 'block', maxWidth: '100%', maxHeight: '100%'}} alt="complex" src="https://kom.krakow.pl/wp-content/uploads/2019/04/9140351-pilka-nozna-900-554.jpg" />

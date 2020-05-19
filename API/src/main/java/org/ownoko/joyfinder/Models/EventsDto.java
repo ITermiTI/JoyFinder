@@ -12,7 +12,7 @@ public class EventsDto {
     private String type;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
-    @JsonFormat(pattern="HH:MM")
+    @JsonFormat(pattern="HH:mm")
     private LocalTime time;
     private String city;
     private String location;

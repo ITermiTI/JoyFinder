@@ -86,16 +86,16 @@ componentDidMount() {
   async edit(name, date, time, type, location, city, stnumber, street, creatorid, id){
     console.log(creatorid)
     await axios.put(`${Const.API_URL}api/events/updateEvent`,{
-      id: id,
+      id: parseInt(id),
       name: name,
       date: date,
       time: time,
       type: type,
       city: city,
       street: street,
-      stnumber: stnumber,
+      stnumber: parseInt(stnumber),
       location: location,
-      creatorId: creatorid
+      creatorId: parseInt(creatorid)
 
 
   });

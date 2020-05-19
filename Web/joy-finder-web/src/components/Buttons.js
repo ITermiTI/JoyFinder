@@ -46,12 +46,23 @@ handleButtonClick = (e) => {
             this.props.updateState('events', events)
         })
         else if(this.props.type == "searched"){
-            if(this.props.searchString == 'city')SortEventsService.searchByCity(this.props.data.searchString,'ThisYear').then( (res) =>{                
+             
+            console.log(this.props.searchString) 
+            if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'Past').then( (res) =>{                
                 let events
-                    if(res.data.error == "No event found")
+                if(res == null)
                     events = '';
                 else
-                    events = res;            
+                    events = res.data;  
+                    this.props.updateState('events', events)        
+        })
+        if(this.props.searchOption == 'type')SortEventsService.searchByType(this.props.searchString,'Past').then( (res) =>{                
+            let events
+            if(res == null)
+                events = '';
+            else
+                events = res.data;    
+                this.props.updateState('events', events)        
         })}
     }
 
@@ -84,12 +95,21 @@ handleButtonClick = (e) => {
             this.props.updateState('events', events)
         })
         else if(this.props.type == "searched"){
-            if(this.props.searchString == 'city')SortEventsService.searchByCity(this.props.data.searchString,'ThisYear').then( (res) =>{                
+            if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'ThisWeek').then( (res) =>{                
                 let events
-                    if(res.data.error == "No event found")
+                    if(res == null)
                     events = '';
                 else
-                    events = res;             
+                    events = res.data;     
+                    this.props.updateState('events', events)        
+        })
+        if(this.props.searchOption == 'type')SortEventsService.searchByType(this.props.searchString,'ThisWeek').then( (res) =>{                
+            let events
+                if(res == null)
+                events = '';
+            else
+                events = res.data;  
+                this.props.updateState('events', events)          
         })}
         }
 
@@ -123,12 +143,21 @@ handleButtonClick = (e) => {
             this.props.updateState('events', events)
         })
         else if(this.props.type == "searched"){
-            if(this.props.searchString == 'city')SortEventsService.searchByCity(this.props.data.searchString,'ThisYear').then( (res) =>{                
+            if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'ThisYear').then( (res) =>{                
             let events
-                if(res.data.error == "No event found")
+            if(res == null)
                 events = '';
             else
-                events = res;            
+                events = res.data;   
+                this.props.updateState('events', events)         
+        })
+        if(this.props.searchOption == 'type')SortEventsService.searchByType(this.props.searchString,'ThisYear').then( (res) =>{                
+            let events
+            if(res == null)
+                events = '';
+            else
+                events = res.data;   
+                this.props.updateState('events', events)         
         })}
         }
     
