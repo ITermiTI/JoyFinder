@@ -27,18 +27,18 @@ class Buttons extends React.Component{
            )
          .then(res => {
              let events
-            if(res.data.error == "Not found")
+            if(res.data.error == "No event found")
                 events = '';
             else
                 events = res.data
             this.props.updateState('events', events)
         })
             else if(this.props.type == "attended")
-            axios.get(`${Const.API_URL}api/events/attended/Past/${sessionStorage.loggedID}`  
+            axios.get(`${Const.API_URL}api/events/sorted/attended/Past/${sessionStorage.loggedID}`  
            )
          .then(res => {
             let events
-            if(res.data.error == "Not found")
+            if(res.data.error == "No event found")
                 events = '';
             else
                 events = res.data
@@ -58,7 +58,7 @@ class Buttons extends React.Component{
            )
          .then(res => {
             let events
-            if(res.data.error == "Not found")
+            if(res.data.error == "No event found")
                 events = '';
             else
                 events = res.data
@@ -69,7 +69,7 @@ class Buttons extends React.Component{
            )
          .then(res => {
             let events
-            if(res.data.error == "Not found")
+            if(res.data.error == "No event found")
                 events = '';
             else
                 events = res.data
@@ -90,7 +90,7 @@ class Buttons extends React.Component{
            )
          .then(res => {
             let events
-            if(res.data.error == "Not found")
+            if(res.data.error == "No event found")
                 events = '';
             else
                 events = res.data
@@ -101,7 +101,7 @@ class Buttons extends React.Component{
            )
          .then(res => {
             let events
-            if(res.data.error == "Not found")
+            if(res.data.error == "No event found")
                 events = '';
             else
                 events = res.data
