@@ -2,7 +2,6 @@ import React from 'react';
 import { MdToday, MdQueryBuilder, MdLocationOn, MdAccessibility,  MdPerson} from "react-icons/md";
 import axios from 'axios'
 import * as Const from '../static/const';
-import AddMap from '../pages/AddEvent'
 import EventDetailsStyle from '../styles/EventDetailsStyle.css';
 import InCityMap from './InCityMap'
 import {
@@ -12,15 +11,44 @@ import {
   Marker,
   InfoWindow
 } from "react-google-maps";
-import MapWrap from '../components/InCityMap'
 import SearchLocationBox from '../components/SearchLocationBox';
 
+class EventDetailsMap extends React.Component{
 
+  shouldComponentUpdate(nextProps,nextState){
+    return false;
+  }
+  render(){
+    console.log(this.props)
+    return (
+      <GoogleMap defaultZoom={this.props.zoom} center={{ lat: parseFloat(this.props.coordinates[0]), lng: parseFloat(this.props.coordinates[1])}}>
+       {this.props.markers!=null && this.props.markers.map(marker => {
+          return (
+              <Marker
+              key={marker.id}
+              position={{ lat: parseFloat(marker.location.split(",")[0]),
+               lng: parseFloat(marker.location.split(",")[1]) }}
+            >
+              {this.props.selectedMarker === marker &&
+                <InfoWindow>
+                  <div>
+                    <h2>{marker.name}</h2>                     
+                  <p><b>{marker.date} </b>          {marker.time}</p>
+                  </div>
+                </InfoWindow>}
+              }
+            </Marker>
+            
+          )
+        })
+        }
+      </GoogleMap> 
+    
 
+  )
+}}
 
-
-const MapWrapAdd = withScriptjs(withGoogleMap(AddMap));
-
+const MapWrapAdd = withScriptjs(withGoogleMap(EventDetailsMap));
 
 class EventDetails extends React.Component{
     constructor(){
@@ -36,8 +64,7 @@ class EventDetails extends React.Component{
             type: '',
             creatorid: '',
             login: '',
-
-            
+            showMap: false
 
     }
 }
@@ -46,16 +73,16 @@ componentDidMount() {
         )
       .then(res => {
         let event = res.data;
-        this.setState({name: event.name})
-        this.setState({date: event.date})
-        this.setState({time: event.time})
-        this.setState({street: event.street})
-        this.setState({stnumber: event.stnumber})
-        this.setState({city: event.city})
-        this.setState({type: event.type})
-        this.setState({location: event.location})
-        
-        
+        this.setState({name: event.name,
+        date: event.date,
+        time: event.time,
+        street: event.street,
+        stnumber: event.stnumber,
+        city: event.city,
+        type: event.type,
+        location: event.location,
+      showMap: true})
+          
       })
       
   }
@@ -89,7 +116,6 @@ handleDeleteEvent(){
       })
 
   }
-
   
 
   render(){
@@ -106,8 +132,24 @@ handleDeleteEvent(){
                 <div className='event-location-e'>{this.state.street} {this.state.stnumber} {this.state.city}</div>
                 <div className='event-type-e'>{this.state.type}</div>
                 <button className='cancel-button-e' onClick={this.handleDeleteEvent.bind(this)}>Cancel</button>
-                <div className='map-e'></div>
-        </div>
+                <div className='map-e'>
+                {
+                  (this.state.showMap && this.state.location !== "0") && <MapWrapAdd
+                    zoom={17}
+                    markers={[{id: 999999, location: `${this.state.location}`,
+                     name: this.state.name, date: this.state.date, time: this.state.time}]}
+                    selectedMarker={[{id: 999999, location: `${this.state.location}`,
+                    name: this.state.name, date: this.state.date, time: this.state.time}]}
+                    coordinates={[this.state.location.split(",")[0], this.state.location.split(",")[1].split(" ")[1] ]}
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places
+                    }`}
+                    loadingElement={<div style={{ top: `0%`,left: `0%`, width: `100%`,height:`100%`  }} />}
+                    containerElement={<div style={{  width: `100%`,height:`100%` }} />}
+                    mapElement={<div style={{ top: `0%`,left: `0%`, width: `100%`,height:`100%`  }} />}
+                    />
+                }
+            </div>   
+                </div>
 
     );
   }
