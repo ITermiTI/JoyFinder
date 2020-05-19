@@ -3,6 +3,8 @@ import axios from 'axios'
 import ButtonsStyle from '../styles/ButtonsStyle.css'
 import * as Const from '../static/const';
 
+import SortEventsService from '../services/SortEventsService'
+
 class Buttons extends React.Component{
 
     constructor(props){
@@ -13,8 +15,7 @@ class Buttons extends React.Component{
             futureBG: 'transparent'
         };
     }
-
-    handleButtonClick = (e) => {
+handleButtonClick = (e) => {
         if(e.target.name == "past"){
            this.setState({
                pastBG: 'linear-gradient(180deg, rgba(140, 232, 162, 1.0) 99.99%, rgba(140, 232, 162, 1.0) 100%)',
@@ -44,8 +45,26 @@ class Buttons extends React.Component{
                 events = res.data
             this.props.updateState('events', events)
         })
-
-        }
+        else if(this.props.type == "searched"){
+             
+            console.log(this.props.searchString) 
+            if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'Past').then( (res) =>{                
+                let events
+                if(res == null)
+                    events = '';
+                else
+                    events = res.data;  
+                    this.props.updateState('events', events)        
+        })
+        if(this.props.searchOption == 'type')SortEventsService.searchByType(this.props.searchString,'Past').then( (res) =>{                
+            let events
+            if(res == null)
+                events = '';
+            else
+                events = res.data;    
+                this.props.updateState('events', events)        
+        })}
+    }
 
         if(e.target.name == "week"){
            this.setState({
@@ -75,7 +94,23 @@ class Buttons extends React.Component{
                 events = res.data
             this.props.updateState('events', events)
         })
-
+        else if(this.props.type == "searched"){
+            if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'ThisWeek').then( (res) =>{                
+                let events
+                    if(res == null)
+                    events = '';
+                else
+                    events = res.data;     
+                    this.props.updateState('events', events)        
+        })
+        if(this.props.searchOption == 'type')SortEventsService.searchByType(this.props.searchString,'ThisWeek').then( (res) =>{                
+            let events
+                if(res == null)
+                events = '';
+            else
+                events = res.data;  
+                this.props.updateState('events', events)          
+        })}
         }
 
         if(e.target.name == "future"){
@@ -107,9 +142,26 @@ class Buttons extends React.Component{
                 events = res.data
             this.props.updateState('events', events)
         })
-
+        else if(this.props.type == "searched"){
+            if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'ThisYear').then( (res) =>{                
+            let events
+            if(res == null)
+                events = '';
+            else
+                events = res.data;   
+                this.props.updateState('events', events)         
+        })
+        if(this.props.searchOption == 'type')SortEventsService.searchByType(this.props.searchString,'ThisYear').then( (res) =>{                
+            let events
+            if(res == null)
+                events = '';
+            else
+                events = res.data;   
+                this.props.updateState('events', events)         
+        })}
         }
-    }
+    
+}
 
     render(){
         return(

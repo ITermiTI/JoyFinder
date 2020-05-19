@@ -34,7 +34,7 @@ class YourEvents extends React.Component{
     render(){
         return (
             <div className="component-background">
-                <div className="home-page-title-text">Your Events!</div>
+                
                 <div>
                         <EventGridList data={this.state}/>
                         <Buttons date={this.state} updateState={this.updateState} type="created"/>
