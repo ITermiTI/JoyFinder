@@ -129,11 +129,27 @@
     border: none;
 
 }
+.search-option-text{
+    position: absolute;
+    width: auto;
+    height: auto;
+    left: 27%;
+    top: 3%;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 29px;
+
+    color: #9E9E9E;
+    background-color: #1F1F23;
+    border: none;
+}
 .search-method-icon{
     position: absolute;
     width: 3.47%;
     height: 5.88%;
-    left: 30.41%;
+    left: 45.41%;
     top: 1.47%;
     background: #1F1F23;
     border: none;
