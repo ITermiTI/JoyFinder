@@ -19,8 +19,9 @@ import { MdTitle, MdToday, MdQueryBuilder, MdLocationOn, MdAccessibility } from 
 class EditEventDetails extends React.Component{
     constructor(){
         super();
+
         this.state = {
-            values: {
+            
               id: '',
               name:'',
               date: '',
@@ -33,9 +34,6 @@ class EditEventDetails extends React.Component{
               login: '',
             
               
-
-          },
-          registerSuccessful: false,
     }
     this.handleChange = this.handleChange.bind(this)
 }
@@ -44,7 +42,6 @@ componentDidMount() {
         )
       .then(res => {
         let event = res.data;
-        this.setState({id: event.id})
         this.setState({name: event.name})
         this.setState({date: event.date})
         this.setState({time: event.time})
@@ -75,9 +72,8 @@ componentDidMount() {
   // }
   handleChange = (e) => {
     this.setState({
-        values: {
-            ...this.state.values, [e.target.name]: e.target.value
-        }
+            ...this.state, [e.target.name]: e.target.value
+        
     });
 }
   async edit(name, date, time, type){
@@ -90,15 +86,13 @@ componentDidMount() {
   }
   handleSubmit =  (e) => {
     e.preventDefault();
-    this.edit(this.state.values.name, this.state.values.date, this.state.values.time, this.state.values.type).then((res)=>
+    this.edit(this.state.name, this.state.date, this.state.time, this.state.type).then((res)=>
     {
         this.setState({
-            registerSuccessful: true,
         })
     })
     .catch(() => {
         this.setState({
-          registerSuccessful: false,
         })
     });
 
