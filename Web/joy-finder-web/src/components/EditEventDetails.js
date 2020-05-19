@@ -19,8 +19,9 @@ import { MdTitle, MdToday, MdQueryBuilder, MdLocationOn, MdAccessibility } from 
 class EditEventDetails extends React.Component{
     constructor(){
         super();
+
         this.state = {
-            values: {
+            
               id: '',
               name:'',
               date: '',
@@ -29,13 +30,12 @@ class EditEventDetails extends React.Component{
               stnumber: '',
               city: '',
               type: '',
-              creatorid: '',
               login: '',
+              location: '',
+              usersByCreatorid:'',
+              creatorid: '',
             
               
-
-          },
-          registerSuccessful: false,
     }
     this.handleChange = this.handleChange.bind(this)
 }
@@ -53,9 +53,13 @@ componentDidMount() {
         this.setState({city: event.city})
         this.setState({type: event.type})
         this.setState({location: event.location})
+        this.setState({creatorid: event.usersByCreatorid.id})
+        this.setState({usersByCreatorid: event.usersByCreatorid})
+        console.log(event)
         
         
       })
+      
       
   }
   // handleChange(){
@@ -75,30 +79,48 @@ componentDidMount() {
   // }
   handleChange = (e) => {
     this.setState({
-        values: {
-            ...this.state.values, [e.target.name]: e.target.value
-        }
+            ...this.state, [e.target.name]: e.target.value
+        
     });
 }
-  async edit(name, date, time, type){
-    await axios.put(`${Const.API_URL}api/events/updateEvent/${this.props.id}`,{
+  async edit(name, date, time, type, location, city, stnumber, street, creatorid, id){
+    console.log(creatorid)
+    await axios.put(`${Const.API_URL}api/events/updateEvent`,{
+      id: id,
       name: name,
       date: date,
       time: time,
       type: type,
+      city: city,
+      street: street,
+      stnumber: stnumber,
+      location: location,
+      creatorId: creatorid
+
+
   });
   }
   handleSubmit =  (e) => {
     e.preventDefault();
-    this.edit(this.state.values.name, this.state.values.date, this.state.values.time, this.state.values.type).then((res)=>
+    console.log(this.state.id)
+    console.log(this.state.name)
+    console.log(this.state.date)
+    console.log(this.state.type)
+    console.log(this.state.time)
+    console.log(this.state.location)
+    console.log(this.state.city)
+    console.log(this.state.stnumber)
+    console.log(this.state.street)
+    console.log(this.state.usersByCreatorid.id)
+    console.log(this.state.creatorid)
+
+    this.edit(this.state.name, this.state.date, this.state.time, this.state.type, this.state.location, this.state.city, this.state.stnumber, this.state.street, this.state.usersByCreatorid.id, this.state.id).then((res)=>
     {
         this.setState({
-            registerSuccessful: true,
         })
     })
     .catch(() => {
         this.setState({
-          registerSuccessful: false,
         })
     });
 
