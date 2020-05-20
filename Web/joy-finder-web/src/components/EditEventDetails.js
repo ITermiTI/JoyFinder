@@ -186,7 +186,8 @@ class EditEventDetails extends React.Component{
         location: {lat: '', lng: ''},
         showMap: false,
         showNotFound: false,
-        update: false
+        update: false,
+        eventGot: false
     }
     this.updateState = this.updateState
 }
@@ -203,8 +204,8 @@ componentDidMount() {
       this.setState({stNum: event.stnumber})
       this.setState({city: event.city})
       this.setState({type: event.type})
-      this.setState({location: event.location})
-      this.setState({creatorid: event.usersByCreatorid.id})
+      this.setState({location: {lat: event.location.split(",")[0], lng: event.location.split(",")[1]}})
+      this.setState({creatorid: event.usersByCreatorid.id, eventGot:true})
       console.log(event)
       
       
@@ -250,7 +251,7 @@ render(){
             <div className="home-page-title-text">Edit your event!</div>
             <button className="button" type="submit" onClick={this.handleClick.bind(this)}>Submit</button>
             <AddEventBox data={this.state} updateState={this.updateState}/>
-            <SearchLocationBox className="map-add" data={this.state} updateState={this.updateState}/>
+            {this.state.eventGot && <SearchLocationBox className="map-add" data={this.state} updateState={this.updateState}/>}
             <div className="map-add">
             {
                 this.state.showMap && <MapWrapAdd

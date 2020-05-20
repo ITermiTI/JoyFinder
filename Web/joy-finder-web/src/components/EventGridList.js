@@ -24,7 +24,6 @@ class EventGridList extends React.Component{
             creatorid: '',
             checkparticipation: null,
             members: [],
-            isMember: false,
         };
     }
 
@@ -34,30 +33,30 @@ class EventGridList extends React.Component{
             render:compName
         });
         ///api/members/checkIfUserParticipate/userid/eventid
+        axios.get(`${Const.API_URL}api/members/checkIfUserParticipate/${sessionStorage.loggedID}/${id}`).then(res => {
+            if(parseInt(creatorid)==parseInt(sessionStorage.loggedID)){
+                this.setState({
+                    checkparticipation: 1
+                });
+                
+            }
+            if(parseInt(creatorid)!=parseInt(sessionStorage.loggedID)){
+                if(res.data==true){
+                    this.setState({
+                        checkparticipation: 0
+                    });
+                }
+                if(res.data==false){
+                    this.setState({
+                        checkparticipation: 2
+                    });
+                }
+                
+            }
+                   
+        })
         
-        this.checkMembers(id)
-
-        console.log(sessionStorage.loggedID)
-        if(parseInt(creatorid)==parseInt(sessionStorage.loggedID)){
-            this.setState({
-                checkparticipation: 1
-            });
-            console.log(this.state.checkparticipation)
-        }
-        if(parseInt(creatorid)!=parseInt(sessionStorage.loggedID)){
-            console.log(this.state.isMember)
-            if(this.state.isMember==true){
-                this.setState({
-                    checkparticipation: 0
-                });
-            }
-            if(this.state.isMember==false){
-                this.setState({
-                    checkparticipation: 2
-                });
-            }
-            
-        }
+        
     }
 
 
@@ -108,20 +107,8 @@ class EventGridList extends React.Component{
      handleClickNavigate(compName){
         this.setState({render: compName});
      }
-     componentDidUpdate(){
-         console.log(this.state.isMember)
-     }
 
-     async checkMembers(id){
-        await axios.get(`${Const.API_URL}api/members/checkIfUserParticipate/${sessionStorage.loggedID}/${id}`).then(res => {
-            let isMember = res.data
-            console.log(res.data)
-            this.setState({
-               isMember: isMember
-               })
-               
-           })
-     }
+     
      handleDeleteEvent(){
         axios.delete(`${Const.API_URL}api/events/delete/${this.props.id}`)
           .then(res => {
@@ -192,6 +179,7 @@ class EventGridList extends React.Component{
             </div>
             
         );
+        if(this.state.render=='details'&& this.state.checkparticipation==null) return <div></div>
     }
     
 }
