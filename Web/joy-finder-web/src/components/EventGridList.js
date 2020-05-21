@@ -117,7 +117,20 @@ class EventGridList extends React.Component{
           })
     
       }
-     
+    
+      handleTakePart(){
+        console.log(this.state.id)
+        console.log(sessionStorage.loggedID)
+        axios.post(`${Const.API_URL}api/members`, {
+            eventid: this.state.id,
+            userid: sessionStorage.loggedID
+        }).then(
+            res => {
+                console.log(res.data)
+            })
+
+        this.setState({render: 'list'});
+    }
 
    
     render(){
@@ -166,8 +179,9 @@ class EventGridList extends React.Component{
         if(this.state.render=='details'&& this.state.checkparticipation==2) return(
             <div>
                 <EventDetails id={this.state.id}/> 
+                {console.log(this.state.id)}
                 <button className='back-button-e' onClick={this.handleClickNavigate.bind(this, 'list')}>Back</button>
-                <button className='edit-details-button-e' onClick={this.handleClickNavigate.bind(this, 'editDetails')}>Take part</button>
+                <button className='edit-details-button-e' onClick={this.handleTakePart.bind(this)}>Take part</button>
                
             </div>
             
