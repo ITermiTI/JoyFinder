@@ -12,6 +12,8 @@ import {
   InfoWindow
 } from "react-google-maps";
 import SearchLocationBox from '../components/SearchLocationBox';
+import YourEvents from '../pages/YourEvents';
+import EditEventDetails from './EditEventDetails';
 
 class EventDetailsMap extends React.Component{
 
@@ -55,6 +57,7 @@ class EventDetails extends React.Component{
         super();
         this.state = {
             id: '',
+            participation: '',
             name:'',
             date: '',
             time: '',
@@ -64,7 +67,8 @@ class EventDetails extends React.Component{
             type: '',
             creatorid: '',
             login: '',
-            showMap: false
+            showMap: false,
+            render: 'detailsYour',
 
     }
 }
@@ -73,7 +77,8 @@ componentDidMount() {
         )
       .then(res => {
         let event = res.data;
-        this.setState({name: event.name,
+        this.setState({
+        name: event.name,
         date: event.date,
         time: event.time,
         street: event.street,
@@ -81,19 +86,15 @@ componentDidMount() {
         city: event.city,
         type: event.type,
         location: event.location,
-      showMap: true})
+        creatorid: event.usersByCreatorid.id,
+        showMap: true
+      })
           
       })
       
   }
 
-  _renderSubComp(){
-    axios.get(`${Const.API_URL}api/user/${this.state.creatorid}`).then(res => {
-        let event = res.data;
-        this.setState({login: event.login})
-        console.log(event.name)
-      })
-}
+
 
 updateState = (name, value) => {
   this.setState({[name]: value})
@@ -108,7 +109,7 @@ updateState = (name, value) => {
 //         console.log(event.name)
 //       })
 //   }
-handleDeleteEvent(){
+  handleDeleteEvent(){
     axios.delete(`${Const.API_URL}api/events/delete/${this.props.id}`)
       .then(res => {
         console.log(res);
@@ -116,10 +117,105 @@ handleDeleteEvent(){
       })
 
   }
+  handleClick(compName){
+    this.setState({render: compName});
+ }
   
 
   render(){
+  /*
+    if(this.state.creatorid!=''){
+      console.log(this.state.creatorid)
+      console.log(sessionStorage.loggedID)
+      if(parseInt(this.state.creatorid)==parseInt(sessionStorage.loggedID)){
+        if(this.state.render=='detailsYour') return(
+          <div>
+          <div className='date-icon-e'><MdToday size='10rems'/></div>
+          <div className='time-icon-e'><MdQueryBuilder size='10rems'/></div>
+          <div className='location-icon-e'><MdLocationOn size='10rems'/></div>
+          <div className='type-icon-e'><MdAccessibility size='10rems'/></div>
+          
+          <div className='event-name-e'>{this.state.name}</div>
+          <div className='event-date-e'>{this.state.date}</div>
+          <div className='event-time-e'>{this.state.time}</div>
+          <div className='event-location-e'>{this.state.street} {this.state.stnumber} {this.state.city}</div>
+          <div className='event-type-e'>{this.state.type}</div>
+          <button className='cancel-button-e' onClick={this.handleDeleteEvent.bind(this)}>Cancel</button>
+          <button className='back-button-e' onClick={this.handleClick.bind(this, 'listYour')}>Back</button>
+          <button className='edit-details-button-e' onClick={this.handleClick.bind(this, 'editDetails')}>Edit</button>
+          <div className='map-e'>
+          {
+            (this.state.showMap && this.state.location !== "0") && <MapWrapAdd
+              zoom={17}
+              markers={[{id: 999999, location: `${this.state.location}`,
+               name: this.state.name, date: this.state.date, time: this.state.time}]}
+              selectedMarker={[{id: 999999, location: `${this.state.location}`,
+              name: this.state.name, date: this.state.date, time: this.state.time}]}
+              coordinates={[this.state.location.split(",")[0], this.state.location.split(",")[1].split(" ")[1] ]}
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places
+              }`}
+              loadingElement={<div style={{ top: `0%`,left: `0%`, width: `100%`,height:`100%`  }} />}
+              containerElement={<div style={{  width: `100%`,height:`100%` }} />}
+              mapElement={<div style={{ top: `0%`,left: `0%`, width: `100%`,height:`100%`  }} />}
+              />
+          }
+        </div>   
+        </div>
+        );
+        if(this.state.render=='listYour') return(
+          <YourEvents/>
+        );
+        if(this.state.render=='editDetails') return(
+          <div>
+              <button className='back-button-edit' onClick={this.handleClick.bind(this, 'detailsYours')}>Back</button>
+              <EditEventDetails id={this.state.id}/>
+          </div>
+          
+        );
+      }
+      if(this.creatorid!=sessionStorage.loggedID) return(
+        <div>
+          <div className='date-icon-e'><MdToday size='10rems'/></div>
+          <div className='time-icon-e'><MdQueryBuilder size='10rems'/></div>
+          <div className='location-icon-e'><MdLocationOn size='10rems'/></div>
+          <div className='type-icon-e'><MdAccessibility size='10rems'/></div>  
+        </div>
+      );
+
+    }
+    else{
+      return(<div></div>);
+      
+    }
+    
+    
+            
+
+            */
+
+    // if(this.props.participation==0){
+    //   return(<div>You cant change details</div>);
+    // }
+    // if(this.props.participation==1){
+    //   return(<div>change details</div>);
+    // }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
+
         <div>
                 <div className='date-icon-e'><MdToday size='10rems'/></div>
                 <div className='time-icon-e'><MdQueryBuilder size='10rems'/></div>
@@ -131,7 +227,7 @@ handleDeleteEvent(){
                 <div className='event-time-e'>{this.state.time}</div>
                 <div className='event-location-e'>{this.state.street} {this.state.stnumber} {this.state.city}</div>
                 <div className='event-type-e'>{this.state.type}</div>
-                <button className='cancel-button-e' onClick={this.handleDeleteEvent.bind(this)}>Cancel</button>
+               
                 <div className='map-e'>
                 {
                   (this.state.showMap && this.state.location !== "0") && <MapWrapAdd
@@ -148,10 +244,10 @@ handleDeleteEvent(){
                     mapElement={<div style={{ top: `0%`,left: `0%`, width: `100%`,height:`100%`  }} />}
                     />
                 }
-            </div>   
-                </div>
+              </div>   
+          </div>
 
-    );
+    ); 
   }
 }
 

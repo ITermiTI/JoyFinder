@@ -13,7 +13,6 @@ class YourEvents extends React.Component{
             events: [],
             showButtons: true
         };
-        this.updateState = this.updateState
     }
 
     componentDidMount() {

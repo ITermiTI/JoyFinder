@@ -26,32 +26,30 @@ handleButtonClick = (e) => {
            if(this.props.type == "created")
            axios.get(`${Const.API_URL}api/events/sorted/created/Past/${sessionStorage.loggedID}`  
            )
-         .then(res => {
-             let events
-            if(res.data.error == "No event found")
-                events = '';
-            else
-                events = res.data
-            this.props.updateState('events', events)
-        })
+           .then(res => {
+            let events
+               events = res.data
+           this.props.updateState('events', events)
+       }).catch(error => {
+           let events = [];
+           this.props.updateState('events', events)
+       })
             else if(this.props.type == "attended")
             axios.get(`${Const.API_URL}api/events/sorted/attended/Past/${sessionStorage.loggedID}`  
            )
-         .then(res => {
+           .then(res => {
             let events
-            if(res.data.error == "No event found")
-                events = '';
-            else
-                events = res.data
-            this.props.updateState('events', events)
-        })
+               events = res.data
+           this.props.updateState('events', events)
+       }).catch(error => {
+           let events = [];
+           this.props.updateState('events', events)
+       })
         else if(this.props.type == "searched"){
-             
-            console.log(this.props.searchString) 
             if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'Past').then( (res) =>{                
                 let events
                 if(res == null)
-                    events = '';
+                    events = null;
                 else
                     events = res.data;  
                     this.props.updateState('events', events)        
@@ -59,7 +57,7 @@ handleButtonClick = (e) => {
         if(this.props.searchOption == 'type')SortEventsService.searchByType(this.props.searchString,'Past').then( (res) =>{                
             let events
             if(res == null)
-                events = '';
+                events = null;
             else
                 events = res.data;    
                 this.props.updateState('events', events)        
@@ -76,29 +74,29 @@ handleButtonClick = (e) => {
            axios.get(`${Const.API_URL}api/events/sorted/created/ThisWeek/${sessionStorage.loggedID}`  
            )
          .then(res => {
-            let events
-            if(res.data.error == "No event found")
-                events = '';
-            else
+             let events
                 events = res.data
+            this.props.updateState('events', events)
+        }).catch(error => {
+            let events = [];
             this.props.updateState('events', events)
         })
             else if(this.props.type == "attended")
             axios.get(`${Const.API_URL}api/events/sorted/attended/ThisWeek/${sessionStorage.loggedID}`  
            )
-         .then(res => {
+           .then(res => {
             let events
-            if(res.data.error == "No event found")
-                events = '';
-            else
-                events = res.data
-            this.props.updateState('events', events)
-        })
+               events = res.data
+           this.props.updateState('events', events)
+       }).catch(error => {
+           let events = [];
+           this.props.updateState('events', events)
+       })
         else if(this.props.type == "searched"){
             if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'ThisWeek').then( (res) =>{                
                 let events
                     if(res == null)
-                    events = '';
+                    events = [];
                 else
                     events = res.data;     
                     this.props.updateState('events', events)        
@@ -106,7 +104,7 @@ handleButtonClick = (e) => {
         if(this.props.searchOption == 'type')SortEventsService.searchByType(this.props.searchString,'ThisWeek').then( (res) =>{                
             let events
                 if(res == null)
-                events = '';
+                events = [];
             else
                 events = res.data;  
                 this.props.updateState('events', events)          
@@ -123,25 +121,25 @@ handleButtonClick = (e) => {
            if(this.props.type == "created")
            axios.get(`${Const.API_URL}api/events/sorted/created/ThisYear/${sessionStorage.loggedID}`  
            )
-         .then(res => {
+           .then(res => {
             let events
-            if(res.data.error == "No event found")
-                events = '';
-            else
-                events = res.data
-            this.props.updateState('events', events)
-        })
+               events = res.data
+           this.props.updateState('events', events)
+       }).catch(error => {
+           let events = [];
+           this.props.updateState('events', events)
+       })
             else if(this.props.type == "attended")
             axios.get(`${Const.API_URL}api/events/sorted/attended/ThisYear/${sessionStorage.loggedID}`  
            )
-         .then(res => {
+           .then(res => {
             let events
-            if(res.data.error == "No event found")
-                events = '';
-            else
-                events = res.data
-            this.props.updateState('events', events)
-        })
+               events = res.data
+           this.props.updateState('events', events)
+       }).catch(error => {
+           let events = [];
+           this.props.updateState('events', events)
+       })
         else if(this.props.type == "searched"){
             if(this.props.searchOption == 'city')SortEventsService.searchByCity(this.props.searchString,'ThisYear').then( (res) =>{                
             let events

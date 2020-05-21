@@ -1,6 +1,6 @@
 .text-city{
-    left: 37.78%;
-    top: 15.13%;
+    left: 40.78%;
+    top: 17.0%;
     width: 5%;
     height: 7%;
 
@@ -11,7 +11,7 @@
     font-size: 32px;
     line-height: 28px;
 
-    color: #FFFFFF;
+    color: #9E9E9E;
 }
 
 .city-input{

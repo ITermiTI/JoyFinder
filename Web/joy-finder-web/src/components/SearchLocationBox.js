@@ -9,15 +9,15 @@ class SearchLocationBox extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            st: '',
-            stNum: 0,
-            city: ''
+            st: props.data.st,
+            stNum: props.data.stNum,
+            city: props.data.city
         }
         Geocode.setApiKey(`${Const.API_KEY}`)
         Geocode.setRegion("pl");
         Geocode.enableDebug();
         Geocode.setLanguage("en");
-        
+        console.log(this.state)
         this.handleSearch = this.handleSearch.bind(this)
     }
 

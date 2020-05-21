@@ -20,31 +20,120 @@ class EventGridList extends React.Component{
         super(props);
         this.state = {
             id: null,
-            render: 'list'
+            render: 'list',
+            creatorid: '',
+            checkparticipation: null,
+            members: [],
         };
     }
 
-    handleClick(id, compName){
-       this.setState({
-           id:id,
-           render:compName
-    });
-    console.log(this.state.id)
-    console.log(this.state.render)
-    this.props.updateState('showButtons', false)
+    handleClick(id, compName, creatorid){
+        this.setState({
+            id:id,
+            render:compName
+        });
+        this.props.updateState('showButtons', false)
+        ///api/members/checkIfUserParticipate/userid/eventid
+        axios.get(`${Const.API_URL}api/members/checkIfUserParticipate/${sessionStorage.loggedID}/${id}`).then(res => {
+            if(parseInt(creatorid)==parseInt(sessionStorage.loggedID)){
+                this.setState({
+                    checkparticipation: 1
+                });
+                
+            }
+            if(parseInt(creatorid)!=parseInt(sessionStorage.loggedID)){
+                if(res.data==true){
+                    this.setState({
+                        checkparticipation: 0
+                    });
+                }
+                if(res.data==false){
+                    this.setState({
+                        checkparticipation: 2
+                    });
+                }
+                
+            }
+                   
+        })
+        
+        
     }
 
-     _renderSubComp(){
-         if(this.state.id != null){
-             return <EventDetails id={this.state.id}/>
-         }
-     }
-     handleClickBack(compName){
-        this.setState({render: compName})
+
+
+    
+
+    //  _renderSubComp(){
+    //      if(this.state.id != ''){
+    //       axios.get(`${Const.API_URL}api/events/byId/${this.props.id}`  
+    //         )
+    //       .then(res => {
+    //         let event = res.data;
+    //         this.setState({creatorid: event.usersByCreatorid.id})
+              
+    //       })
+    //       if(this.state.creatorid!=''){
+    //         console.log(this.state.creatorid)
+    //         console.log(sessionStorage.loggedID)
+    //         if(parseInt(this.state.creatorid)==parseInt(sessionStorage.loggedID))
+    //         {
+    //             return(
+    //               <div>
+    //               <button className='back-button-e' onClick={this.handleClickBack.bind(this, 'list')}>Back</button>
+    //               <button className='edit-details-button-e' onClick={this.handleClickBack.bind(this, 'editDetails')}>Edit</button>
+    //               <EventDetails id={this.state.id}/>
+    //               </div>
+    //             );
+    //         }
+    //         else{
+    //             return(
+    //               <div>
+    //               <button className='back-button-e' onClick={this.handleClickBack.bind(this, 'list')}>Back</button>
+    //               <EventDetails2 id={this.state.id}/>
+    //               </div>
+    //             );
+    //         }
+    //       }
+    //       else{
+    //           return(<div>dupa2</div>);
+    //       }
+          
+    //      }
+    //      else{
+    //          return(<div>dupa1</div>);
+    //      }
+    //  }
+
+     handleClickNavigate(compName){
+        this.setState({render: compName});
         if(compName == 'list')
         this.props.updateState('showButtons', true)
      }
+
      
+     handleDeleteEvent(){
+        axios.delete(`${Const.API_URL}api/events/delete/${this.props.id}`)
+          .then(res => {
+            console.log(res);
+            console.log(res.data);
+          })
+    
+      }
+    
+      handleTakePart(){
+        console.log(this.state.id)
+        console.log(sessionStorage.loggedID)
+        axios.post(`${Const.API_URL}api/members`, {
+            eventid: this.state.id,
+            userid: sessionStorage.loggedID
+        }).then(
+            res => {
+                console.log(res.data)
+            })
+
+        this.setState({render: 'list'});
+    }
 
    
     render(){
@@ -54,7 +143,7 @@ class EventGridList extends React.Component{
                     <GridList cellHeight={200} cols={4}  style={{width: 1000, height: 450}}>
                     {this.props.data.events && this.props.data.events.map(tile => (
                         <GridListTile key={tile.id}>
-                            <ButtonBase onClick={this.handleClick.bind(this, tile.id, 'details')}>
+                            <ButtonBase onClick={this.handleClick.bind(this, tile.id, 'details', tile.usersByCreatorid.id)}>
                                 <img style={{display: 'block', maxWidth: '100%', maxHeight: '100%'}} alt="complex" src="https://kom.krakow.pl/wp-content/uploads/2019/04/9140351-pilka-nozna-900-554.jpg" />
                             </ButtonBase>
                             <GridListTileBar
@@ -67,21 +156,47 @@ class EventGridList extends React.Component{
                 </div> 
             </div>  
         );
-        if(this.state.render=='details') return(
+        
+        // if(this.state.render=='details') {
+        //     {this._renderSubComp()}
+        // }
+        console.log(this.state.checkparticipation)
+        if(this.state.render=='details'&& this.state.checkparticipation==1) return(
             <div>
-                <button className='back-button-e' onClick={this.handleClickBack.bind(this, 'list')}>Back</button>
-                <button className='edit-details-button-e' onClick={this.handleClickBack.bind(this, 'editDetails')}>Edit</button>
-                <EventDetails id={this.state.id}/>
+                <EventDetails id={this.state.id}/> 
+                <button className='back-button-e' onClick={this.handleClickNavigate.bind(this, 'list')}>Back</button>
+                <button className='edit-details-button-e' onClick={this.handleClickNavigate.bind(this, 'editDetails')}>Edit</button>
+                <button className='cancel-button-e' onClick={this.handleDeleteEvent.bind(this)}>Cancel</button>
+            </div>
+            
+        );
+        if(this.state.render=='details'&& this.state.checkparticipation==0) return(
+            <div>
+                <EventDetails id={this.state.id}/> 
+                <button className='back-button-e' onClick={this.handleClickNavigate.bind(this, 'list')}>Back</button>
+                <button className='edit-details-button-e' onClick={this.handleClickNavigate.bind(this, 'editDetails')}>Nie chce brac udzialu</button>
+               
+            </div>
+            
+        );
+        if(this.state.render=='details'&& this.state.checkparticipation==2) return(
+            <div>
+                <EventDetails id={this.state.id}/> 
+                {console.log(this.state.id)}
+                <button className='back-button-e' onClick={this.handleClickNavigate.bind(this, 'list')}>Back</button>
+                <button className='edit-details-button-e' onClick={this.handleTakePart.bind(this)}>Take part</button>
+               
             </div>
             
         );
         if(this.state.render=='editDetails') return(
             <div>
-                <button className='back-button-e' onClick={this.handleClickBack.bind(this, 'details')}>Back</button>
+                <button className='back-button-edit' onClick={this.handleClickNavigate.bind(this, 'details')}>Back</button>
                 <EditEventDetails id={this.state.id}/>
             </div>
             
         );
+        if(this.state.render=='details'&& this.state.checkparticipation==null) return <div></div>
     }
     
 }
