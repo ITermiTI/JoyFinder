@@ -32,6 +32,7 @@ class EventGridList extends React.Component{
             id:id,
             render:compName
         });
+        this.props.updateState('showButtons', false)
         ///api/members/checkIfUserParticipate/userid/eventid
         axios.get(`${Const.API_URL}api/members/checkIfUserParticipate/${sessionStorage.loggedID}/${id}`).then(res => {
             if(parseInt(creatorid)==parseInt(sessionStorage.loggedID)){
@@ -106,6 +107,8 @@ class EventGridList extends React.Component{
 
      handleClickNavigate(compName){
         this.setState({render: compName});
+        if(compName == 'list')
+        this.props.updateState('showButtons', true)
      }
 
      
