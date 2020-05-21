@@ -10,7 +10,8 @@ class YourEvents extends React.Component{
         super(props);
 
         this.state = {
-            events: []
+            events: [],
+            showButtons: true
         };
         this.updateState = this.updateState
     }
@@ -32,12 +33,23 @@ class YourEvents extends React.Component{
     }
    
     render(){
+        if(this.state.showButtons == true)
         return (
             <div className="component-background">
                 
                 <div>
-                        <EventGridList data={this.state}/>
+                        <EventGridList data={this.state} updateState={this.updateState}/>
                         <Buttons date={this.state} updateState={this.updateState} type="created"/>
+                </div>
+            </div>   
+            
+        );
+        if(this.state.showButtons == false)
+        return (
+            <div className="component-background">
+                
+                <div>
+                        <EventGridList data={this.state} updateState={this.updateState}/>
                 </div>
             </div>   
             

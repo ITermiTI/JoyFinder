@@ -31,6 +31,7 @@ class EventGridList extends React.Component{
     });
     console.log(this.state.id)
     console.log(this.state.render)
+    this.props.updateState('showButtons', false)
     }
 
      _renderSubComp(){
@@ -39,7 +40,9 @@ class EventGridList extends React.Component{
          }
      }
      handleClickBack(compName){
-        this.setState({render: compName});
+        this.setState({render: compName})
+        if(compName == 'list')
+        this.props.updateState('showButtons', true)
      }
      
 
