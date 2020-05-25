@@ -12,6 +12,9 @@ class GuestPage extends React.Component {
   constructor(props) {
     super(props);
   }
+  goToLoginPage = () => {
+    this.props.navigation.navigate("Login");
+  };
   render() {
     return (
       <View style={guestPageStyle.background}>
@@ -26,7 +29,10 @@ class GuestPage extends React.Component {
         <Text style={guestPageStyle.subTitleStyle}>
           Take part in events and find new friends
         </Text>
-        <TouchableOpacity style={guestPageStyle.signInButtonPos}>
+        <TouchableOpacity
+          style={guestPageStyle.signInButtonPos}
+          onPress={this.goToLoginPage}
+        >
           <Text style={guestPageStyle.signInButtonStyle}>Sign in</Text>
         </TouchableOpacity>
         <TouchableOpacity style={guestPageStyle.signUpButtonPos}>
