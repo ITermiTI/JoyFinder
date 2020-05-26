@@ -3,6 +3,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import GuestPage from "../pages/GuestPage";
 import Login from "../pages/Login";
 import HomePage from "../pages/HomePage";
+import RegisterPage from "../pages/RegisterPage";
 
 const pages = {
   GuestPage: {
@@ -13,6 +14,12 @@ const pages = {
   },
   Login: {
     screen: Login,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Register: {
+    screen: RegisterPage,
     navigationOptions: {
       headerShown: false,
     },

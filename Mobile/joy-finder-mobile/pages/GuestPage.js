@@ -15,6 +15,9 @@ class GuestPage extends React.Component {
   goToLoginPage = () => {
     this.props.navigation.navigate("Login");
   };
+  goToRegisterPage = () => {
+    this.props.navigation.navigate("Register");
+  };
   render() {
     return (
       <View style={guestPageStyle.background}>
@@ -35,7 +38,8 @@ class GuestPage extends React.Component {
         >
           <Text style={guestPageStyle.signInButtonStyle}>Sign in</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={guestPageStyle.signUpButtonPos}>
+        <TouchableOpacity style={guestPageStyle.signUpButtonPos} 
+            onPress={this.goToRegisterPage}>
           <Text style={guestPageStyle.signUpButtonStyle}>Join Now</Text>
         </TouchableOpacity>
       </View>

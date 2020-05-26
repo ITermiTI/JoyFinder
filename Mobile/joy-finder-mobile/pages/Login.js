@@ -39,7 +39,7 @@ class Login extends React.Component {
     this.setState({ keyboardShown: false });
   }
   createNewAccount() {
-    this.props.navigation.navigate("GuestPage");
+    this.props.navigation.navigate("Register");
   }
   render() {
     return (

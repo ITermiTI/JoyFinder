@@ -7,12 +7,13 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { homePageStyle } from "../styles/HomePageStyle";
 
 class HomePage extends React.Component {
   render() {
     return (
-      <View>
-        <Text>Tekscik</Text>
+      <View style={homePageStyle.background}>
+        <Text style={homePageStyle.title}>HOMEPAGE</Text>
       </View>
     );
   }
