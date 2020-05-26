@@ -35,7 +35,6 @@ class LoginBox extends React.Component {
 
     AuthService.executeLogin(this.state.login, this.state.password)
       .then((res) => {
-        console.log(res);
         AuthService.registerSuccessfulLogin(
           this.state.login,
           this.state.password

@@ -8,11 +8,16 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { homePageStyle } from "../styles/HomePageStyle";
+import Appbar from "../components/Appbar";
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={homePageStyle.background}>
+        <Appbar title="Your events" navigation={this.props.navigation} />
         <Text style={homePageStyle.title}>HOMEPAGE</Text>
       </View>
     );

@@ -44,6 +44,12 @@ class AuthService {
     if (user === null) return false;
     return true;
   }
+
+  async getUserData() {
+    let userid = await AsyncStorage.getItem("logged_userid");
+    if (userid === null) return null;
+    return axios.get(`${Const.API_URL}api/user/${userid}`);
+  }
 }
 
 export default new AuthService();
