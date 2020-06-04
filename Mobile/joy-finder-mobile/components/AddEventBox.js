@@ -16,65 +16,82 @@ import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import DatePicker from 'react-native-datepicker'
 import * as Const from '../services/Const';
 import axios from 'axios';
-import AddEventBox from '../components/AddEventBox'
+import moment from 'moment';
 
-class AddEventPage extends React.Component {
+class AddEventBox extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      
+      date:"",
+      currentDate: "",
+      time: '',
+      name: '',
+      type: '',
+      city: '',
+      street: '',
+      stNumber: '',
+      location: {lat: '', lng: ''},
     };
     //this.submitLogin = this.submitLogin.bind(this);
+    this.submitLogin = this.submitLogin.bind(this);
+  }
+  
+
+  componentDidMount() {
+    var that = this;
+    var date = new Date().getDate(); 
+    var month = new Date().getMonth() + 1; 
+    var year = new Date().getFullYear();
+    that.setState({
+      currentDate:
+        year + '/' + month + '/' + date + ' ',
+    });
   }
 
-  // componentDidMount() {
-  //   var that = this;
-  //   var date = new Date().getDate(); 
-  //   var month = new Date().getMonth() + 1; 
-  //   var year = new Date().getFullYear();
-  //   that.setState({
-  //     currentDate:
-  //       year + '/' + month + '/' + date + ' ',
-  //   });
-  // }
+  submitLogin(){
+    console.log(this.state.name)
+    console.log(moment(this.state.date).format('YYYY-MM-DD'))
+    console.log(this.state.time)
+    console.log(this.state.city)
+    console.log(this.state.street)
+    console.log(this.state.stNumber)
+    console.log(this.state.type)
+    axios.post(`${Const.API_URL}api/events`, {
+      name: this.state.name,
+      date: moment(this.state.date).format('YYYY-MM-DD'),
+      time: moment(this.state.time).format('HH:mm:ss'),
+      city: this.state.city,
+      street: this.state.street,
+      stnumber: parseInt(this.state.stNumber, 10),
+      creatorid: 9,
+      type: this.state.type,
+      location: `51.413212, 21.565614`
 
-  // handleAddClick(){
-  //   console.log(this.state.name)
-  //   axios.post(`${Const.API_URL}api/events`, {
-  //     name: this.state.name,
-  //     date: this.state.date,
-  //     time: this.state.time,
-  //     city: this.state.city,
-  //     street: this.state.street,
-  //     stnumber: parseInt(this.state.stNumber, 10),
-  //     creatorid: parseInt(sessionStorage.loggedID, 10),
-  //     type: this.state.type,
 
-  // }).then(
-  //     res => {
-  //         axios.post(`${Const.API_URL}api/members`, {
-  //             userId: parseInt(sessionStorage.loggedID, 10),
-  //             eventId: parseInt(res.data, 10)
-  //         }).then(
-  //           this.props.navigation.navigate("YourEvents")
-  //         )
-  //     })
-  // }
+  }).then(
+      res => {
+          axios.post(`${Const.API_URL}api/members`, {
+              userId: 9,
+              eventId: parseInt(res.data, 10)
+          }).then(
+            this.props.navigation.navigate("YourEvents")
+          )
+      })
+  }
   _onPressButton(){
     console.log(this.state.name)
   }
 
   render() {
     return (
-      <View style={addEventStyle.background}>
-        <StatusBar backgroundColor={'#1F1F23'}></StatusBar>
-        <Appbar style={{backgroundColor: '#262733'}}>
-            <Appbar.BackAction onPress={() => {this.props.navigation.navigate("YourEvents");}}/>
-            <Appbar.Content title="Create new event"/>
-        </Appbar>
-        <AddEventBox/>
-        {/* <View style={addEventStyle.loginBox}> */}
-        {/* <View style={addEventStyle.inputSection}>
+    //   <View style={addEventStyle.background}>
+    //     <StatusBar backgroundColor={'#1F1F23'}></StatusBar>
+    //     <Appbar style={{backgroundColor: '#262733'}}>
+    //         <Appbar.BackAction onPress={() => {this.props.navigation.navigate("YourEvents");}}/>
+    //         <Appbar.Content title="Create new event"/>
+    //     </Appbar>
+        <View style={addEventStyle.loginBox}>
+        <View style={addEventStyle.inputSection}>
           <MaterialIcon name="person" color="white" size={28} />
           <TextInput
             style={addEventStyle.input}
@@ -126,11 +143,10 @@ class AddEventPage extends React.Component {
         date={this.state.time}
         mode="time"
         placeholder="Time"
-        format="HH:mm"
-        minDate={this.state.currentDate}
+        format="HH:mm:ss"
+        // minDate={this.state.currentDate}
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
-        is24Hour={true}
         showIcon={false}
         customStyles={{
           dateInput:{
@@ -189,22 +205,27 @@ class AddEventPage extends React.Component {
             keyboardType='number-pad'
             onChangeText={(stNumber) => this.setState({ stNumber: stNumber })}
           />
-        </View> */}
-        {/* <TouchableOpacity 
+        </View>
+        <TouchableOpacity 
         style={addEventStyle.searchButton}
 
         ><Text style={addEventStyle.signInText}>Search</Text>
-        </TouchableOpacity> */}
-        {/* <TouchableOpacity style={addEventStyle.addButton} onPress={this._onPressButton.bind(this)}
-        ><Text style={addEventStyle.signInText}>Add</Text>
-        </TouchableOpacity> */}
+
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={addEventStyle.signInButton}
+          onPress={this.submitLogin}
+        >
+          <Text style={addEventStyle.signInText}>Sign in</Text>
+        </TouchableOpacity>
       </View>
 
         
-      // </View>  
+    //   </View>  
     
     );
   }
 }
 
-export default AddEventPage;
+export default AddEventBox;
