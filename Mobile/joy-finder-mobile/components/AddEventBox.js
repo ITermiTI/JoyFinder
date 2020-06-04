@@ -59,7 +59,7 @@ class AddEventBox extends React.Component {
     axios.post(`${Const.API_URL}api/events`, {
       name: this.state.name,
       date: moment(this.state.date).format('YYYY-MM-DD'),
-      time: moment(this.state.time).format('HH:mm:ss'),
+      //time: moment('11:00').format('HH:mm'),
       city: this.state.city,
       street: this.state.street,
       stnumber: parseInt(this.state.stNumber, 10),
@@ -143,7 +143,7 @@ class AddEventBox extends React.Component {
         date={this.state.time}
         mode="time"
         placeholder="Time"
-        format="HH:mm:ss"
+        format="HH:mm"
         // minDate={this.state.currentDate}
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
