@@ -9,14 +9,15 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  Alert
 } from "react-native";
 import { Appbar } from 'react-native-paper';
 import { addEventStyle } from "../styles/AddEventStyle";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import DatePicker from 'react-native-datepicker'
 import * as Const from '../services/Const';
+import AuthService from "../services/AuthService";
 import axios from 'axios';
-import moment from 'moment';
 
 class AddEventBox extends React.Component {
   constructor(props){
@@ -31,13 +32,15 @@ class AddEventBox extends React.Component {
       street: '',
       stNumber: '',
       location: {lat: '', lng: ''},
+      user: null
     };
-    //this.submitLogin = this.submitLogin.bind(this);
-    this.submitLogin = this.submitLogin.bind(this);
+    this.submit = this.submit.bind(this);
+    this.getUserDetails = this.getUserDetails.bind(this);
   }
   
 
   componentDidMount() {
+    this.getUserDetails();
     var that = this;
     var date = new Date().getDate(); 
     var month = new Date().getMonth() + 1; 
@@ -47,23 +50,57 @@ class AddEventBox extends React.Component {
         year + '/' + month + '/' + date + ' ',
     });
   }
+  async getUserDetails() {
+    AuthService.getUserData().then((res) => {
+      console.log(res.data);
+      this.setState({ user: res.data });
+    });
+  }
 
-  submitLogin(){
+  submit(){
     console.log(this.state.name)
-    console.log(moment(this.state.date).format('YYYY-MM-DD'))
+    console.log(this.state.date)
     console.log(this.state.time)
     console.log(this.state.city)
     console.log(this.state.street)
     console.log(this.state.stNumber)
     console.log(this.state.type)
+    if (this.state.name === "") {
+      Alert.alert("No title", "Enter event title");
+      return;
+    }
+    if (this.state.date === "") {
+      Alert.alert("No date", "Enter event date");
+      return;
+    }
+    if (this.state.time === "") {
+      Alert.alert("No time", "Enter event time");
+      return;
+    }
+    if (this.state.type === "") {
+      Alert.alert("No type", "Enter event type");
+      return;
+    }
+    if (this.state.city === "") {
+      Alert.alert("No city", "Enter event city");
+      return;
+    }
+    if (this.state.street === "") {
+      Alert.alert("No street", "Enter event street");
+      return;
+    }
+    if (this.state.stnumber === "") {
+      Alert.alert("No street number", "Enter event street number");
+      return;
+    }
     axios.post(`${Const.API_URL}api/events`, {
       name: this.state.name,
-      date: moment(this.state.date).format('YYYY-MM-DD'),
-      //time: moment('11:00').format('HH:mm'),
+      date: this.state.date,
+      time: this.state.time,
       city: this.state.city,
       street: this.state.street,
       stnumber: parseInt(this.state.stNumber, 10),
-      creatorid: 9,
+      creatorid: this.state.user.userId,
       type: this.state.type,
       location: `51.413212, 21.565614`
 
@@ -71,11 +108,9 @@ class AddEventBox extends React.Component {
   }).then(
       res => {
           axios.post(`${Const.API_URL}api/members`, {
-              userId: 9,
+              userId: this.state.user.userId,
               eventId: parseInt(res.data, 10)
-          }).then(
-            this.props.navigation.navigate("YourEvents")
-          )
+          }).then(Alert.alert("Good job!", "Your new event has been successfully added!"));
       })
   }
   _onPressButton(){
@@ -84,12 +119,6 @@ class AddEventBox extends React.Component {
 
   render() {
     return (
-    //   <View style={addEventStyle.background}>
-    //     <StatusBar backgroundColor={'#1F1F23'}></StatusBar>
-    //     <Appbar style={{backgroundColor: '#262733'}}>
-    //         <Appbar.BackAction onPress={() => {this.props.navigation.navigate("YourEvents");}}/>
-    //         <Appbar.Content title="Create new event"/>
-    //     </Appbar>
         <View style={addEventStyle.loginBox}>
         <View style={addEventStyle.inputSection}>
           <MaterialIcon name="person" color="white" size={28} />
@@ -144,7 +173,6 @@ class AddEventBox extends React.Component {
         mode="time"
         placeholder="Time"
         format="HH:mm"
-        // minDate={this.state.currentDate}
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
         showIcon={false}
@@ -214,15 +242,12 @@ class AddEventBox extends React.Component {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={addEventStyle.signInButton}
-          onPress={this.submitLogin}
+          style={addEventStyle.addButton}
+          onPress={this.submit}
         >
-          <Text style={addEventStyle.signInText}>Sign in</Text>
+          <Text style={addEventStyle.signInText}>Add</Text>
         </TouchableOpacity>
       </View>
-
-        
-    //   </View>  
     
     );
   }
