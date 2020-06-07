@@ -7,6 +7,7 @@ import {
   Icon,
   Button,
   TouchableOpacity,
+  StatusBar
 } from "react-native";
 import { homePageStyle } from "../styles/HomePageStyle";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
@@ -19,6 +20,7 @@ class HomePage extends React.Component {
     return (
       
       <View style={homePageStyle.background}>
+        <StatusBar backgroundColor={'#1F1F23'}></StatusBar>
         <Appbar style={{backgroundColor: '#262733'}}>
             <Appbar.Action icon='menu' onPress={() => {this.props.navigation.openDrawer();}}/>
             <Appbar.Content title="Your events"/>

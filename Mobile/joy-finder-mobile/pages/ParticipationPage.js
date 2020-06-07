@@ -53,6 +53,7 @@ updateState = (name, value) => {
   this.setState({[name]: value})
 }
   render() {
+    console.log(this.state.events)
     return (
       <View style={addEventStyle.background}>
       <StatusBar backgroundColor={'#1F1F23'}></StatusBar>

@@ -1,58 +1,67 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-  FlatList,
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import Constants from 'expo-constants';
 
- class ListGrid extends React.Component {
-  constructor() {
-    super();
+const DATA = [
+  {
+    id: '1',
+    name: 'dupa',
+  },
+  {
+    id: '2',
+    name: 'jasio',
+  },
+  {
+    id: '3',
+    name: 'peirdzi',
+  },
+  {
+    id: '4',
+    name: 'stasiu',
+  },
+];
+
+function Item({ title }) {
+  return (
+    <View style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  );
+}
+
+class ListGrid extends React.Component {
+  constructor(props){
+    super(props)
     this.state = {
-      dataSource: {},
+
     };
   }
-  componentDidMount() {
-    console.log(this.props.data.events)
-    var that = this;
-    let items = Array.apply(null, Array(60)).map((v, i) => {
-      return { id: i, src: 'https://kom.krakow.pl/wp-content/uploads/2019/04/9140351-pilka-nozna-900-554.jpg' };
-    });
-    that.setState({
-      dataSource: items,
-    });
-  }
-  render() {
-    return (
-      <View style={styles.MainContainer}>
-        <FlatList
-          data={this.state.dataSource}
-          renderItem={({ item }) => (
-            <View style={{ flex: 1, flexDirection: 'column', margin: 5, backgroundColor: 'black' }}>
-              <Image style={styles.imageThumbnail} source={{ uri: item.src }} />
-              {/* <Text style={{color: 'white'}}>dupa</Text> */}
-            </View>
-          )}
-          numColumns={1}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      </View>
-    );
+  render(){
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={this.props.data.events}
+        renderItem={({ item }) => <Item title={item.name} />}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
+  );
   }
 }
 export default ListGrid;
-
 const styles = StyleSheet.create({
-  MainContainer: {
-    justifyContent: 'center',
+  container: {
     flex: 1,
+    marginTop: Constants.statusBarHeight,
   },
-  imageThumbnail: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 100,
+  item: {
+    backgroundColor: '#1D5E9F',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+    color: 'white'
   },
 });
