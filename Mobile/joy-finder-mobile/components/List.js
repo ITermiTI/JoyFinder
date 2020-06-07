@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 
 const DATA = [
@@ -23,9 +23,11 @@ const DATA = [
 
 function Item({ title }) {
   return (
+    <TouchableOpacity>
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
     </View>
+    </TouchableOpacity>
   );
 }
 
