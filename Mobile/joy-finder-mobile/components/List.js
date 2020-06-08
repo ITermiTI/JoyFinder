@@ -9,10 +9,11 @@ import {
   Image,
 } from "react-native";
 import Constants from "expo-constants";
+import { AsyncStorage } from 'react-native';
 
 function Item({ title, date, time }) {
   return (
-    <TouchableOpacity>
+    // <TouchableOpacity onPress={nav.navigate("EventDetails")}>
       <View style={styles.item}>
         <Image
           style={styles.image}
@@ -29,7 +30,7 @@ function Item({ title, date, time }) {
           <Text style={styles.detailsText}>{time}</Text>
         </View>
       </View>
-    </TouchableOpacity>
+    // </TouchableOpacity>
   );
 }
 
@@ -44,7 +45,13 @@ class ListGrid extends React.Component {
         <FlatList
           data={this.props.data.events}
           renderItem={({ item }) => (
-            <Item title={item.name} date={item.date} time={item.time} />
+            <TouchableOpacity onPress={async () => {
+             await AsyncStorage.setItem('selected-event-id', item.id.toString())
+            this.props.prop.navigation.navigate("EventDetails")
+            }}>
+              <Item title={item.name} date={item.date} time={item.time} />
+            </TouchableOpacity>
+            
           )}
           keyExtractor={(item) => item.id}
         />

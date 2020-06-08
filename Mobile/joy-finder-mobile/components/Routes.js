@@ -12,6 +12,7 @@ import SearchByCityPage from "../pages/SearchByCityPage";
 import Drawer from "./Drawer";
 import SearchByAllPage from "../pages/SearchAllPage";
 import AddEventPage from "../pages/AddEventPage";
+import EventDetails from "../pages/EventDetails"
 
 const drawerPages = {
   YourEvents: {
@@ -34,6 +35,9 @@ const drawerPages = {
   },
   AddEvent:{
     screen: AddEventPage,
+  },
+  EventDetails:{
+    screen: EventDetails,
   }
 };
 
