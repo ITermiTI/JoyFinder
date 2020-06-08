@@ -7,6 +7,7 @@ import {
   Button,
   TouchableNativeFeedback,
   Keyboard,
+  StatusBar
 } from "react-native";
 import { LoginStyle } from "../styles/LoginStyle";
 import LoginBox from "../components/LoginBox";
@@ -44,6 +45,7 @@ class Login extends React.Component {
   render() {
     return (
       <View style={LoginStyle.background}>
+         <StatusBar backgroundColor={"#1F1F23"}></StatusBar>
         <View style={LoginStyle.greenCircle} />
         <View style={LoginStyle.blueCircle} />
         <Text style={LoginStyle.waitingForText}>What are you waiting for?</Text>
