@@ -70,7 +70,7 @@ class Drawer extends React.Component {
           >
             <View style={DrawerStyle.drawerRow}>
               <MaterialIcon name="event-note" color="white" size={30} />
-              <Text style={DrawerStyle.tileText}>Events you participate</Text>
+              <Text style={DrawerStyle.tileText}>Taking part</Text>
             </View>
           </TouchableNativeFeedback>
         </View>

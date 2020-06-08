@@ -1,69 +1,147 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, FlatList, StatusBar } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  StatusBar,
+  TouchableOpacity,
+  AsyncStorage,
+} from "react-native";
 import AuthService from "../services/AuthService";
 import ListGrid from "../components/List";
-import axios from 'axios';
-import * as Const from '../services/Const';
+import axios from "axios";
+import * as Const from "../services/Const";
 import { Button } from "react-native-paper";
-import { Appbar } from 'react-native-paper';
+import { Appbar } from "react-native-paper";
 import { addEventStyle } from "../styles/AddEventStyle";
 
 class ParticipationPage extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-        events: [],
-        user: null,
+      events: [],
+      user: null,
+      choice: "week",
+      noEvents: false,
     };
-    this.updateState = this.updateState
-}
+    this.updateState = this.updateState;
+    this.pastPressed = this.pastPressed.bind(this);
+    this.weekPressed = this.weekPressed.bind(this);
+    this.futurePressed = this.futurePressed.bind(this);
+  }
 
-// componentDidMount() {
-//   AuthService.getUserData().then((res) => {
-//     console.log(res.data);
-//     this.setState({ user: res.data });
-    
-//   }).then(
-    
-//     axios.get(`${Const.API_URL}api/events/sorted/attended/ThisWeek/${this.state.user.userId}`  
-//       )
-//     .then(res => {
-//        const events = res.data
-//        console.log(res.data)
-//        this.setState({
-//          events: events
-//      })
-//    })
-//   )
-// }
+  componentDidMount() {
+    this.weekPressed();
+  }
 
-componentDidMount(){
-  axios.get(`${Const.API_URL}api/events`  
-            )
-          .then(res => {
-             const events = res.data
-             this.setState({
-               events: events
-           })
-         })
-}
+  async pastPressed() {
+    var id = await AsyncStorage.getItem("logged_userid");
+    axios
+      .get(`${Const.API_URL}api/events/sorted/attended/Past/${id}`)
+      .then((res) => {
+        this.setState({
+          events: res.data,
+          choice: "past",
+          noEvents: false,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          events: [],
+          choice: "past",
+          noEvents: true,
+        });
+      });
+  }
 
-updateState = (name, value) => {
-  this.setState({[name]: value})
-}
+  async weekPressed() {
+    var id = await AsyncStorage.getItem("logged_userid");
+    axios
+      .get(`${Const.API_URL}api/events/sorted/attended/ThisWeek/${id}`)
+      .then((res) => {
+        this.setState({
+          events: res.data,
+          choice: "week",
+          noEvents: false,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          events: [],
+          choice: "week",
+          noEvents: true,
+        });
+      });
+  }
+  async futurePressed() {
+    var id = await AsyncStorage.getItem("logged_userid");
+    axios
+      .get(`${Const.API_URL}api/events/sorted/attended/ThisYear/${id}`)
+      .then((res) => {
+        this.setState({
+          events: res.data,
+          choice: "future",
+          noEvents: false,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          events: [],
+          choice: "future",
+          noEvents: true,
+        });
+      });
+  }
+
+  updateState = (name, value) => {
+    this.setState({ [name]: value });
+  };
   render() {
-    console.log(this.state.events)
+    console.log(this.state.noEvents);
     return (
       <View style={addEventStyle.background}>
-      <StatusBar backgroundColor={'#1F1F23'}></StatusBar>
-        <Appbar style={{backgroundColor: '#262733'}}>
-            <Appbar.BackAction onPress={() => {this.props.navigation.navigate("YourEvents");}}/>
-            <Appbar.Content title="Create new event"/>
+        <StatusBar backgroundColor={"#1F1F23"}></StatusBar>
+        <Appbar style={{ backgroundColor: "#262733" }}>
+          <Appbar.BackAction
+            onPress={() => {
+              this.props.navigation.navigate("YourEvents");
+            }}
+          />
+          <Appbar.Content title="Your participation" />
         </Appbar>
-      <View style={styles.MainContainer}>
-         <ListGrid data={this.state} updateState={this.updateState}/>
-      </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={this.pastPressed}>
+            <Text style={styles.timeButton}>Past</Text>
+            {this.state.choice == "past" && (
+              <View style={styles.underline}></View>
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.weekPressed}>
+            <Text style={styles.timeButton}>Week</Text>
+            {this.state.choice == "week" && (
+              <View style={styles.underline}></View>
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.futurePressed}>
+            <Text style={styles.timeButton}>Future</Text>
+            {this.state.choice == "future" && (
+              <View style={styles.underline}></View>
+            )}
+          </TouchableOpacity>
+        </View>
+        {!this.state.noEvents && (
+          <View style={styles.MainContainer}>
+            <ListGrid data={this.state} updateState={this.updateState} />
+          </View>
+        )}
+        {this.state.noEvents && (
+          <View style={styles.noEventsBox}>
+            <Text style={styles.noEventsText}>No events found!</Text>
+          </View>
+        )}
       </View>
     );
   }
@@ -73,12 +151,38 @@ export default ParticipationPage;
 
 const styles = StyleSheet.create({
   MainContainer: {
-    justifyContent: 'center',
+    justifyContent: "center",
     flex: 1,
   },
   imageThumbnail: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: 100,
+  },
+  buttonContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  timeButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    color: "white",
+    fontSize: 22,
+  },
+  underline: {
+    width: "100%",
+    height: 2,
+    backgroundColor: "yellow",
+  },
+  noEventsBox: {
+    position: "absolute",
+    alignSelf: "center",
+    top: "40%",
+  },
+  noEventsText: {
+    flex: 1,
+    color: "white",
+    fontSize: 30,
   },
 });

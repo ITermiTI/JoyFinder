@@ -1,53 +1,55 @@
-import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import Constants from 'expo-constants';
+import React from "react";
+import {
+  SafeAreaView,
+  View,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import Constants from "expo-constants";
 
-const DATA = [
-  {
-    id: '1',
-    name: 'dupa',
-  },
-  {
-    id: '2',
-    name: 'jasio',
-  },
-  {
-    id: '3',
-    name: 'peirdzi',
-  },
-  {
-    id: '4',
-    name: 'stasiu',
-  },
-];
-
-function Item({ title }) {
+function Item({ title, date, time }) {
   return (
     <TouchableOpacity>
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
+      <View style={styles.item}>
+        <Image
+          style={styles.image}
+          source={require("../assets/pilka-nozna.jpg")}
+        />
+        <View style={styles.titleBox}>
+          <Text numberOfLines={2} style={styles.title}>
+            {title}
+          </Text>
+        </View>
+        <View style={styles.separator} />
+        <View style={styles.details}>
+          <Text style={styles.detailsText}>{date}</Text>
+          <Text style={styles.detailsText}>{time}</Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 }
 
 class ListGrid extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-
-    };
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
-  render(){
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={this.props.data.events}
-        renderItem={({ item }) => <Item title={item.name} />}
-        keyExtractor={item => item.id}
-      />
-    </SafeAreaView>
-  );
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <FlatList
+          data={this.props.data.events}
+          renderItem={({ item }) => (
+            <Item title={item.name} date={item.date} time={item.time} />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      </SafeAreaView>
+    );
   }
 }
 export default ListGrid;
@@ -57,13 +59,42 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight,
   },
   item: {
-    backgroundColor: '#1D5E9F',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    marginVertical: 6,
+    marginHorizontal: 12,
+    backgroundColor: "transparent",
+    borderColor: "#1D5E9F",
+    borderWidth: 2,
+    borderRadius: 25,
+    flexDirection: "row",
+    alignItems: "center",
   },
   title: {
-    fontSize: 32,
-    color: 'white'
+    padding: 10,
+    fontSize: 20,
+    color: "white",
+  },
+  image: {
+    margin: 12,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  details: {
+    position: "absolute",
+    right: 10,
+    padding: 2,
+    flexDirection: "column",
+  },
+  detailsText: {
+    fontSize: 13,
+    color: "white",
+  },
+  titleBox: {
+    width: "55%",
+  },
+  separator: {
+    height: "100%",
+    width: 2,
+    backgroundColor: "#1D5E9F",
   },
 });
