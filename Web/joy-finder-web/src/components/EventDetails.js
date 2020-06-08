@@ -138,12 +138,6 @@ class EventDetails extends React.Component {
         <div className="type-icon-e">
           <MdAccessibility size="10rems" />
         </div>
-        <div
-          className="show-participants"
-          onClick={this.showParticipants.bind(this)}
-        >
-          Show participants
-        </div>
         <div className="event-name-e">{this.state.name}</div>
         <div className="event-date-e">{this.state.date}</div>
         <div className="event-time-e">{this.state.time}</div>
