@@ -14,5 +14,18 @@ title: {
     top: "25%",
     color: "#FFFFFF",
     alignSelf: "center",
-  }
+  },
+  floatingButton: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    bottom: 10,
+    right: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  
+  
 });
