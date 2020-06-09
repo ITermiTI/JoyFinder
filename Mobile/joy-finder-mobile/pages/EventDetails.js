@@ -13,23 +13,56 @@ import {
 import { eventDetailsStyle } from "../styles/EventDetailsStyle";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { Appbar } from 'react-native-paper';
+import axios from "axios"
+import * as Const from "../services/Const";
 
 class EventDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      event: null
+      event: null,
+      userParticipate: false
     };
   }
 
-  componentDidMount() {
-    // const eventt = this.props.navigation.getParam('event')
-    // this.setState({event: eventt})
-    // console.log(eventt.id)
+  ComponentDidMount(){
+    const event = this.props.navigation.getParam('event')
+    this.setState({event: event});
+    this.checkParticipation(this.state.event);
+  }
+
+  async checkParticipation(ev){
+    var id = await AsyncStorage.getItem("logged_userid");
+    axios
+      .get(`${Const.API_URL}api/members/checkIfUserParticipate/${id}/${ev.id}`)
+      .then((res) => {
+       //console.log(res.data);
+        this.setState({
+          userParticipate: res.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+
+  async takeAPart(event){
+    var id = await AsyncStorage.getItem("logged_userid");
+    axios
+    .post(`${Const.API_URL}api/members`, {
+      eventId: event.id,
+      userId: id,
+    })
+    .then((res) => {
+      console.log(res.data);
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 
   render() {
-    const event = this.props.navigation.getParam('event')
+    const event = this.props.navigation.getParam('event');
+    this.checkParticipation(event);
     return (
       <View style={eventDetailsStyle.background}>
           <Appbar style={{ backgroundColor: "#262733" }}>
@@ -57,10 +90,15 @@ class EventDetails extends React.Component {
           <MaterialIcon style={eventDetailsStyle.creatorIcon} name="person" color="white" size={36} />
           <Text style={eventDetailsStyle.creatorText}>{event.usersByCreatorid.name}</Text>
 
-          <TouchableOpacity style={eventDetailsStyle.takePartBtn}>
-
+          {!this.state.userParticipate && 
+          <TouchableOpacity style={eventDetailsStyle.takePartBtn} onPress={this.takeAPart(event)}>
           <Text style={eventDetailsStyle.takePartText}>Take a part!</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>}
+
+          {this.state.userParticipate && 
+          <TouchableOpacity style={eventDetailsStyle.leaveBtn}>
+          <Text style={eventDetailsStyle.takePartText}>Leave event</Text>
+          </TouchableOpacity>}
 
       </View>
     );
