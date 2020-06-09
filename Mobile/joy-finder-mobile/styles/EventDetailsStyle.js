@@ -17,51 +17,57 @@ title: {
 },
 dateIcon: {
     left: "11%",
-    top: "21%"
+    top: "10%"
   },
 timeIcon: {
     left: "11%",
-    top: "25%"
+    top: "14%"
 },
 locationIcon: {
     left: "11%",
-    top: "29%"
+    top: "18%"
 },
 typeIcon: {
     left: "11%",
-    top: "33%"
+    top: "22%"
 },
 creatorIcon: {
     left: "11%",
-    top: "37%"
+    top: "26%"
 },
 dateText: {
     left: "25%",
-    top: "16%",
+    top: "5%",
     fontSize: 25,
     color: "#FFFFFF"
 },
 timeText: {
     left: "25%",
-    top: "20%",
+    top: "9%",
     fontSize: 25,
     color: "#FFFFFF"
 },
 locationText: {
     left: "25%",
-    top: "24%",
+    top: "10%",
+    fontSize: 25,
+    color: "#FFFFFF"
+},
+streetText: {
+    left: "25%",
+    top: "12%",
     fontSize: 25,
     color: "#FFFFFF"
 },
 typeText: {
     left: "25%",
-    top: "28%",
+    top: "17%",
     fontSize: 25,
     color: "#FFFFFF"
 },
 creatorText: {
     left: "25%",
-    top: "32%",
+    top: "21%",
     fontSize: 25,
     color: "#FFFFFF"
 },
@@ -74,8 +80,17 @@ takePartBtn: {
     height: "10%",
     width: "80%",
     
-    top: "37%",
+    top: "26%",
     backgroundColor: "linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%)",
+    justifyContent: "center",
+    alignSelf: "center"
+},
+leaveBtn: {
+    height: "10%",
+    width: "80%",
+    
+    top: "26%",
+    backgroundColor: "linear-gradient(180deg, rgba(255, 0, 0, 0.81) 99.99%, rgba(255, 0, 0, 0) 100%)",
     justifyContent: "center",
     alignSelf: "center"
 }
