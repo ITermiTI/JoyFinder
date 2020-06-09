@@ -47,11 +47,15 @@ class Drawer extends React.Component {
             style={DrawerStyle.profileImage}
           ></Image>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => {
+              this.props.navigation.navigate("Account");
+            }}>
           {this.state.user && (
             <Text style={DrawerStyle.credentialsText}>
               {this.state.user.name} {this.state.user.surname}
             </Text>
           )}
+          </TouchableOpacity>
         </View>
         <View style={DrawerStyle.divider} />
         <View style={DrawerStyle.drawerTile}>

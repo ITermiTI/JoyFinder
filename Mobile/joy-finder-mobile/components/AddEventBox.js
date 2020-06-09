@@ -147,14 +147,11 @@ class AddEventBox extends React.Component {
           transparent={true}
           visible={this.state.searched}
         >
-          <View style={addEventStyle.pressStyle}>
-            <TouchableOpacity
-              onPress={this.hideMap}
-              style={addEventStyle.touch}
-            >
-              <Text style={addEventStyle.closeStyle}>Close</Text>
-            </TouchableOpacity>
-          </View>
+          <Appbar style={{backgroundColor: '#262733'}}>
+            <Appbar.Action icon="close" onPress={this.hideMap} />
+            <Appbar.Content title="Click to close map"/>
+            
+        </Appbar>
           <CityMap
             style={addEventStyle.maps}
             events={[
