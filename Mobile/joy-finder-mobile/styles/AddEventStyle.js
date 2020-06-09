@@ -1,13 +1,12 @@
 import { StyleSheet } from "react-native";
 export const addEventStyle = StyleSheet.create({
-
-background: {
+  background: {
     position: "relative",
     backgroundColor: "#2F303A",
     flex: 1,
     alignSelf: "stretch",
-},
-loginBox: {
+  },
+  loginBox: {
     top: "5.06%",
     left: "10%",
     width: "80%",
@@ -33,48 +32,23 @@ loginBox: {
     top: "-13.75%",
     borderRadius: 150,
   },
-  waitingForText: {
-    top: "24.81%",
-    left: "13.88%",
-    position: "absolute",
-    fontSize: 24,
-    width: "75%",
-    fontFamily: "Roboto",
-    color: "#FFFFFF",
-  },
-  getInSection: {
-    left: "13.88%",
-    top: "31.81%",
-  },
-  getText: {
-    fontFamily: "Roboto",
-    color: "#FFFFFF",
-    fontSize: 56,
-    position: "absolute",
-  },
-  inText: {
-    fontFamily: "Roboto",
-    color: "white",
-    fontSize: 56,
-    position: "absolute",
-  },
   inputSection: {
     borderBottomWidth: 2,
     borderBottomColor: "white",
-    marginBottom: "8%",
+    marginBottom: 22,
     flexDirection: "row",
   },
   input: {
     backgroundColor: "transparent",
-    fontSize: 18,
+    fontSize: 17,
     color: "white",
-    height: 30,
+    height: 28,
     marginLeft: 5,
   },
   addButton: {
     marginBottom: 10,
     height: "50%",
-    backgroundColor: '#5E2758',
+    backgroundColor: "#5E2758",
 
     justifyContent: "center",
     alignItems: "center",
@@ -92,23 +66,41 @@ loginBox: {
     fontSize: 24,
     color: "#FFFFFF",
   },
-  noAccountSection: {
-    position: "absolute",
-    alignSelf: "center",
-    top: "83.43%",
+  inputCoordinates: {
+    width: "45%",
+    marginHorizontal: 5,
+    paddingHorizontal: 7,
+    borderWidth: 2,
+    borderColor: "#AAAAAA",
+    fontSize: 16,
+    color: "#AAAAAA",
+    height: 28,
+    marginLeft: 5,
+  },
+  inputSectionCoordinates: {
+    marginBottom: 22,
     flexDirection: "row",
+    justifyContent: "center",
   },
-  noAccountText: {
-    fontFamily: "Roboto",
-    color: "#FFFFFF",
-    fontSize: 16,
+  closeStyle: {
+    fontSize: 25,
+    color: "white",
   },
-  createAccountText: {
-    fontFamily: "Roboto",
-    color: "#0B8AFF",
-    fontSize: 16,
-    borderBottomColor: "#0B8AFF",
-    borderBottomWidth: 1,
+  pressStyle: {
+    width: "100%",
+    backgroundColor: "#2F303A",
+    height: "20%",
   },
-  
+  maps: {
+    flex: 4,
+    width: "100%",
+    height: "100%",
+  },
+  touch: {
+    width: "100%",
+    height: "100%",
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

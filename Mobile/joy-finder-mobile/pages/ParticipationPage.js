@@ -16,6 +16,7 @@ import * as Const from "../services/Const";
 import { Button } from "react-native-paper";
 import { Appbar } from "react-native-paper";
 import { addEventStyle } from "../styles/AddEventStyle";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
 class ParticipationPage extends React.Component {
   constructor(props) {
@@ -95,7 +96,6 @@ class ParticipationPage extends React.Component {
         });
       });
   }
-
   updateState = (name, value) => {
     this.setState({ [name]: value });
   };
@@ -105,9 +105,10 @@ class ParticipationPage extends React.Component {
       <View style={addEventStyle.background}>
         <StatusBar backgroundColor={"#1F1F23"}></StatusBar>
         <Appbar style={{ backgroundColor: "#262733" }}>
-          <Appbar.BackAction
+          <Appbar.Action
+            icon="menu"
             onPress={() => {
-              this.props.navigation.navigate("YourEvents");
+              this.props.navigation.openDrawer();
             }}
           />
           <Appbar.Content title="Your participation" />

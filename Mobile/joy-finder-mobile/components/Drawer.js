@@ -52,7 +52,7 @@ class Drawer extends React.Component {
         <View style={DrawerStyle.drawerTile}>
           <TouchableNativeFeedback
             onPress={() => {
-              this.props.navigation.navigate("HomePage");
+              this.props.navigation.navigate("YourEvents");
             }}
           >
             <View style={DrawerStyle.drawerRow}>

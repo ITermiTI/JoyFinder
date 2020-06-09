@@ -2,7 +2,7 @@ import axios from "axios";
 import { AsyncStorage } from "react-native";
 import * as Const from "./Const";
 import Base64 from "./Btoa";
-
+import Geocoder from "react-native-geocoding";
 class AuthService {
   executeLogin(login, password) {
     return axios.get(`${Const.API_URL}api/authenticate`, {
