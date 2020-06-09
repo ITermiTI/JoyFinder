@@ -15,6 +15,7 @@ import AddEventPage from "../pages/AddEventPage";
 import AccountPage from "../pages/AccountPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import EditAccountDetailsPage from "../pages/EditAccountDetailsPage";
+import EventDetails from "../pages/EventDetails"
 
 const drawerPages = {
   YourEvents: {
@@ -47,7 +48,9 @@ const drawerPages = {
   EditAccountDetails:{
     screen: EditAccountDetailsPage,
   },
-
+  EventDetails:{
+    screen: EventDetails,
+  }
 };
 
 const drawer = createDrawerNavigator(drawerPages, {

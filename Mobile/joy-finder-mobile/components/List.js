@@ -12,24 +12,24 @@ import Constants from "expo-constants";
 
 function Item({ title, date, time }) {
   return (
-    <TouchableOpacity>
-      <View style={styles.item}>
-        <Image
-          style={styles.image}
-          source={require("../assets/pilka-nozna.jpg")}
-        />
-        <View style={styles.titleBox}>
-          <Text numberOfLines={2} style={styles.title}>
-            {title}
-          </Text>
-        </View>
-        <View style={styles.separator} />
-        <View style={styles.details}>
-          <Text style={styles.detailsText}>{date}</Text>
-          <Text style={styles.detailsText}>{time}</Text>
-        </View>
+    // <TouchableOpacity onPress={nav.navigate("EventDetails")}>
+    <View style={styles.item}>
+      <Image
+        style={styles.image}
+        source={require("../assets/pilka-nozna.jpg")}
+      />
+      <View style={styles.titleBox}>
+        <Text numberOfLines={2} style={styles.title}>
+          {title}
+        </Text>
       </View>
-    </TouchableOpacity>
+      <View style={styles.separator} />
+      <View style={styles.details}>
+        <Text style={styles.detailsText}>{date}</Text>
+        <Text style={styles.detailsText}>{time}</Text>
+      </View>
+    </View>
+    // </TouchableOpacity>
   );
 }
 
@@ -44,7 +44,13 @@ class ListGrid extends React.Component {
         <FlatList
           data={this.props.data.events}
           renderItem={({ item }) => (
-            <Item title={item.name} date={item.date} time={item.time} />
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("EventDetails", { event: item })
+              }
+            >
+              <Item title={item.name} date={item.date} time={item.time} />
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
         />

@@ -163,7 +163,11 @@ class ParticipationPage extends React.Component {
         </View>
         {!this.state.noEvents && (
           <View style={styles.MainContainer}>
-            <ListGrid data={this.state} updateState={this.updateState} />
+            <ListGrid
+              data={this.state}
+              updateState={this.updateState}
+              navigation={this.props.navigation}
+            />
           </View>
         )}
         {this.state.noEvents && (
