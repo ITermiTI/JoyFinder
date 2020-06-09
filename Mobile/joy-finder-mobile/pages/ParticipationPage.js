@@ -8,6 +8,8 @@ import {
   StatusBar,
   TouchableOpacity,
   AsyncStorage,
+  TextInput,
+  
 } from "react-native";
 import AuthService from "../services/AuthService";
 import ListGrid from "../components/List";
@@ -27,6 +29,7 @@ class ParticipationPage extends React.Component {
       user: null,
       choice: "week",
       noEvents: false,
+      search: '',
     };
     this.updateState = this.updateState;
     this.pastPressed = this.pastPressed.bind(this);
@@ -104,6 +107,28 @@ class ParticipationPage extends React.Component {
     return (
       <View style={addEventStyle.background}>
         <StatusBar backgroundColor={"#1F1F23"}></StatusBar>
+        {/* <View style={{
+          backgroundColor: '#262733', 
+          flexDirection:'row', 
+          width: '100%',
+          height: 56, 
+          justifyContent:'flex-start'}}>
+          <TouchableOpacity onPress={this.submit}>
+            <MaterialIcon name="search" color="white" size={28} style={{top:'25%', left:'15%'}} />
+          </TouchableOpacity>
+          <TextInput 
+          placeholder='Type Here..'
+          onChangeText={(text) => this.setState({ search: text })}
+          placeholderTextColor='white'
+          style={{color: 'white', 
+          position: 'absolute',
+          backgroundColor: '#262733', 
+          boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+          left: '10%',
+          top: '25%',
+          fontSize: 18,   
+          }}/>
+        </View> */}
         <Appbar style={{ backgroundColor: "#262733" }}>
           <Appbar.Action
             icon="menu"
@@ -113,6 +138,9 @@ class ParticipationPage extends React.Component {
           />
           <Appbar.Content title="Your participation" />
         </Appbar>
+      <View>
+        
+      </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={this.pastPressed}>
             <Text style={styles.timeButton}>Past</Text>
