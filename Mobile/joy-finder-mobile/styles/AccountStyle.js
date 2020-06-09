@@ -7,6 +7,14 @@ background: {
     flex: 1,
     alignSelf: "stretch",
 },
+loginBox: {
+  top: "10.06%",
+  left: "10%",
+  width: "80%",
+  height: "14.37%",
+  flexDirection: "column",
+  alignItems: "stretch",
+},
   waitingForText: {
     top: "24.81%",
     left: "13.88%",
@@ -25,6 +33,19 @@ background: {
     color: "#FFFFFF",
     fontSize: 56,
     position: "absolute",
+  },
+  inputSection: {
+    borderBottomWidth: 2,
+    borderBottomColor: "white",
+    marginBottom: "12%",
+    flexDirection: "row",
+  },
+  input: {
+    backgroundColor: "transparent",
+    fontSize: 18,
+    color: "white",
+    height: 30,
+    marginLeft: 5,
   },
   inText: {
     fontFamily: "Roboto",
@@ -59,6 +80,26 @@ background: {
     marginBottom: 10,
     marginLeft: 30,
     marginRight: 30,
+    height: 50,
+    backgroundColor:
+    'linearGradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%)',
+
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  editButton: {
+    marginTop: 300,
+    marginBottom: 10,
+    height: 50,
+    backgroundColor:
+    'linearGradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%)',
+
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  editButtonDetails: {
+    marginTop: 100,
+    marginBottom: 10,
     height: 50,
     backgroundColor:
     'linearGradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%)',
