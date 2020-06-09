@@ -18,6 +18,8 @@ import DatePicker from 'react-native-datepicker'
 import * as Const from '../services/Const';
 import axios from 'axios';
 import AccountBox from "../components/AccountBox";
+import ChangePasswordPage from "../pages/ChangePasswordPage";
+import EditAccountDetailsPage from "../pages/EditAccountDetailsPage";
 
 class AccountPage extends React.Component {
   constructor(props){
@@ -51,10 +53,14 @@ class AccountPage extends React.Component {
         }}
         />
         <AccountBox/>
-        <TouchableOpacity style={accountStyle.changePas}>
+        <TouchableOpacity style={accountStyle.changePas} onPress={() => {
+              this.props.navigation.navigate("ChangePassword");
+            }}>
             <Text style={accountStyle.buttonText}>Change password</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={accountStyle.editDetails} onPress={this.submit}>
+        <TouchableOpacity style={accountStyle.editDetails} onPress={this.submit} onPress={() => {
+              this.props.navigation.navigate("EditAccountDetails");
+            }}>
             <Text style={accountStyle.buttonText}>Edit details</Text>
         </TouchableOpacity>
       </View>

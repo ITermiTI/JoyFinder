@@ -13,6 +13,8 @@ import Drawer from "./Drawer";
 import SearchByAllPage from "../pages/SearchAllPage";
 import AddEventPage from "../pages/AddEventPage";
 import AccountPage from "../pages/AccountPage";
+import ChangePasswordPage from "../pages/ChangePasswordPage";
+import EditAccountDetailsPage from "../pages/EditAccountDetailsPage";
 
 const drawerPages = {
   YourEvents: {
@@ -38,7 +40,13 @@ const drawerPages = {
   },
   Account:{
     screen: AccountPage,
-  }
+  },
+  ChangePassword:{
+    screen: ChangePasswordPage,
+  },
+  EditAccountDetails:{
+    screen: EditAccountDetailsPage,
+  },
 
 };
 
