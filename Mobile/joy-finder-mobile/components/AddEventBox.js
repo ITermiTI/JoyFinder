@@ -297,7 +297,7 @@ class AddEventBox extends React.Component {
           />
           <TextInput
             style={addEventStyle.inputCoordinates}
-            value={this.state.longitude.toFixed(8).toString()}
+            value={this.state.longtitude.toFixed(8).toString()}
             editable={false}
           />
         </View>
