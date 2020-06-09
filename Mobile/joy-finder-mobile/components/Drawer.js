@@ -8,6 +8,7 @@ import {
   TouchableNativeFeedback,
   TextInput,
   Alert,
+  TouchableOpacity,
 } from "react-native";
 import { DrawerStyle } from "../styles/DrawerStyle";
 import AuthService from "../services/AuthService";
@@ -38,10 +39,14 @@ class Drawer extends React.Component {
     return (
       <View style={DrawerStyle.mainDrawer}>
         <View>
+          <TouchableOpacity onPress={() => {
+              this.props.navigation.navigate("Account");
+            }}>
           <Image
             source={require("../assets/profile.png")}
             style={DrawerStyle.profileImage}
           ></Image>
+          </TouchableOpacity>
           {this.state.user && (
             <Text style={DrawerStyle.credentialsText}>
               {this.state.user.name} {this.state.user.surname}

@@ -12,6 +12,7 @@ import SearchByCityPage from "../pages/SearchByCityPage";
 import Drawer from "./Drawer";
 import SearchByAllPage from "../pages/SearchAllPage";
 import AddEventPage from "../pages/AddEventPage";
+import AccountPage from "../pages/AccountPage";
 
 const drawerPages = {
   YourEvents: {
@@ -34,7 +35,11 @@ const drawerPages = {
   },
   AddEvent:{
     screen: AddEventPage,
+  },
+  Account:{
+    screen: AccountPage,
   }
+
 };
 
 const drawer = createDrawerNavigator(drawerPages, {
@@ -68,7 +73,7 @@ const stackPages = {
       headerShown: false,
     },
   },
-  Register: {
+  AddEvent: {
     screen: AddEventPage,
     navigationOptions: {
       headerShown: false,
