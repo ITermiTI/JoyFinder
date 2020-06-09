@@ -6,6 +6,7 @@ import org.ownoko.joyfinder.Models.UsersEntity;
 import org.ownoko.joyfinder.Services.API.IEventsService;
 import org.ownoko.joyfinder.Services.API.IMembersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +48,19 @@ public class MembersController {
             }
         }
         return userParticipate;
+    }
+
+    @DeleteMapping("/byParticipation/{userId}/{eventId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void getByParticipation(@PathVariable("userId") int userId, @PathVariable("eventId") int eventId){
+        List<MembersEntity> eventMembers = membersService.getMembersByEventId(eventId);
+        List<MembersEntity> userMemberships = membersService.getMembersByUserId(userId);
+        for (MembersEntity member: eventMembers
+        ) {
+            for(MembersEntity membership : userMemberships){
+                if(member.getId() == membership.getId()) membersService.deleteMember(member.getId());
+            }
+        }
     }
 
     @GetMapping("/byId/{id}")

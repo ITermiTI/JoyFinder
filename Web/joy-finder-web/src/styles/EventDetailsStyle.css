@@ -1,222 +1,244 @@
-.event-name-e{
-    position: absolute;
-    left: 13.64%;
-    top: 13.7%;
-    width: auto;
-    height: auto;
-    
+.event-name-e {
+  position: absolute;
+  left: 13.64%;
+  top: 13.7%;
+  width: auto;
+  height: auto;
 
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 56px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 56px;
 
-    color: #8CE8A0
+  color: #8ce8a0;
 }
-.event-date-e{
-    position: absolute;
-    left: 17.17%;
-    top: 27.15%;
-    width: auto;
-    height: auto;
+.event-date-e {
+  position: absolute;
+  left: 17.17%;
+  top: 27.15%;
+  width: auto;
+  height: auto;
 
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 35px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
 
-    color: #9E9E9E;
-
+  color: #9e9e9e;
 }
-.event-time-e{
-    position: absolute;
-    left: 17.17%;
-    top: 33.66%;
-    width: auto;
-    height: auto;
+.event-time-e {
+  position: absolute;
+  left: 17.17%;
+  top: 33.66%;
+  width: auto;
+  height: auto;
 
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 35px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
 
-color: #9E9E9E;
+  color: #9e9e9e;
 }
-.event-location-e{
-    
-    position: absolute;
-    left: 17.17%;
-    top: 40.16%;
-    width: auto;
-    height: auto;
+.event-location-e {
+  position: absolute;
+  left: 17.17%;
+  top: 40.16%;
+  width: auto;
+  height: auto;
 
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 35px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
 
-    color: #9E9E9E;
-
+  color: #9e9e9e;
 }
-.event-type-e{
-    position: absolute;
-    left: 17.17%;
-    top: 46.67%;
-    width: auto;
-    height: auto;
+.event-type-e {
+  position: absolute;
+  left: 17.17%;
+  top: 46.67%;
+  width: auto;
+  height: auto;
 
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 35px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
 
-    color: #9E9E9E;
-
+  color: #9e9e9e;
 }
-.event-creator-e{
-    
-    position: absolute;
-    left: 17.17%;
-    top: 53.17%;
-    width: auto;
-    height: auto;
+.event-creator-e {
+  position: absolute;
+  left: 17.17%;
+  top: 53.17%;
+  width: auto;
+  height: auto;
 
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 35px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
 
-    color: #9E9E9E;
-
+  color: #9e9e9e;
 }
-.date-icon-e{
-    
-    position: absolute;
-    left: 13.64%;
-    right: 84.01%;
-    top: 27.15%;
-    bottom: 69.59%;
-    color: #9E9E9E;
+.date-icon-e {
+  position: absolute;
+  left: 13.64%;
+  right: 84.01%;
+  top: 27.15%;
+  bottom: 69.59%;
+  color: #9e9e9e;
 }
-.time-icon-e{
-    position: absolute;
-    left: 13.64%;
-    right: 84.01%;
-    top: 33.66%;
-    bottom: 63.09%;
-    color: #9E9E9E;
+.time-icon-e {
+  position: absolute;
+  left: 13.64%;
+  right: 84.01%;
+  top: 33.66%;
+  bottom: 63.09%;
+  color: #9e9e9e;
 }
-.location-icon-e{
-    
-    position: absolute;
-    left: 13.64%;
-    right: 83.77%;
-    top: 40.16%;
-    bottom: 56.26%;
-    color: #9E9E9E;
+.location-icon-e {
+  position: absolute;
+  left: 13.64%;
+  right: 83.77%;
+  top: 40.16%;
+  bottom: 56.26%;
+  color: #9e9e9e;
 }
-.type-icon-e{
-    position: absolute;
-    left: 13.64%;
-    right: 83.77%;
-    top: 46.67%;
-    bottom: 49.76%;
-    color: #9E9E9E;
+.type-icon-e {
+  position: absolute;
+  left: 13.64%;
+  right: 83.77%;
+  top: 46.67%;
+  bottom: 49.76%;
+  color: #9e9e9e;
 }
-.creator-icon-e{
-    
-    position: absolute;
-    left: 13.64%;
-    right: 84.01%;
-    top: 53.17%;
-    bottom: 43.58%;
-    color: #9E9E9E;
-
+.creator-icon-e {
+  position: absolute;
+  left: 13.64%;
+  right: 84.01%;
+  top: 53.17%;
+  bottom: 43.58%;
+  color: #9e9e9e;
 }
-.cancel-button-e{
-    position: absolute;
-    left: 29.5%;
-    top: 61.14%;
-    width: auto;
-    height: auto;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.cancel-button-e {
+  position: absolute;
+  left: 29.5%;
+  top: 61.14%;
+  width: auto;
+  height: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-    background: linear-gradient(180deg, rgba(181, 62, 62, 0.51) 99.99%, rgba(181, 62, 62, 0) 100%);
-    border-radius: 15px;
-    border: none;
-    align-self: center;
+  background: linear-gradient(
+    180deg,
+    rgba(181, 62, 62, 0.51) 99.99%,
+    rgba(181, 62, 62, 0) 100%
+  );
+  border-radius: 15px;
+  border: none;
+  align-self: center;
 
-    font-size: 30px;
-    line-height: 42px;
-    color: #FFFFFF;
-
+  font-size: 30px;
+  line-height: 42px;
+  color: #ffffff;
 }
-.back-button-e{
-    position: absolute;
-    left: 14.17%;
-    top: 61.14%;
-    width: auto;
-    height: auto;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.back-button-e {
+  position: absolute;
+  left: 14.17%;
+  top: 61.14%;
+  width: auto;
+  height: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-    background: linear-gradient(180deg, rgba(11, 138, 255, 0.51) 99.99%, rgba(11, 108, 255, 0) 100%);
-    border-radius: 15px;
-    border: none;
-    align-self: center;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 138, 255, 0.51) 99.99%,
+    rgba(11, 108, 255, 0) 100%
+  );
+  border-radius: 15px;
+  border: none;
+  align-self: center;
 
-    font-size: 30px;
-    line-height: 42px;
-    color: #FFFFFF;
-
+  font-size: 30px;
+  line-height: 42px;
+  color: #ffffff;
 }
-.map-e{
-    background-color: transparent;
-    position: absolute;
-    width: 42.54%;
-    height: 35.00%;
-    left: 50.73%;
-    top: 15.1%;
-
+.map-e {
+  background-color: transparent;
+  position: absolute;
+  width: 42.54%;
+  height: 35%;
+  left: 50.73%;
+  top: 15.1%;
 }
-.edit-details-button-e{
-    position: absolute;
-    left: 22.17%;
-    top: 61.14%;
-    width: auto;
-    height: auto;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.edit-details-button-e {
+  position: absolute;
+  left: 22.17%;
+  top: 61.14%;
+  width: auto;
+  height: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-    background: linear-gradient(180deg, rgba(94, 39, 88, 0.51) 99.99%, rgba(94, 39, 88, 0) 100%);
-    border-radius: 15px;
-    border: none;
-    align-self: center;
+  background: linear-gradient(
+    180deg,
+    rgba(94, 39, 88, 0.51) 99.99%,
+    rgba(94, 39, 88, 0) 100%
+  );
+  border-radius: 15px;
+  border: none;
+  align-self: center;
 
-    font-size: 30px;
-    line-height: 42px;
-    color: #FFFFFF;
+  font-size: 30px;
+  line-height: 42px;
+  color: #ffffff;
 }
-.back-button-edit{
-    position: absolute;
-    width: 30%;
-    height: 7%;
-    left: 7%;
-    top: 76.5%;
+.back-button-edit {
+  position: absolute;
+  width: 30%;
+  height: 7%;
+  left: 7%;
+  top: 76.5%;
 
-    background: linear-gradient(180deg, rgba(181, 62, 62, 0.51) 99.99%, rgba(181, 62, 62, 0) 100%);
-    border-radius: 15px;
-    border: none;
-    align-self: center;
+  background: linear-gradient(
+    180deg,
+    rgba(181, 62, 62, 0.51) 99.99%,
+    rgba(181, 62, 62, 0) 100%
+  );
+  border-radius: 15px;
+  border: none;
+  align-self: center;
 
-    font-size: 30px;
-    line-height: 42px;
-    color: #FFFFFF;
+  font-size: 30px;
+  line-height: 42px;
+  color: #ffffff;
+}
+.show-participants {
+  position: absolute;
+  width: 30%;
+  height: 7%;
+  left: 55%;
+  top: 76.5%;
+
+  background: linear-gradient(
+    180deg,
+    rgba(39, 14, 102, 0.51) 99.99%,
+    rgba(105, 189, 9, 0) 100%
+  );
+  border-radius: 15px;
+  border: none;
+  align-self: center;
+
+  font-size: 30px;
+  line-height: 42px;
+  color: #ffffff;
 }
