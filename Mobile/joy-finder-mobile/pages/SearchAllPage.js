@@ -68,7 +68,11 @@ class SearchByAllPage extends React.Component {
         </Appbar>
         {!this.state.noEvents && (
           <View style={styles.MainContainer}>
-            <ListGrid data={this.state} updateState={this.updateState} prop={this.props}/>
+            <ListGrid
+              data={this.state}
+              updateState={this.updateState}
+              navigation={this.props.navigation}
+            />
           </View>
         )}
         {this.state.noEvents && (
