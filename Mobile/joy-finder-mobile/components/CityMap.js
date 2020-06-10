@@ -2,7 +2,13 @@ import React from "react";
 import MapView from "react-native-maps";
 
 import { Marker } from "react-native-maps";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import { Callout } from "react-native-maps";
 class CityMap extends React.Component {
   constructor(props) {

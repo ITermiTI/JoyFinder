@@ -96,6 +96,7 @@ class SearchMapPage extends React.Component {
           <CityMap
             events={this.state.events}
             coordinates={this.state.coordinates}
+            navigation={this.props.navigation}
           />
         )}
       </View>

@@ -21,12 +21,13 @@ class EventDetails extends React.Component {
     super(props);
     this.state = {
       event: null,
-      userParticipate: false,
+      userParticipate: 0,
       check: true,
     };
     this.takeAPart = this.takeAPart.bind(this);
     this.leave = this.leave.bind(this);
     this.checkParticipation = this.checkParticipation.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   componentDidMount() {
@@ -44,24 +45,40 @@ class EventDetails extends React.Component {
 
   async checkParticipation() {
     const event = this.props.navigation.getParam("event");
-    var id = await AsyncStorage.getItem("logged_userid");
     console.log(event);
-    axios
-      .get(
-        `${Const.API_URL}api/members/checkIfUserParticipate/${id}/${event.id}`
-      )
-      .then((res) => {
-        console.log(res.data);
-        this.setState({
-          userParticipate: res.data,
-          event: event,
+    var id = await AsyncStorage.getItem("logged_userid");
+    if (event.usersByCreatorid.id == id) {
+      this.setState({ userParticipate: 0, event: event });
+    } else
+      axios
+        .get(
+          `${Const.API_URL}api/members/checkIfUserParticipate/${id}/${event.id}`
+        )
+        .then((res) => {
+          if (res.data)
+            this.setState({
+              userParticipate: 1,
+              event: event,
+            });
+          else
+            this.setState({
+              userParticipate: 2,
+              event: event,
+            });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }
 
+  async cancel() {
+    console.log(this.state);
+    axios
+      .delete(`${Const.API_URL}api/events/delete/${this.state.event.id}`)
+      .then((res) => {
+        this.props.navigation.navigate("YourEvents", { refresh: "YourEvents" });
+      });
+  }
   async takeAPart() {
     var id = await AsyncStorage.getItem("logged_userid");
     axios
@@ -70,7 +87,7 @@ class EventDetails extends React.Component {
         userId: id,
       })
       .then((res) => {
-        this.setState({ userParticipate: true });
+        this.setState({ userParticipate: 1 });
       })
       .catch((error) => {
         console.log(error);
@@ -84,7 +101,7 @@ class EventDetails extends React.Component {
         `${Const.API_URL}api/members/byParticipation/${id}/${this.state.event.id}`
       )
       .then((res) => {
-        this.setState({ userParticipate: false });
+        this.setState({ userParticipate: 2 });
       })
       .catch((error) => {
         console.log(error);
@@ -92,6 +109,7 @@ class EventDetails extends React.Component {
   }
 
   render() {
+    console.log(this.props.navigation.getParam("event"));
     const event = this.props.navigation.getParam("event");
     return (
       <View style={eventDetailsStyle.background}>
@@ -151,7 +169,7 @@ class EventDetails extends React.Component {
           {event.usersByCreatorid.name}
         </Text>
 
-        {!this.state.userParticipate && (
+        {this.state.userParticipate === 2 && (
           <TouchableOpacity
             style={eventDetailsStyle.takePartBtn}
             onPress={this.takeAPart}
@@ -160,13 +178,33 @@ class EventDetails extends React.Component {
           </TouchableOpacity>
         )}
 
-        {this.state.userParticipate && (
+        {this.state.userParticipate === 1 && (
           <TouchableOpacity
             style={eventDetailsStyle.leaveBtn}
             onPress={this.leave}
           >
             <Text style={eventDetailsStyle.takePartText}>Leave event</Text>
           </TouchableOpacity>
+        )}
+        {this.state.userParticipate === 0 && (
+          <View style={eventDetailsStyle.buttonView}>
+            <TouchableOpacity
+              style={eventDetailsStyle.editBtn}
+              onPress={() =>
+                this.props.navigation.navigate("Edit", {
+                  event: this.props.navigation.getParam("event"),
+                })
+              }
+            >
+              <Text style={eventDetailsStyle.takePartText}>Edit</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={eventDetailsStyle.cancelBtn}
+              onPress={this.cancel}
+            >
+              <Text style={eventDetailsStyle.takePartText}>Cancel</Text>
+            </TouchableOpacity>
+          </View>
         )}
       </View>
     );

@@ -15,7 +15,8 @@ import AddEventPage from "../pages/AddEventPage";
 import AccountPage from "../pages/AccountPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import EditAccountDetailsPage from "../pages/EditAccountDetailsPage";
-import EventDetails from "../pages/EventDetails"
+import EventDetails from "../pages/EventDetails";
+import EditEvent from "../pages/EditEvent";
 
 const drawerPages = {
   YourEvents: {
@@ -36,21 +37,24 @@ const drawerPages = {
   SearchAll: {
     screen: SearchByAllPage,
   },
-  AddEvent:{
+  AddEvent: {
     screen: AddEventPage,
   },
-  Account:{
+  Account: {
     screen: AccountPage,
   },
-  ChangePassword:{
+  ChangePassword: {
     screen: ChangePasswordPage,
   },
-  EditAccountDetails:{
+  EditAccountDetails: {
     screen: EditAccountDetailsPage,
   },
-  EventDetails:{
+  EventDetails: {
     screen: EventDetails,
-  }
+  },
+  Edit: {
+    screen: EditEvent,
+  },
 };
 
 const drawer = createDrawerNavigator(drawerPages, {

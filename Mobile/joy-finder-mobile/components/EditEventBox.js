@@ -27,24 +27,45 @@ class EditEventBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.event.id,
-      date: this.props.event.date,
+      id: "",
+      date: "",
       currentDate: "",
-      time: this.props.event.time,
-      name: this.props.event.name,
-      type: this.props.event.type,
-      city: this.props.event.city,
-      street: this.props.event.street,
-      stNumber: this.props.event.stNumber,
+      time: "",
+      name: "",
+      type: "",
+      city: "",
+      street: "",
+      stNumber: 0,
+      creatorid: 0,
       user: null,
-      latitude: this.props.event.latitude,
-      longtitude: this.props.event.longtitude,
+      latitude: 0,
+      longtitude: 0,
       searched: false,
       notFound: false,
     };
     this.submit = this.submit.bind(this);
     this.getUserDetails = this.getUserDetails.bind(this);
     this.search = this.search.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.event !== this.props.event && this.props.event !== null) {
+      this.setState({
+        id: this.props.event.id,
+        date: this.props.event.date,
+        time: this.props.event.time,
+        name: this.props.event.name,
+        type: this.props.event.type,
+        city: this.props.event.city,
+        street: this.props.event.street,
+        stNumber: this.props.event.stnumber,
+        latitude: parseFloat(this.props.event.location.split(",")[0]),
+        longtitude: parseFloat(
+          this.props.event.location.split(",")[1].split(" ")[1]
+        ),
+        creatorid: this.props.event.usersByCreatorid.id,
+      });
+    }
   }
 
   async search() {
@@ -118,8 +139,8 @@ class EditEventBox extends React.Component {
         time: this.state.time,
         city: this.state.city,
         street: this.state.street,
-        stnumber: parseInt(this.state.stNumber, 10),
-        creatorid: this.state.user.userId,
+        stnumber: this.state.stNumber,
+        creatorid: this.state.creatorid,
         type: this.state.type,
         location: `${this.state.latitude}, ${this.state.longtitude}`,
       })
@@ -168,6 +189,7 @@ class EditEventBox extends React.Component {
           <TextInput
             style={addEventStyle.input}
             placeholder="Title"
+            value={this.state.name}
             onChangeText={(text) => this.setState({ name: text })}
           />
         </View>
@@ -251,6 +273,7 @@ class EditEventBox extends React.Component {
           <TextInput
             style={addEventStyle.input}
             placeholder="Type of event"
+            value={this.state.type}
             onChangeText={(type) => this.setState({ type: type })}
           />
         </View>
@@ -259,6 +282,7 @@ class EditEventBox extends React.Component {
           <TextInput
             style={addEventStyle.input}
             placeholder="City"
+            value={this.state.city}
             onChangeText={(city) => this.setState({ city: city })}
           />
         </View>
@@ -267,6 +291,7 @@ class EditEventBox extends React.Component {
           <TextInput
             style={addEventStyle.input}
             placeholder="Street"
+            value={this.state.street}
             onChangeText={(street) => this.setState({ street: street })}
           />
         </View>
@@ -276,6 +301,7 @@ class EditEventBox extends React.Component {
             style={addEventStyle.input}
             placeholder="Street number"
             keyboardType="number-pad"
+            value={this.state.stNumber.toString()}
             onChangeText={(stNumber) => this.setState({ stNumber: stNumber })}
           />
         </View>
