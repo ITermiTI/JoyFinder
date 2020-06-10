@@ -12,8 +12,8 @@ import {
 } from "react-native";
 import { homePageStyle } from "../styles/HomePageStyle";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import { Appbar } from 'react-native-paper';
-import ListGrid from '../components/List';
+import { Appbar } from "react-native-paper";
+import ListGrid from "../components/List";
 import axios from "axios";
 import * as Const from "../services/Const";
 class HomePage extends React.Component {
@@ -33,6 +33,16 @@ class HomePage extends React.Component {
   }
   componentDidMount() {
     this.weekPressed();
+  }
+
+  componentDidUpdate() {
+    if (
+      this.props.navigation.getParam("refresh") !== null &&
+      this.props.navigation.getParam("refresh") === "YourEvents"
+    ) {
+      this.props.navigation.setParams({ refresh: null });
+      this.weekPressed();
+    }
   }
   async pastPressed() {
     var id = await AsyncStorage.getItem("logged_userid");
@@ -98,12 +108,16 @@ class HomePage extends React.Component {
   render() {
     console.log(this.state.noEvents);
     return (
-      
       <View style={homePageStyle.background}>
-        <StatusBar backgroundColor={'#1F1F23'}></StatusBar>
-        <Appbar style={{backgroundColor: '#262733'}}>
-            <Appbar.Action icon='menu' onPress={() => {this.props.navigation.openDrawer();}}/>
-            <Appbar.Content title="Your events"/>
+        <StatusBar backgroundColor={"#1F1F23"}></StatusBar>
+        <Appbar style={{ backgroundColor: "#262733" }}>
+          <Appbar.Action
+            icon="menu"
+            onPress={() => {
+              this.props.navigation.openDrawer();
+            }}
+          />
+          <Appbar.Content title="Your events" />
         </Appbar>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={this.pastPressed}>
@@ -127,7 +141,11 @@ class HomePage extends React.Component {
         </View>
         {!this.state.noEvents && (
           <View style={styles.MainContainer}>
-            <ListGrid data={this.state} updateState={this.updateState} />
+            <ListGrid
+              data={this.state}
+              updateState={this.updateState}
+              navigation={this.props.navigation}
+            />
           </View>
         )}
         {this.state.noEvents && (
@@ -135,7 +153,12 @@ class HomePage extends React.Component {
             <Text style={styles.noEventsText}>No events found!</Text>
           </View>
         )}
-        <TouchableOpacity style={homePageStyle.floatingButton} onPress={() => {this.props.navigation.navigate("AddEvent");}}>
+        <TouchableOpacity
+          style={homePageStyle.floatingButton}
+          onPress={() => {
+            this.props.navigation.navigate("AddEvent");
+          }}
+        >
           <MaterialIcon name="add" color="#2F303A" size={30}></MaterialIcon>
         </TouchableOpacity>
       </View>

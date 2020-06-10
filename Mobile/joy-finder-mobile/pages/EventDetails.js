@@ -80,7 +80,9 @@ class EventDetails extends React.Component {
   async leave() {
     var id = await AsyncStorage.getItem("logged_userid");
     axios
-      .delete(`${Const.API_URL}api/members/byParticipation/${id}/${this.state.event.id}`)
+      .delete(
+        `${Const.API_URL}api/members/byParticipation/${id}/${this.state.event.id}`
+      )
       .then((res) => {
         this.setState({ userParticipate: false });
       })
@@ -96,7 +98,9 @@ class EventDetails extends React.Component {
         <Appbar style={{ backgroundColor: "#262733" }}>
           <Appbar.BackAction
             onPress={() => {
-              this.props.navigation.navigate("SearchAll");
+              this.props.navigation.navigate("Participation", {
+                refresh: "Participation",
+              });
             }}
           />
           <Appbar.Content title="Event info" />
@@ -158,9 +162,9 @@ class EventDetails extends React.Component {
 
         {this.state.userParticipate && (
           <TouchableOpacity
-           style={eventDetailsStyle.leaveBtn}
-           onPress={this.leave}
-           >
+            style={eventDetailsStyle.leaveBtn}
+            onPress={this.leave}
+          >
             <Text style={eventDetailsStyle.takePartText}>Leave event</Text>
           </TouchableOpacity>
         )}

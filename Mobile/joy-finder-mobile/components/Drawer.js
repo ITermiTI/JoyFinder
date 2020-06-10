@@ -39,22 +39,26 @@ class Drawer extends React.Component {
     return (
       <View style={DrawerStyle.mainDrawer}>
         <View>
-          <TouchableOpacity onPress={() => {
+          <TouchableOpacity
+            onPress={() => {
               this.props.navigation.navigate("Account");
-            }}>
-          <Image
-            source={require("../assets/profile.png")}
-            style={DrawerStyle.profileImage}
-          ></Image>
+            }}
+          >
+            <Image
+              source={require("../assets/profile.png")}
+              style={DrawerStyle.profileImage}
+            ></Image>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {
+          <TouchableOpacity
+            onPress={() => {
               this.props.navigation.navigate("Account");
-            }}>
-          {this.state.user && (
-            <Text style={DrawerStyle.credentialsText}>
-              {this.state.user.name} {this.state.user.surname}
-            </Text>
-          )}
+            }}
+          >
+            {this.state.user && (
+              <Text style={DrawerStyle.credentialsText}>
+                {this.state.user.name} {this.state.user.surname}
+              </Text>
+            )}
           </TouchableOpacity>
         </View>
         <View style={DrawerStyle.divider} />

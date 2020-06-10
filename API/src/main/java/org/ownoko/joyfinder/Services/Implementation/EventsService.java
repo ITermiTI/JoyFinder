@@ -72,7 +72,7 @@ public class EventsService implements IEventsService {
         List<MembersEntity> userMembership = membersDao.findAllByUsersByUserid(user.get());
         for (MembersEntity membership: userMembership
         ) {
-            ids.add(membership.getId());
+            ids.add(membership.getEventsByEventid().getId());
         }
         return eventsDao.findAllById(ids);
     }

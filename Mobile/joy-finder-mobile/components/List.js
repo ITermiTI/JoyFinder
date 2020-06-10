@@ -46,7 +46,9 @@ class ListGrid extends React.Component {
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate("EventDetails", { event: item })
+                this.props.navigation.navigate("EventDetails", {
+                  event: item,
+                })
               }
             >
               <Item title={item.name} date={item.date} time={item.time} />
