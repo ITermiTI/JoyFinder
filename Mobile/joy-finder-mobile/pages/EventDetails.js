@@ -25,6 +25,7 @@ class EventDetails extends React.Component {
       check: true,
     };
     this.takeAPart = this.takeAPart.bind(this);
+    this.leave = this.leave.bind(this);
     this.checkParticipation = this.checkParticipation.bind(this);
   }
 
@@ -70,6 +71,18 @@ class EventDetails extends React.Component {
       })
       .then((res) => {
         this.setState({ userParticipate: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  async leave() {
+    var id = await AsyncStorage.getItem("logged_userid");
+    axios
+      .delete(`${Const.API_URL}api/members/byParticipation/${id}/${this.state.event.id}`)
+      .then((res) => {
+        this.setState({ userParticipate: false });
       })
       .catch((error) => {
         console.log(error);
@@ -144,7 +157,10 @@ class EventDetails extends React.Component {
         )}
 
         {this.state.userParticipate && (
-          <TouchableOpacity style={eventDetailsStyle.leaveBtn}>
+          <TouchableOpacity
+           style={eventDetailsStyle.leaveBtn}
+           onPress={this.leave}
+           >
             <Text style={eventDetailsStyle.takePartText}>Leave event</Text>
           </TouchableOpacity>
         )}
