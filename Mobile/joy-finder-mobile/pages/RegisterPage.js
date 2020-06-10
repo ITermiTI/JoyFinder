@@ -7,7 +7,8 @@ import {
   Button,
   TouchableOpacity,
   TouchableNativeFeedback,
-  Keyboard
+  Keyboard,
+  StatusBar
 } from "react-native";
 import { registerPageStyle } from "../styles/RegisterPageStyle";
 import RegisterBox from "../components/RegisterBox";
@@ -45,6 +46,7 @@ class RegisterPage extends React.Component {
   render() {
     return (
       <View style={registerPageStyle.background}>
+         <StatusBar backgroundColor={"#1F1F23"}></StatusBar>
         <Text style={registerPageStyle.joinText}>Join the </Text>
         <Text style={registerPageStyle.funText}>fun</Text>
         <RegisterBox navigation={this.props.navigation}/>

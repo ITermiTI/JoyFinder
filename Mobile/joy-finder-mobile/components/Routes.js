@@ -12,6 +12,10 @@ import SearchByCityPage from "../pages/SearchByCityPage";
 import Drawer from "./Drawer";
 import SearchByAllPage from "../pages/SearchAllPage";
 import AddEventPage from "../pages/AddEventPage";
+import AccountPage from "../pages/AccountPage";
+import ChangePasswordPage from "../pages/ChangePasswordPage";
+import EditAccountDetailsPage from "../pages/EditAccountDetailsPage";
+import EventDetails from "../pages/EventDetails"
 
 const drawerPages = {
   YourEvents: {
@@ -34,6 +38,18 @@ const drawerPages = {
   },
   AddEvent:{
     screen: AddEventPage,
+  },
+  Account:{
+    screen: AccountPage,
+  },
+  ChangePassword:{
+    screen: ChangePasswordPage,
+  },
+  EditAccountDetails:{
+    screen: EditAccountDetailsPage,
+  },
+  EventDetails:{
+    screen: EventDetails,
   }
 };
 
@@ -68,7 +84,7 @@ const stackPages = {
       headerShown: false,
     },
   },
-  Register: {
+  AddEvent: {
     screen: AddEventPage,
     navigationOptions: {
       headerShown: false,

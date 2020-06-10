@@ -8,7 +8,8 @@ export const DrawerStyle = StyleSheet.create({
     paddingTop: 30,
   },
   profileImage: {
-    margin: 21,
+    marginLeft: 60,
+    marginBottom: 30,
     width: 100,
     height: 100,
     borderRadius: 50,

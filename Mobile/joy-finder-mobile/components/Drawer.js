@@ -8,6 +8,7 @@ import {
   TouchableNativeFeedback,
   TextInput,
   Alert,
+  TouchableOpacity,
 } from "react-native";
 import { DrawerStyle } from "../styles/DrawerStyle";
 import AuthService from "../services/AuthService";
@@ -38,21 +39,33 @@ class Drawer extends React.Component {
     return (
       <View style={DrawerStyle.mainDrawer}>
         <View>
-          <Image
-            source={require("../assets/profile.png")}
-            style={DrawerStyle.profileImage}
-          ></Image>
-          {this.state.user && (
-            <Text style={DrawerStyle.credentialsText}>
-              {this.state.user.name} {this.state.user.surname}
-            </Text>
-          )}
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate("Account");
+            }}
+          >
+            <Image
+              source={require("../assets/profile.png")}
+              style={DrawerStyle.profileImage}
+            ></Image>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate("Account");
+            }}
+          >
+            {this.state.user && (
+              <Text style={DrawerStyle.credentialsText}>
+                {this.state.user.name} {this.state.user.surname}
+              </Text>
+            )}
+          </TouchableOpacity>
         </View>
         <View style={DrawerStyle.divider} />
         <View style={DrawerStyle.drawerTile}>
           <TouchableNativeFeedback
             onPress={() => {
-              this.props.navigation.navigate("HomePage");
+              this.props.navigation.navigate("YourEvents");
             }}
           >
             <View style={DrawerStyle.drawerRow}>
@@ -70,7 +83,7 @@ class Drawer extends React.Component {
           >
             <View style={DrawerStyle.drawerRow}>
               <MaterialIcon name="event-note" color="white" size={30} />
-              <Text style={DrawerStyle.tileText}>Events you participate</Text>
+              <Text style={DrawerStyle.tileText}>Taking part</Text>
             </View>
           </TouchableNativeFeedback>
         </View>

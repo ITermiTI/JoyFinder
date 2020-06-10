@@ -6,6 +6,7 @@ import {
   View,
   Button,
   TouchableOpacity,
+  StatusBar
 } from "react-native";
 import { guestPageStyle } from "../styles/GuestPageStyle";
 class GuestPage extends React.Component {
@@ -21,6 +22,8 @@ class GuestPage extends React.Component {
   render() {
     return (
       <View style={guestPageStyle.background}>
+
+         <StatusBar backgroundColor={"#1F1F23"}></StatusBar>
         <ImageBackground
           source={require("../assets/landing-page-image.png")}
           style={guestPageStyle.guestImage}
